@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.utils import timezone
 from .models import News
 from .forms import NewsForm
 
@@ -8,9 +7,7 @@ from .forms import NewsForm
 def get_news(request):
     """Create a view that will return a list of post and
     render them to the blogposts.html template"""
-
-    news = News.objects.filter(published_date__lte=timezone.now
-                                ()).order_by('-published_date')
+    news = News.objects.filter()
     return render(request, "newsblog.html", {'news': news})
 
 
@@ -37,3 +34,17 @@ def create_or_edit_news(request, pk=None):
     else:
         form = NewsForm(instance=news)
     return render(request, 'newsform.html', {'form': form})
+
+
+def get_news_news(request):
+    """Create a view that will return a list of new with tag: news and
+    render them to the blogposts.html template"""
+    news = News.objects.filter(tag='news')
+    return render(request, "newsblog.html", {'news': news})
+
+
+def get_news_updates(request):
+    """Create a view that will return a list of new with tag: update and
+    render them to the blogposts.html template"""
+    news = News.objects.filter(tag='updates')
+    return render(request, "newsblog.html", {'news': news})

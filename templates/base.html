@@ -31,7 +31,15 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{% url 'get_news' %}"><i class="far fa-newspaper"></i> News</a></li>
+                        <li>
+                            <div class="dropdown">
+                                <a href="{% url 'get_news' %}"><button class="dropbtn"><i class="far fa-newspaper"></i> News</button></a>
+                                <div class="dropdown-content">
+                                    <a href="{% url 'get_news_news' %}"><i class="fa fa-user-plus"></i> News</a>
+                                    <a href="{% url 'get_news_updates' %}"><i class="fa fa-sign-in-alt"></i> Updates</a>
+                                </div>
+                            </div>
+                        </li>
                         <li><a href="{% url 'products' %}"><i class="fas fa-store-alt"></i> Shop</a></li>
                         <li><a href="{% url 'games' %}"><i class="fas fa-gamepad"></i> Games</a></li>
                         <li><a href="#"><i class="fas fa-users"></i> Forum</a></li>
@@ -44,11 +52,27 @@
                             </a>
                         </li>
                     {% if user.is_authenticated %}
-                        <li><a href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a></li>
-                        <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                        <li>
+                            <div class="dropdown">
+                                <button class="dropbtn"><i class="fas fa-portrait"></i> Account</button>
+                                <div class="dropdown-content">
+                                    <a href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a>
+                                    <a href="#"><i class="fas fa-shopping-basket"></i> Orders</a>
+                                    <a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a>
+                                </div>
+                            </div>
+                        </li>                        
                     {%  else %}
-                        <li><a href="{% url 'registration' %}"><i class="fa fa-user-plus"></i> Register</a></li>
-                        <li><a href="{% url 'login' %}"><i class="fa fa-sign-in-alt"></i> Log In</a></li>
+                        <li>
+                            <div class="dropdown">
+                                <button class="dropbtn"><i class="fas fa-portrait"></i> Sign in</button>
+                                <div class="dropdown-content">
+                                    <a href="{% url 'registration' %}"><i class="fa fa-user-plus"></i> Register</a>
+                                    <a href="{% url 'login' %}"><i class="fa fa-sign-in-alt"></i> Log In</a>
+                                </div>
+                            </div>
+                        </li>
+                        
                     {% endif %}                     
                 </ul>
             </div>
@@ -78,5 +102,6 @@
             <p>Made by Roman Grubic</p>
         </div>
     </footer>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
