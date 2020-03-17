@@ -3,5 +3,19 @@
 {% block content %}
    
 <h1>This is games page!</h1>
-
+    {% for game in games %}
+        <div class="row">
+                <a class="story-img" href="#">
+                    <img src="{{ MEDIA_URL }}{{ game.image }}" class="img-circle">
+                </a>
+                <h3>{{ game.name }}</h3>
+                <div class="row">
+                    <div class="col-xs-9">
+                        <p>{{ game.description|truncatewords:90 }}</p>
+                        <p><a href="{% url 'games_detail' game.id %}"  class="btn btn-default">Read more</a></p>
+                    </div>
+                </div>
+            </div>
+        <hr>
+    {% endfor %}
 {% endblock %}
