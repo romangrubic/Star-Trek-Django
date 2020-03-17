@@ -21,6 +21,7 @@ from cart import urls as urls_cart
 from products import urls as urls_products
 from checkout import urls as urls_checkout
 from news import urls as urls_news
+from games import urls as urls_games
 from django.views import static
 from .settings import MEDIA_ROOT
 
@@ -32,5 +33,6 @@ urlpatterns = [
     url(r'^products/', include(urls_products)),
     url(r'^checkout/', include(urls_checkout)),
     url(r'^news/', include(urls_news)),
+    url(r'^games/', include(urls_games)),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
 ]
