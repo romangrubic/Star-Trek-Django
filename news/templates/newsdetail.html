@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-2 col-sm-3 text-center">
+            <a class="story-img" href="#">
+                <img src=" {{ MEDIA_URL }}img/profile.jpg" class="img-circle">
+            </a>
+            <p><span class="boldtext">Author:</span> {{ news.author }}</p>
+        </div>
+        <div class="col-sm-10 col-md-9">
+            {% if news.image %}
+                <img class="img-blogpost" src="{{ MEDIA_URL }}{{ news.image }}">
+            {% endif %}
+            <h3>{{ news.title }}</h3>
+            <div class="row">
+                <div class="col-xs-9">
+                    <p>{{ news.content }}</p>
+                    <p><span class="boldtext">Published on:</span> {{ news.published_date }} </p>
+                    <p><span class="boldtext">Views:</span> {{news.views}}</p>
+                    <p><span class="boldtext">Tag:</span> {{ news.tag }}</p>
+                    <a href="{% url 'get_news' %}" class="btn btn-default">Back to News</a>
+                    <a href="{% url 'edit_news' news.id %}" class="btn btn-default">Edit News</a>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

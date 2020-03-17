@@ -30,22 +30,25 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'get_news' %}"><i class="far fa-newspaper"></i> News</a></li>
+                        <li><a href="{% url 'products' %}"><i class="fas fa-store-alt"></i> Shop</a></li>
+                        <li><a href="#"><i class="fas fa-gamepad"></i> Games</a></li>
+                        <li><a href="#"><i class="fas fa-users"></i> Forum</a></li>
+                        <li>
+                            <a href="{% url 'view_cart' %}">
+                                <i class="fas fa-shopping-cart"></i> Cart
+                                {% if product_count > 0 %}
+                                <label class="badge badge-warning">{{ product_count }}</label>
+                                {% endif %}
+                            </a>
+                        </li>
                     {% if user.is_authenticated %}
                         <li><a href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a></li>
                         <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a></li>
                     {%  else %}
                         <li><a href="{% url 'registration' %}"><i class="fa fa-user-plus"></i> Register</a></li>
                         <li><a href="{% url 'login' %}"><i class="fa fa-sign-in-alt"></i> Log In</a></li>
-                    {% endif %}
-                    <li><a href="{% url 'products' %}"><i class="fa fa-user"></i> Shop</a></li>
-                    <li>
-                        <a href="{% url 'view_cart' %}">
-                            <i class="fas fa-shopping-cart"></i> Cart
-                            {% if product_count > 0 %}
-                            <label class="badge badge-warning">{{ product_count }}</label>
-                            {% endif %}
-                        </a>
-                    </li>
+                    {% endif %}                     
                 </ul>
             </div>
         </div>
