@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-   
 <h1>This is games page!</h1>
     {% for game in games %}
-        <div class="row">
+        <div>
                 <a class="story-img" href="#">
                     <img src="{{ MEDIA_URL }}{{ game.image }}" class="img-circle">
                 </a>
