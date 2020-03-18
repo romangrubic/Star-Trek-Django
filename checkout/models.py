@@ -1,5 +1,6 @@
 from django.db import models
 from products.models import Product
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -19,6 +20,7 @@ class Order(models.Model):
 
 
 class OrderLineItem(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="orders")
     order = models.ForeignKey(Order, null=False)
     product = models.ForeignKey(Product, null=False)
     quantity = models.IntegerField(blank=False)
