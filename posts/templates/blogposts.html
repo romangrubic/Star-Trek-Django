@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="display">
+        <form action="{% url 'search_threads' %}" method="GET">
+            <input type="text" name="d">
+            <button type="submit">Search</button>
+        </form>
+    </div>
 <a href="{% url 'new_post' %}" class="btn btn-default">New Post</a>
     {% for post in posts %}
         <div class="row">
