@@ -72,5 +72,6 @@ def registration(request):
 @login_required
 def user_profile(request):
     """ Users profile page"""
+    
     user = User.objects.get(email=request.user.email)
     return render(request, 'profile.html', {"profile": user})

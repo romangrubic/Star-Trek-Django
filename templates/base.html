@@ -42,7 +42,11 @@
                         </li>
                         <li><a href="{% url 'products' %}"><i class="fas fa-store-alt"></i> Shop</a></li>
                         <li><a href="{% url 'games' %}"><i class="fas fa-gamepad"></i> Games</a></li>
-                        <li><a href="#"><i class="fas fa-users"></i> Forum</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'get_posts' %}"><i class="fas fa-users"></i> Forum</a></li>
+                        {% else %}
+                        <li><a href="{% url 'login' %}"><i class="fas fa-users"></i> Forum</a></li>
+                        {% endif %}
                         <li>
                             <a href="{% url 'view_cart' %}">
                                 <i class="fas fa-shopping-cart"></i> Cart
