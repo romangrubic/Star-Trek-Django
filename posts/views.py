@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from .models import Post
-from .forms import BlogPostForm
+from .models import Post, Comment
+from .forms import BlogPostForm, CommentForm
 
 
 # Create your views here.
@@ -21,9 +21,11 @@ def post_detail(request, pk):
     'postdetail.html' template. Or return a 404 error if
     the post is not found """
     post = get_object_or_404(Post, pk=pk)
+    #comments = get_object_or_404(Comment, post=post)
+    
     post.views += 1
     post.save()
-    return render(request, "postdetail.html", {'post': post})
+    return render(request, "postdetail.html", {'post': post},)
 
 
 @login_required()
@@ -44,3 +46,15 @@ def create_or_edit_post(request, pk=None):
     else:
         form = BlogPostForm(instance=post)
     return render(request, 'blogpostform.html', {'form': form})
+
+
+def add_comment(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    form = CommentForm(request.POST)
+    if form.is_valid():
+        comment = form.save(commit=False)
+        comment.post = post
+        comment.user = request.user
+        comment.save()
+        return redirect('post_detail', pk=post.id)
+    return render(request, 'commentform.html', {'form': form}, )

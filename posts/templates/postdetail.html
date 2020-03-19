@@ -26,4 +26,18 @@
             </div>
         </div>
     </div>
+    <hr>
+    {% for comment in post.comments.all %}
+    <div class="row">
+        <div class="col-4">
+            {{ comment.user }}
+            {{ comment.created_date }}
+        </div>
+        <div class="col-8">
+            {{ comment.content }}
+        </div>
+    </div>
+    <hr>
+    {% endfor %}
+    <a href="{% url 'add_comment' post.id %}">Leave your comment!</a>
 {% endblock %}

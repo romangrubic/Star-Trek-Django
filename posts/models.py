@@ -14,5 +14,15 @@ class Post(models.Model):
     views = models.IntegerField(default=0)
     tag = models.CharField(max_length=30, blank=True, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, related_name="comments")
+    user = models.ForeignKey(User)
+    content = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return '{}-{}-{}'.format(self.post.title, str(self.user.username), str(self.content))
