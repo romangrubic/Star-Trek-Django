@@ -3,7 +3,7 @@ from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from accounts.form import UserLoginForm, UserRegistrationForm
-from checkout.models import OrderLineItem
+from checkout.models import Order
 
 
 # Create your views here.
@@ -80,7 +80,4 @@ def user_profile(request):
 
 @login_required
 def user_orders(request):
-    """ Users profile page"""
-    user = User.objects.get(email=request.user.email)
-    orders = OrderLineItem.objects.get()
-    return render(request, 'orders.html', {"profile": user}, {"orders": orders})
+    return render(request, 'orders.html')
