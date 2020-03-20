@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from accounts.form import UserLoginForm, UserRegistrationForm
 from checkout.models import Order
+from .models import Profile
 
 
 # Create your views here.
@@ -73,9 +74,8 @@ def registration(request):
 @login_required
 def user_profile(request):
     """ Users profile page"""
-    
     user = User.objects.get(email=request.user.email)
-    return render(request, 'profile.html', {"profile": user})
+    return render(request, 'profile.html', {"profile": user}, )
 
 
 @login_required

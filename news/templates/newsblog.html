@@ -4,20 +4,15 @@
     {% for new in news %}
         <div class="row">
             <div class="col-md-2 col-sm-3 text-center">
-                <a class="story-img" href="#">
-                    <img src="/media/img/profile.jpg" class="img-circle">
-                </a>
-                <p><span class="boldtext">Author:</span> {{ new.author }}</p>
+               <img class="img-blogpost" src="{{ MEDIA_URL }}{{ new.image }}">
             </div>
             <div class="col-md-10 col-sm-9">
                 <h3>{{ new.title }}</h3>
                 <div class="row">
                     <div class="col-xs-9">
                         <p>{{ new.content|truncatewords:30 }}</p>
+                        <p><span class="boldtext">{{ new.published_date }} by {{ new.author }}. <span class="boldtext">Views:</span> {{new.views}}</p>
                         <p><a href="{% url 'news_detail' new.id %}"  class="btn btn-default">Read more</a></p>
-                        <p><span class="boldtext">Published on:</span> {{ new.published_date }} </p>
-                        <p><span class="boldtext">Views:</span> {{new.views}}</p>
-                        <p><span class="boldtext">Tag:</span> {{ new.tag }}</p>
                     </div>
                 </div>
             </div>
