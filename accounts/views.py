@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from accounts.form import UserLoginForm, UserRegistrationForm
+from accounts.form import UserLoginForm, UserRegistrationForm, ProfileForm
 from checkout.models import Order
 from .models import Profile
 
@@ -72,10 +72,23 @@ def registration(request):
 
 
 @login_required
-def user_profile(request):
+def user_profile(request, pk):
     """ Users profile page"""
-    user = User.objects.get(email=request.user.email)
+    user = User.objects.get(pk=pk)
     return render(request, 'profile.html', {"profile": user}, )
+
+
+def edit_profile(request, pk):
+    profile = get_object_or_404(Profile, pk=pk)
+    if request.method == "POST":
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+
+        if form.is_valid():
+            profile = form.save()
+            return redirect(user_profile, profile.pk)
+    else:
+        form = ProfileForm(instance=profile)
+    return render(request, 'profileform.html', {'form': form})
 
 
 @login_required

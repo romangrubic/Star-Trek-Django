@@ -8,7 +8,8 @@
 
 <h1>{{ profile.username }}</h1>
 <h3>{{ profile.id }}</h3>
-<p>{{ profile.email }}</p>
-
+<p>{{ profile.uprofile.bio }}</p>
+<img src="{{ MEDIA_URL }}{{ profile.uprofile.image }}" alt="Profile pic">
+<a href="{% url 'edit_profile' profile.pk %}" class="btn btn-default">Edit Profile</a>
 
 {% endblock %}
