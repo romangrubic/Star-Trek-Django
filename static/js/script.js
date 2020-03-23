@@ -1,5 +1,5 @@
 // --- Landing page ---
 $(document).ready(function () {
     $(".landing-image").hide();
-    $(".landing-image").slideDown(1500);   
+    setTimeout(function () {$(".landing-image").slideDown(5000); }, 1000);
 });

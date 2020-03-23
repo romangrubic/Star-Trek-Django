@@ -1,20 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>This is games page!</h1>
+<div class="games-page">
+<div class="games-header">
+
+</div>
+
+<div class="row">
     {% for game in games %}
-        <div class="col-12 col-md-6">
-                <a class="story-img" href="#">
-                    <img src="{{ MEDIA_URL }}{{ game.image }}" class="img-circle">
-                </a>
-                <h3>{{ game.name }}</h3>
-                <div class="row">
-                    <div class="col-11">
-                        <p>{{ game.description|truncatewords:90 }}</p>
-                        <p><a href="{% url 'games_detail' game.id %}"  class="btn btn-default">Read more</a></p>
-                    </div>
+    <div class="col-6">
+        <div class="card no-padding margin-5">
+            <img src="{{ MEDIA_URL }}{{ game.image }}" class="games-image" alt="{{ game.name }} photo">
+            <div class="card-body">
+                <h1 class="card-title">{{ game.name }}</h1>
+                <p class="card-text">{{ game.description|truncatewords:50 }}</p>
+                <div class="d-flex justify-content-center">
+                    <a href="{% url 'games_detail' game.id %}" class="btn btn-star-trek">Read more...</a>
                 </div>
+                
             </div>
+        </div>
+        </div>
         <hr>
     {% endfor %}
+            </div>
+        </div>
 {% endblock %}
