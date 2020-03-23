@@ -15,14 +15,25 @@
     width: 125px;
     text-align: center;
 }
+.nav-item:hover{
+    background-color: rgba(255, 255, 255, 0.3);
+}
 .nav-item > a{
     text-decoration: none;
     text-align: center;
 
 }
 .navbar-brand{
-    color: rgb(251, 206, 61);
+    color: rgb(251, 206, 60);
+    font-size: 24px;
     font-weight: 700;
+    transition-duration: 0.25s;
+}
+.navbar-brand:hover{
+    color: rgb(251, 206, 61);
+    font-size: 28px;
+    letter-spacing: 3px;
+    transition-duration: 0.25s;
 }
 nav {
     height: 50px;
@@ -54,6 +65,9 @@ ul > li > a {
   font-size: inherit;
   border: none;
 }
+.dropbtn:hover{
+    background-color: rgba(255, 255, 255, 0.3);
+}
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
@@ -68,7 +82,7 @@ ul > li > a {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #2fa4e7;
+  background-color: #000000;
   min-width: 125px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -76,15 +90,15 @@ ul > li > a {
 
 /* Links inside the dropdown */
 .dropdown-content a {
-  color: white;
-  padding: 12px 0px 12px 16px;
-  text-decoration: none;
-  display: block;
+    color: rgb(251, 206, 61);
+    padding: 12px 0px 12px 16px;
+    text-decoration: none;
+    display: block;
 }
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-    background-color: rgb(23, 138, 204);
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Show the dropdown menu on hover */
@@ -94,5 +108,5 @@ ul > li > a {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-    background-color:rgb(23, 138, 204);
+    background-color: rgba(255, 255, 255, 0.3);
 }

@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="news-page">
+
     {% for new in news %}
     <hr>
         <div class="row news-row">
-            <div class="col-md-3 col-sm-3 no-padding">
+            <div class="col-lg-4 col-sm-5 no-padding">
                <img class="news-image" src="{{ MEDIA_URL }}{{ new.image }}">
             </div>
-            <div class="col-md-9 col-sm-9 news-info">
+            <div class="col-lg-8 col-sm-7 news-info">
                 <h2><a href="{% url 'news_detail' new.id %}" >{{ new.title }}</a></h2>
                 <p>{{ new.content|truncatewords:50 }}</p>
-                <p class="no-margin"><span class="boldtext">{{ new.published_date }} by {{ new.author }}. <span class="boldtext">Views:</span> {{new.views}}</p>
+                <p class="no-margin"><span class="boldtext">{{ new.published_date }} - <span class="boldtext">Views:</span> {{new.views}}</p>
                 <div class="d-flex justify-content-end">
                     <p><a href="{% url 'news_detail' new.id %}"  class="btn btn-star-trek">Read more</a></p>
                 </div>

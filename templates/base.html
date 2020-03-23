@@ -20,7 +20,7 @@
     <nav>
     <div class="navbar navbar-expand fixed-top">
         <div class="container">
-            <div class="navbar-header">
+            <div class="text-center">
                 <a class="navbar-brand" href="{% url 'index' %}">Star Trek</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse d-flex justify-content-end">
@@ -31,11 +31,11 @@
                                 <div class="dropdown-content">
                                     <a href="{% url 'get_news_news' %}"><i class="fa fa-user-plus"></i> News</a>
                                     <a href="{% url 'get_news_updates' %}"><i class="fa fa-sign-in-alt"></i> Updates</a>
-                                    <a href="{% url 'get_news_federation' %}"><i class="fa fa-sign-in-alt"></i> Federation News</a>
+                                    <a href="{% url 'get_news_federation' %}"><i class="fas fa-globe"></i> FNN</a>
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item"><a href="{% url 'products' %} " class="dropbtn"><i class="fas fa-store-alt"></i> Shop</a></li>
+                        <li class="nav-item"><a href="{% url 'products' %} "><i class="fas fa-store-alt"></i> Shop</a></li>
                         <li class="nav-item"><a href="{% url 'games' %}"><i class="fas fa-gamepad"></i> Games</a></li>
                         {% if user.is_authenticated %}
                         <li class="nav-item"><a href="{% url 'get_posts' %}"><i class="fas fa-hand-spock"></i> Forum</a></li>
