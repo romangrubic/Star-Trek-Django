@@ -1,22 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="display">
         <form action="{% url 'search_threads' %}" method="GET">
             <input type="text" name="d">
             <button type="submit">Search</button>
         </form>
-    </div>
+
 <a href="{% url 'new_post' %}" class="btn btn-default">New Thread</a>
     {% for post in posts %}
-        <div class="row">
-            <div class="col-3">                
+        <div class="row-fluid">
+                <h3><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h3>
                 
-            </div>
-            <div class="col-5">
-                <p><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></p>
-                <p><span class="boldtext">User:</span> {{ post.user }}</a></p>
-                <p><span class="boldtext">Published on:</span> {{ post.published_date }} <span class="boldtext">Views:</span> {{post.views}} - <span class="boldtext">Tag:</span> {{ post.tag }}</p>
-            </div>
+               <span class="boldtext">Published by {{ post.user }} at</span> {{ post.published_date }}<span class="boldtext">Views:</span> {{post.views}}
             <hr>
         </div>
     {% endfor %}

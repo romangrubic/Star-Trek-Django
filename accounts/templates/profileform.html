@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
 {% block content %}
-
+{{ request.user.pk }}
+{{ profile.uprofile }}
+{{ request.user.pk }}
     <h1>Edit profile</h1>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}

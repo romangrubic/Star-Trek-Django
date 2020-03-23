@@ -1,12 +1,14 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from accounts.models import Profile
 
 
 # Create your models here.
 class Post(models.Model):
     """A single Blog post"""
     user = models.ForeignKey(User)
+    profile = models.ForeignKey(Profile)
     title = models.CharField(max_length=200)
     content = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
@@ -20,6 +22,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, related_name="comments")
+    profile = models.ForeignKey(Profile)
     user = models.ForeignKey(User)
     content = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)

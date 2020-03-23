@@ -81,14 +81,14 @@ def user_profile(request, pk):
 def edit_profile(request, pk):
     profile = get_object_or_404(Profile, pk=pk)
     if request.method == "POST":
-        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        form = ProfileForm(request.POST, request.FILES, pk, instance=profile)
 
         if form.is_valid():
             profile = form.save()
             return redirect(user_profile, profile.pk)        
     else:
         form = ProfileForm(instance=profile)
-    return render(request, 'profileform.html', {'form': form})
+    return render(request, 'profileform.html', {'form': form}, {'profile': profile})
 
 
 @login_required

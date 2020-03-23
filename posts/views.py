@@ -40,7 +40,8 @@ def create_or_edit_post(request, pk=None):
         form = BlogPostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
-            post.user = request.user
+            post.user_id = request.user.id
+            post.profile_id = request.user.id
             post.save()
             return redirect(post_detail, post.pk)
     else:
@@ -55,6 +56,7 @@ def add_comment(request, pk):
         comment = form.save(commit=False)
         comment.post = post
         comment.user = request.user
+        comment.profile_id = request.user.id
         comment.save()
         return redirect('post_detail', pk=post.id)
     return render(request, 'commentform.html', {'form': form}, )

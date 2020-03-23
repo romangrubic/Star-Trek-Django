@@ -3,9 +3,9 @@
     <div class="row">
         <div class="col-md-2 col-sm-3 text-center">
             <a class="story-img" href="#">
-                <img src="/media/img/profile.jpg" class="img-circle">
+                <img src="{{ MEDIA_URL }}{{ post.profile.image }}" class="img-circle">
             </a>
-            <p><span class="boldtext">Author:</span> {{ post.user }}</p>
+            <p><span class="boldtext">Author:</span><a href="{% url 'profile' post.user_id %}" target="_blank" rel="noopener"> {{ post.user }}</a></p>
             <p><span class="boldtext">Published on:<br></span> {{ post.published_date }} </p>
                     <p><span class="boldtext">Views:</span> {{post.views}}</p>
         </div>
@@ -36,6 +36,7 @@
         </div>
         <div class="col-8">
             {{ comment.content }}
+            <img class="img-blogpost" src="/media/{{ comment.profile.image }}">
         </div>
     </div>
     <hr>
