@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Star Trek</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css">
     <script src="https://kit.fontawesome.com/41a908fb89.js" crossorigin="anonymous"></script>
@@ -18,36 +18,31 @@
 <body>
     <!-- Fixed masthead -->
     <nav>
-    <div class="navbar navbar-masthead navbar-fixed-top">
+    <div class="navbar navbar-expand fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 <a class="navbar-brand" href="{% url 'index' %}">Star Trek</a>
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
+            <div id="navbar" class="navbar-collapse collapse d-flex justify-content-end">
+                <ul class="navbar-nav">                    
                         <li>
                             <div class="dropdown">
                                 <a href="{% url 'get_news' %}"><button class="dropbtn"><i class="far fa-newspaper"></i> News</button></a>
                                 <div class="dropdown-content">
                                     <a href="{% url 'get_news_news' %}"><i class="fa fa-user-plus"></i> News</a>
                                     <a href="{% url 'get_news_updates' %}"><i class="fa fa-sign-in-alt"></i> Updates</a>
+                                    <a href="{% url 'get_news_federation' %}"><i class="fa fa-sign-in-alt"></i> Federation News</a>
                                 </div>
                             </div>
                         </li>
-                        <li><a href="{% url 'products' %} " class="dropbtn"><i class="fas fa-store-alt"></i> Shop</a></li>
-                        <li><a href="{% url 'games' %}"><i class="fas fa-gamepad"></i> Games</a></li>
+                        <li class="nav-item"><a href="{% url 'products' %} " class="dropbtn"><i class="fas fa-store-alt"></i> Shop</a></li>
+                        <li class="nav-item"><a href="{% url 'games' %}"><i class="fas fa-gamepad"></i> Games</a></li>
                         {% if user.is_authenticated %}
-                        <li><a href="{% url 'get_posts' %}"><i class="fas fa-users"></i> Forum</a></li>
+                        <li class="nav-item"><a href="{% url 'get_posts' %}"><i class="fas fa-hand-spock"></i> Forum</a></li>
                         {% else %}
-                        <li><a href="{% url 'login' %}"><i class="fas fa-users"></i> Forum</a></li>
+                        <li class="nav-item"><a href="{% url 'login' %}"><i class="fas fa-users"></i> Forum</a></li>
                         {% endif %}
-                        <li>
+                        <li class="nav-item">
                             <a href="{% url 'view_cart' %}">
                                 <i class="fas fa-shopping-cart"></i> Cart
                                 {% if product_count > 0 %}
@@ -67,7 +62,7 @@
                             </div>
                         </li>                        
                     {%  else %}
-                        <li>
+                        <li class="nav-item">
                             <div class="dropdown">
                                 <button class="dropbtn"><i class="fas fa-portrait"></i> Sign in</button>
                                 <div class="dropdown-content">

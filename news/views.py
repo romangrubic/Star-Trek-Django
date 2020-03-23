@@ -48,3 +48,10 @@ def get_news_updates(request):
     render them to the blogposts.html template"""
     news = News.objects.filter(tag='updates')
     return render(request, "newsblog.html", {'news': news})
+
+
+def get_news_federation(request):
+    """Create a view that will return a list of new with tag: update and
+    render them to the blogposts.html template"""
+    news = News.objects.filter(tag='federation')
+    return render(request, "newsblog.html", {'news': news})

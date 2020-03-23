@@ -10,6 +10,16 @@
     background-image: none;
     border-bottom: none;    
 }
+.nav-item{
+    padding: 15px;
+    width: 125px;
+    text-align: center;
+}
+.nav-item > a{
+    text-decoration: none;
+    text-align: center;
+
+}
 .navbar-brand{
     color: rgb(251, 206, 61);
     font-weight: 700;
@@ -21,6 +31,7 @@ nav {
 ul > li > a {
     text-align: center;
     width: 125px;
+    text-decoration: none;
     
 }
 
