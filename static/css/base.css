@@ -7,26 +7,38 @@
 }
 .navbar {
     margin-bottom: 0px;
-    /*background-image: none;*/
+    background-image: none;
+    border-bottom: none;    
+}
+.navbar-brand{
+    color: rgb(251, 206, 61);
+    font-weight: 700;
 }
 nav {
     height: 50px;
+    
 }
 ul > li > a {
     text-align: center;
     width: 125px;
+    
 }
 
-/*.navbar-default {
-    background-color: transparent;
-    color: black;
-}*/
+.navbar {
+    background-color: rgba(0, 0, 0);
+    color: black;    
+}
+.navbar-nav>li>a {
+    color: rgb(251, 206, 61);
+    font-weight: 700;
+}
 
 /* --------- From W3 Schools https://www.w3schools.com/howto/howto_css_dropdown.asp ------------
 /* Dropdown Button */
 .dropbtn {
   background-color: inherit;
-  color: white;
+  color: rgb(251, 206, 61);
+  font-weight: 700;
   padding: 15px;
   font-size: inherit;
   border: none;
