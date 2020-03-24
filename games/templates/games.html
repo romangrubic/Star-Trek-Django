@@ -13,7 +13,7 @@
             <img src="{{ MEDIA_URL }}{{ game.image }}" class="games-image" alt="{{ game.name }} photo">
             <div class="card-body">
                 <h1 class="card-title">{{ game.name }}</h1>
-                <p class="card-text">{{ game.description|truncatewords:50 }}</p>
+                <p class="card-text">{{ game.description|truncatewords:20 }}</p>
                 <div class="d-flex justify-content-center">
                     <a href="{% url 'games_detail' game.id %}" class="btn btn-star-trek">Read more...</a>
                 </div>
