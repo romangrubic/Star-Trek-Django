@@ -1,15 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="row">
-        {{product.name}}
+    <div class="product-detail-page">
+    <div class="col-12">
+        <div class="card products-card">
+            <img class="card-img-top product-detail-card-img" src="{{ MEDIA_URL }}{{ product.image }}" alt="Card image cap">
+            <div class="card-body products-card-body">
+                <h3 class="card-title">{{ product.name }}</h3>
+                <p class="card-text no-margin">{{ product.description }}</p>
+                <div class="row">
+                    <div class="col-5">
+                        <p class="products-card-price">{{ product.price }} €</p>
+                    </div>
+                    <div class="col-7">
+                        <form method="POST" action="{% url 'add_to_cart' product.id %}">
+                                {% csrf_token %}
+                                <div class="input-group">
+                                    <input type="number" name="quantity" min="1" max="999" class="form-control" value="1">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-star-trek" type="submit">Add</button>
+                                    </span>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <form method="POST" action="{% url 'add_to_cart' product.id %}">
-                        {% csrf_token %}
-                        <div class="input-group">
-                            <input type="number" name="quantity" min="1" max="999" class="form-control" placeholder="Quantity">
-                            <span class="input-group-btn">
-                                <button class="btn btn-success" type="submit">Add</button>
-                            </span>
-                        </div>
-                    </form>
+    </div>
 {% endblock %}

@@ -13,7 +13,7 @@
 body {
     font-family: Arial;
     /*background: url("../images/background.jpg") no-repeat center center fixed;*/
-    background-color: rgba(0, 0, 0, 0.247);
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 footer {
@@ -163,7 +163,7 @@ footer {
 }
 /* ----------------- Home page ------------- */
 .home-page{
-    background: url("../images/landing-image.jpg") no-repeat center center fixed ;
+    background: url("../images/forum.jpg") no-repeat center top fixed ;
     padding: 150px 15%;
     height: 90vh;
 }
@@ -197,9 +197,22 @@ footer {
 .card{
     background-color: rgba(255, 255, 255, 0.65);
 }
+/* ----------- Games detail page ------------- */
+.games-detail-page{
+    padding: 50px 20% 80px;
+    background: url("../images/games-back.jpg") no-repeat center center fixed;
+}
+.games-detail-image{
+    height: 400px;
+    width:100%;
+}
+.games-detail-info{
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 20px 45px;
+}
 /* ------------- Products page ----------------*/
 .products-page{
-    padding: 30px;
+    padding: 30px 60px;
     background: url("../images/picard-vine.jpg") no-repeat center center fixed;
 }
 .products-search{
@@ -217,7 +230,7 @@ footer {
     border: 1px solid rgba(0, 0, 0, 0.4);
 }
 .products-card-body{
-    padding: 10px 25px;
+    padding: 10px 15px;
 }
 .products-card-img{
     height: 200px;
@@ -228,16 +241,38 @@ footer {
     font-weight: 700;
     text-align: center;
 }
-/* ----------- Games detail page ------------- */
-.games-detail-page{
-    padding: 50px 20% 80px;
-    background: url("../images/games-back.jpg") no-repeat center center fixed;
+/* ------------- Product detail page ----------- */
+.product-detail-page{
+    padding: 75px 25%;
 }
-.games-detail-image{
-    height: 400px;
-    width:100%;
+.product-detail-card-img{
+    height: 350px;
 }
-.games-detail-info{
-    background-color: rgba(255, 255, 255, 0.85);
-    padding: 20px 45px;
+
+/* --------------- Forum -------------- */
+.forum-page{
+    padding: 30px 0px 0px;
+    background: url("../images/landing-image.jpg") no-repeat center center fixed;
+}
+.forum-threads{
+    background-color: rgba(255, 255, 255, 0.95);
+    margin: 60px auto 150px;
+    padding: 0px 10px;
+}
+.forum-thread > div {
+    padding-top: 5px;
+}
+.forum-thread > div > a {
+    text-decoration: none;
+    color:black;
+}
+.forum-thread > div > h5 > a{
+    text-decoration: none;
+}
+.forum-post-user-image{
+    width: 100%;
+    height: 30px;
+}
+.forum-hr{
+    margin: 1px 0px;
 }

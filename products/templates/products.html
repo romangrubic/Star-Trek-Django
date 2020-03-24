@@ -13,7 +13,7 @@
 <div class="row row-flex">
     {% for product in products %}
     <div class="col-3">
-        <div class="card products-card" style="width: 18rem;">
+        <div class="card products-card">
         <a href="{% url 'product_detail' product.id %}">
             <img class="card-img-top products-card-img" src="{{ MEDIA_URL }}{{ product.image }}" alt="Card image cap">
             </a>

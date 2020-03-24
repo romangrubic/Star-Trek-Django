@@ -35,21 +35,21 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item"><a href="{% url 'products' %} "><i class="fas fa-store-alt"></i> Shop</a></li>
-                        <li class="nav-item"><a href="{% url 'games' %}"><i class="fas fa-gamepad"></i> Games</a></li>
+                        <a href="{% url 'products' %} "><li class="nav-item"><i class="fas fa-store-alt"></i> Shop</li></a>
+                        <a href="{% url 'games' %}"><li class="nav-item"><i class="fas fa-gamepad"></i> Games</li></a>
                         {% if user.is_authenticated %}
-                        <li class="nav-item"><a href="{% url 'get_posts' %}"><i class="fas fa-hand-spock"></i> Forum</a></li>
+                        <a href="{% url 'get_posts' %}"><li class="nav-item"><i class="fas fa-hand-spock"></i> Forum</li></a>
                         {% else %}
-                        <li class="nav-item"><a href="{% url 'login' %}"><i class="fas fa-users"></i> Forum</a></li>
+                        <a href="{% url 'login' %}"><li class="nav-item"><i class="fas fa-users"></i> Forum</li></a>
                         {% endif %}
-                        <li class="nav-item">
-                            <a href="{% url 'view_cart' %}">
+                            <a href="{% url 'view_cart' %}"><li class="nav-item">
                                 <i class="fas fa-shopping-cart"></i> Cart
                                 {% if product_count > 0 %}
                                 <label class="badge badge-warning">{{ product_count }}</label>
                                 {% endif %}
+                                </li>
                             </a>
-                        </li>
+                        
                     {% if user.is_authenticated %}
                         <li>
                             <div class="dropdown">
