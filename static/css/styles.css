@@ -256,7 +256,7 @@ footer {
 }
 .forum-threads{
     background-color: rgba(255, 255, 255, 0.95);
-    margin: 60px auto 150px;
+    margin: 60px auto 40px;
     padding: 0px 10px;
 }
 .forum-thread > div {
@@ -275,4 +275,10 @@ footer {
 }
 .forum-hr{
     margin: 1px 0px;
+}
+
+/* -------------- Pagination ----------- */
+.pagination{
+    background-color: white;
+    margin: 30px 0px 80px;
 }

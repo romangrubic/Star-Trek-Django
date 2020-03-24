@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
@@ -9,9 +10,16 @@ from .forms import BlogPostForm, CommentForm
 def get_posts(request):
     """Create a view that will return a list of post and
     render them to the blogposts.html template"""
-
-    posts = Post.objects.filter(published_date__lte=timezone.now
+    post_list = Post.objects.filter(published_date__lte=timezone.now
                                 ()).order_by('-published_date')
+    paginator = Paginator(post_list, 15)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
     return render(request, "blogposts.html", {'posts': posts})
 
 
