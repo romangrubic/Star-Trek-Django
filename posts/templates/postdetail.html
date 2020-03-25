@@ -1,45 +1,42 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="forum-thread-page">
+    <div class="thread-container">
     <div class="row">
-        <div class="col-md-2 col-sm-3 text-center">
-            <a class="story-img" href="#">
-                <img src="{{ MEDIA_URL }}{{ post.profile.image }}" class="img-circle">
-            </a>
-            <p><span class="boldtext">Author:</span><a href="{% url 'profile' post.user_id %}" target="_blank" rel="noopener"> {{ post.user }}</a></p>
-            <p><span class="boldtext">Published on:<br></span> {{ post.published_date }} </p>
-                    <p><span class="boldtext">Views:</span> {{post.views}}</p>
+        <div class="col-3 text-center">
+        <img src="{{ MEDIA_URL }}{{ post.profile.image }}" class="forum-thread-user-image">
+            <p class="no-margin"><a href="{% url 'profile' post.user_id %}" target="_blank" rel="noopener"> {{ post.user }}</a></p>
+            <p class="no-margin"> {{ post.published_date }} </p>
         </div>
-        <div class="col-sm-10 col-md-9">
-            {% if post.image %}
-                <img class="img-blogpost" src="/media/{{ post.image }}">
-            {% endif %}
-            <h3>{{ post.title }}</h3>
-            <div class="row">
-                <div class="col-xs-9">
-                    <p>{{ post.content }}</p>
-                    
-                    <p><span class="boldtext">Tag:</span> {{ post.tag }}</p>
-                    <a href="{% url 'get_posts' %}" class="btn btn-default">Back to Blog</a>
-                    <a href="{% url 'edit_post' post.id %}" class="btn btn-default">Edit Post</a>
-                    <hr>
+        <div class="col-9">
+            <h2>{{ post.title }}</h2>
+                    <p>{{ post.content|linebreaks }}</p>
+                    {% if post.user == user %}
+                    <a href="{% url 'edit_post' post.id %}" class="btn btn-star-trek">Edit Post</a>
+                    {% endif %}
                 </div>
             </div>
-        </div>
-    </div>
-    <hr>
+
+    <hr class="thread-hr">
     {% for comment in post.comments.all %}
     <div class="row">
-        <div class="col-4">
+        <div class="col-3 text-center">
+        <img src="{{ MEDIA_URL }}{{ comment.profile.image }}" class="forum-thread-user-image">
         <a href="{% url 'profile' comment.user_id %}" target="_blank" rel="noopener">{{ comment.user}} </a>
+        <p class="no-margin"> {{ comment.created_date }} </p>  
             
-            {{ comment.created_date }}
         </div>
-        <div class="col-8">
+        <div class="col-9">
             {{ comment.content }}
-            <img class="img-blogpost" src="/media/{{ comment.profile.image }}">
         </div>
     </div>
-    <hr>
+    <hr class="thread-hr">
     {% endfor %}
+    <div class="d-flex justify-content-center">
     <a href="{% url 'add_comment' post.id %}">Leave your comment!</a>
+                        <a href="{% url 'get_posts' %}" class="btn btn-default">Back to Blog</a>
+    </div>
+    </div>
+    
+</div>
 {% endblock %}
