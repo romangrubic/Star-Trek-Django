@@ -10,5 +10,5 @@ urlpatterns = [
     url(r'^profile/(?P<pk>\d+)/$', user_profile, name="profile"),
     url(r'^orders/$', user_orders, name="orders"),
     url(r'^password-reset/', include(url_reset)),
-    url(r'^profile/(?P<pk>\d+)/edit/$', edit_profile, name="edit_profile"),
+    url(r'^profile/(?P<id>\d+)/edit/$', edit_profile, name="edit_profile"),
 ]

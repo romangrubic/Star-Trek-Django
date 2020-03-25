@@ -11,7 +11,22 @@ def get_posts(request):
     """Create a view that will return a list of post and
     render them to the blogposts.html template"""
     post_list = Post.objects.filter(published_date__lte=timezone.now
-                                ()).order_by('-published_date')
+                                ()).order_by('-views')
+    paginator = Paginator(post_list, 15)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+    return render(request, "blogposts.html", {'posts': posts})
+
+
+def get_posts_date(request):
+    """Create a view that will return a list of post and
+    render them to the blogposts.html template"""
+    post_list = Post.objects.filter().order_by('-published_date')
     paginator = Paginator(post_list, 15)
     page = request.GET.get('page')
     try:

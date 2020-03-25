@@ -259,6 +259,13 @@ footer {
     margin: 60px auto 40px;
     padding: 0px 10px;
 }
+.forum-filters{
+    background-color:rgb(251, 206, 60);
+    border: 2px solid black;
+}
+.forum-filters > div > a >h4:hover{
+    color: white;
+}
 .forum-thread > div {
     padding-top: 5px;
 }

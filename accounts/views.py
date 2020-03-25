@@ -78,16 +78,19 @@ def user_profile(request, pk):
     return render(request, 'profile.html', {"profile": user}, )
 
 
-def edit_profile(request, pk):
-    profile = get_object_or_404(Profile, pk=pk)
-    if request.method == "POST":
-        form = ProfileForm(request.POST, request.FILES, pk, instance=profile)
-
-        if form.is_valid():
-            profile = form.save()
-            return redirect(user_profile, profile.pk)        
+def edit_profile(request, id):
+    profile = get_object_or_404(Profile, pk=id)
+    if profile.user != request.user:
+        return redirect("index")
     else:
-        form = ProfileForm(instance=profile)
+        if request.method == "POST":
+            form = ProfileForm(request.POST, request.FILES, id, instance=profile)
+
+            if form.is_valid():
+                profile = form.save()
+                return redirect(user_profile, profile.pk)        
+        else:
+            form = ProfileForm(instance=profile)
     return render(request, 'profileform.html', {'form': form}, {'profile': profile})
 
 
