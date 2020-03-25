@@ -38,6 +38,21 @@ def get_posts_date(request):
     return render(request, "blogposts.html", {'posts': posts})
 
 
+def get_posts_title(request):
+    """Create a view that will return a list of post and
+    render them to the blogposts.html template"""
+    post_list = Post.objects.filter().order_by('title')
+    paginator = Paginator(post_list, 15)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+    return render(request, "blogposts.html", {'posts': posts})
+
+
 def post_detail(request, pk):
     """Create a view that returns a single Post object
     based on the post ID (pk) and render it  to the

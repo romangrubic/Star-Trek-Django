@@ -4,7 +4,7 @@
 <div class="d-flex justify-content-center">
     <div class="products-search">
         <form action="{% url 'search_threads' %}" method="GET">
-            <input type="text" name="q" class="products-search-input">
+            <input type="text" name="d" class="products-search-input">
             <button type="submit" class="btn btn-star-trek">Search</button>
         </form>
         </div>
@@ -19,7 +19,7 @@
                 <a href="#"><h4>Author</h4></a>       
             </div>
             <div class="col-6">
-                <a href="#"><h4>Post title</h4></a>
+                <a href="{% url 'get_posts_title' %}"><h4>Post title</h4></a>
             </div>
             <div class="col-1 text-right">
                 <a href="{% url 'get_posts' %}"><h4>Views</h4></a>

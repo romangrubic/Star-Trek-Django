@@ -60,7 +60,8 @@ def registration(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfuly registered!")
-                return redirect(reverse('index'))
+                return redirect(reverse('new_profile'))
+                # When User registers, a new profile wil be made.
             else:
                 messages.error(request, "Unable to register your account at this time!")
 
@@ -72,26 +73,42 @@ def registration(request):
 
 
 @login_required
-def user_profile(request, pk):
+def user_profile(request, id):
     """ Users profile page"""
-    user = User.objects.get(pk=pk)
+    user = User.objects.get(pk=id)
     return render(request, 'profile.html', {"profile": user}, )
 
 
 def edit_profile(request, id):
     profile = get_object_or_404(Profile, pk=id)
-    if profile.user != request.user:
+    if profile.id != request.user.id:
         return redirect("index")
     else:
         if request.method == "POST":
             form = ProfileForm(request.POST, request.FILES, id, instance=profile)
 
             if form.is_valid():
-                profile = form.save()
-                return redirect(user_profile, profile.pk)        
+                profile = form.save(commit=False)
+                profile.save()
+                return redirect(user_profile, profile.id)        
         else:
             form = ProfileForm(instance=profile)
     return render(request, 'profileform.html', {'form': form}, {'profile': profile})
+
+
+def new_profile(request, id=None):
+    profile = get_object_or_404(Profile, pk=id) if id else None
+    if request.method == "POST":
+        form = ProfileForm(request.POST, request.FILES, id, instance=profile)
+
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user_id = request.user.id
+            profile.save()
+            return redirect(user_profile, profile.id)        
+    else:
+        form = ProfileForm(instance=profile)
+    return render(request, 'profileform.html', {'form': form})
 
 
 @login_required

@@ -5,6 +5,7 @@
 {% block page_heading %}{{ user }}'s Profile{% endblock %}
 
 {% block content %}
+
 <div class="container-fluid profile-page">
 <div class="row profile-info">
             <div class="col-md-4 col-sm-3">
@@ -18,6 +19,7 @@
             {% if profile.username == user.username %}
 <div class="text-right">
 <a href="{% url 'edit_profile' profile.id %}" class="btn btn-default">Edit Profile</a>
+
 </div>
 {% endif %}
         </div>

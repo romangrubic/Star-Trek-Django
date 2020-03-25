@@ -55,14 +55,14 @@
                             <div class="dropdown">
                                 <button class="dropbtn"><i class="fas fa-portrait"></i> Account</button>
                                 <div class="dropdown-content">
-                                    <a href="{% url 'profile' user.pk %}"><i class="fa fa-user"></i> Profile</a>
+                                    <a href="{% url 'profile' user.id %}"><i class="fa fa-user"></i> Profile</a>
                                     <a href="{% url 'orders' %}"><i class="fas fa-shopping-basket"></i> Orders</a>
                                     <a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a>
                                 </div>
                             </div>
                         </li>                        
                     {%  else %}
-                        <li class="nav-item">
+                        <li>
                             <div class="dropdown">
                                 <button class="dropbtn"><i class="fas fa-portrait"></i> Sign in</button>
                                 <div class="dropdown-content">

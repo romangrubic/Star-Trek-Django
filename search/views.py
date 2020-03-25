@@ -10,5 +10,5 @@ def search_products(request):
 
 
 def search_threads(request):
-    threads = Post.objects.filter(title__icontains=request.GET['d'])
+    threads = Post.objects.filter(title__icontains=request.GET['d']).order_by('-views')
     return render(request, "blogposts.html", {"posts": threads})
