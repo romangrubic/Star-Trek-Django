@@ -74,11 +74,9 @@ def post_detail(request, pk):
     'postdetail.html' template. Or return a 404 error if
     the post is not found """
     post = get_object_or_404(Post, pk=pk)
-    #comments = get_object_or_404(Comment, post=post)
-    
     post.views += 1
     post.save()
-    return render(request, "postdetail.html", {'post': post},)
+    return render(request, "postdetail.html", {'post': post})
 
 
 @login_required()

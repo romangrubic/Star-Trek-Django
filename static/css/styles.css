@@ -253,6 +253,9 @@ footer {
     padding: 30px 0px 0px;
     background: url("../images/landing-image.jpg") no-repeat center center fixed;
 }
+.btn-post-thread{
+    margin: 20px 0 0;
+}
 .forum-threads{
     background-color: rgba(255, 255, 255, 0.95);
     margin: 60px auto 40px;
@@ -285,7 +288,7 @@ footer {
 /* ----------- Forum thread -------------- */
 .forum-thread-page{
     background: url("../images/landing-image.jpg") no-repeat center center fixed;
-    padding: 100px 15%;
+    padding: 100px 10%;
 }
 .thread-container{
     padding: 10px;
@@ -299,8 +302,37 @@ footer {
 .thread-hr{
     margin: 10px 0;
 }
+.thread-comment{
+    padding: 15px 10px
+}
+.btn-back-to-forum{
+    margin: 30px 0 0;
+}
+/* ---------------- Post thread form -------------- */
+.post-thread-form{
+    background: url("../images/landing-image.jpg") no-repeat center center fixed;
+    padding: 100px 10%;
+}
+.thread-form-section{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 25px 25px 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+/* ----------- Comment form -------------------- */
+.comment-form-page{
+    background: url("../images/landing-image.jpg") no-repeat center center fixed;
+    padding: 100px 20%;
+}
+.comment-form-section{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 25px 25px 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
 /* -------------- Pagination ----------- */
 .pagination{
     background-color: white;
-    margin: 30px 0px 80px;
+    padding: 5px 10px;
+    margin: 30px 0px 30px;
 }

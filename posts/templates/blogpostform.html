@@ -1,10 +1,21 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
 {% block content %}
-    <h1>New Post</h1>
+<div class="post-thread-form">
+    
+    <div class="thread-form-section">
+    <h1 class="text-center">Share with us!</h1>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form | as_bootstrap }}
-        <button type="submit" class="btn btn-info">Save</button>
+        <div class="d-flex justify-content-center">
+        <button type="submit" class="btn margin-5 btn-star-trek">Post it!</button>
+        <a href="{% url 'get_posts' %}" class="btn margin-5 btn-light">Cancel</a>
+        </div>
+        <div class="text-center margin-5">
+        <p>* Don't worry, you can edit it later!</p>
+        </div>
     </form>
+    </div>
+</div>
 {% endblock %}

@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
-
+{% load bootstrap_tags %}
 {% block content %}
-<div class="row">
-        <form method="POST">
+<div class="comment-form-page">
+<div class="comment-form-section">
+        <h1 class="text-center">Write your comment!</h1>
+        <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form }}
-        <button type="submit">Submit</button>
-        </form>
+        {{ form | as_bootstrap }}
+        <div class="d-flex justify-content-center">
+        <button type="submit" class="btn margin-5 btn-star-trek">Comment!</button>
+        <a href="{% url 'get_posts' %}" class="btn margin-5 btn-light">Cancel</a>
+        </div>
+    </form>
     </div>
+</div>
 {% endblock %}

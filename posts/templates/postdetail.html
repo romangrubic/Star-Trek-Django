@@ -22,21 +22,24 @@
     <div class="row">
         <div class="col-3 text-center">
         <img src="{{ MEDIA_URL }}{{ comment.profile.image }}" class="forum-thread-user-image">
-        <a href="{% url 'profile' comment.user_id %}" target="_blank" rel="noopener">{{ comment.user}} </a>
+        <p class="no-margin"><a href="{% url 'profile' comment.user_id %}" target="_blank" rel="noopener">{{ comment.user}} </a></p>
         <p class="no-margin"> {{ comment.created_date }} </p>  
             
         </div>
-        <div class="col-9">
+        <div class="col-9 thread-comment">
             {{ comment.content }}
         </div>
-    </div>
-    <hr class="thread-hr">
-    {% endfor %}
+        </div>
+        <hr class="thread-hr">
+        {% endfor %}
+        <div class="d-flex justify-content-center">
+            <a href="{% url 'add_comment' post.id %}" class="btn btn-star-trek">Leave your comment!</a>
+        </div>
+        
+        </div>
     <div class="d-flex justify-content-center">
-    <a href="{% url 'add_comment' post.id %}">Leave your comment!</a>
-                        <a href="{% url 'get_posts' %}" class="btn btn-default">Back to Blog</a>
+        
+        <a href="{% url 'get_posts' %}" class="btn btn-light btn-back-to-forum">Back to Forum</a>
     </div>
     </div>
-    
-</div>
 {% endblock %}
