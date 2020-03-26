@@ -39,19 +39,19 @@ def create_or_edit_news(request, pk=None):
 def get_news_news(request):
     """Create a view that will return a list of new with tag: news and
     render them to the blogposts.html template"""
-    news = News.objects.filter(tag='news')
+    news = News.objects.filter(tag='News')
     return render(request, "newsblog.html", {'news': news})
 
 
 def get_news_updates(request):
     """Create a view that will return a list of new with tag: update and
     render them to the blogposts.html template"""
-    news = News.objects.filter(tag='updates')
+    news = News.objects.filter(tag='Updates')
     return render(request, "newsblog.html", {'news': news})
 
 
 def get_news_federation(request):
     """Create a view that will return a list of new with tag: update and
     render them to the blogposts.html template"""
-    news = News.objects.filter(tag='federation')
+    news = News.objects.filter(tag='FFN')
     return render(request, "newsblog.html", {'news': news})

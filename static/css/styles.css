@@ -137,7 +137,6 @@ footer {
 /* ------------- News detail page ---------------*/
 .news-detail-page{
     background: url("../images/picard-vine.jpg") no-repeat center center fixed;
-    margin-top: 20px;
     padding: 50px 20% 80px;
 }
 .news-detail-info{
@@ -242,6 +241,7 @@ footer {
 }
 /* ------------- Product detail page ----------- */
 .product-detail-page{
+    background: url("../images/picard-vine.jpg") no-repeat center center fixed;
     padding: 75px 25%;
 }
 .product-detail-card-img{
@@ -325,6 +325,23 @@ footer {
     padding: 100px 20%;
 }
 .comment-form-section{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 25px 25px 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+/* ------------ Cart - Checkut ------------------ */
+.total-cart-checkout{
+    padding: 50px 0 20px;
+
+}
+.total-cart-checkout-sum{
+    margin: 0 15px;
+    padding: 8px 15px;
+    background-color: white;
+}
+.checkout-section{
+    margin: 30px;
     border: 1px solid black;
     border-radius: 5px;
     padding: 25px 25px 5px;
