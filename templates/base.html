@@ -40,7 +40,7 @@
                         {% if user.is_authenticated %}
                         <a href="{% url 'get_posts' %}"><li class="nav-item"><i class="fas fa-hand-spock"></i> Forum</li></a>
                         {% else %}
-                        <a href="{% url 'login' %}"><li class="nav-item"><i class="fas fa-users"></i> Forum</li></a>
+                        <a href="{% url 'registration' %}"><li class="nav-item"><i class="fas fa-users"></i> Forum</li></a>
                         {% endif %}
                             <a href="{% url 'view_cart' %}"><li class="nav-item">
                                 <i class="fas fa-shopping-cart"></i> Cart

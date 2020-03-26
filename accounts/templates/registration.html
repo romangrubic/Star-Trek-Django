@@ -10,13 +10,17 @@
 <div class="registration-page">
 
 	<div class="register-form">
-		<p>If you already have account, you can <a href="{% url 'login' %}">sign in</a></p>
+    <h1 class="text-center">- Join our community! -</h1>
+		
 
-		<form method="POST">
+		<form method="POST" class="form-registration">
 			{% csrf_token %}
 			{{ registration_form | as_bootstrap }}
-			<button type="submit" class="btn btn-primary">Register</button>
+			<div class="row d-flex justify-content-center">
+    <button type="submit" class="btn btn-star-trek">Registration</button>
+    </div>
 		</form>
+        <p>If you already have account, you can <a href="{% url 'login' %}" >sign in</a></p>
 	</div>
 </div>
 {% endblock %}

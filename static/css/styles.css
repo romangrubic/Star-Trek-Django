@@ -10,6 +10,9 @@
 .margin-5{
     margin: 5px;
 }
+.decoration-none{
+    text-decoration: none;
+}
 body {
     font-family: Arial;
     /*background: url("../images/background.jpg") no-repeat center center fixed;*/
@@ -71,6 +74,21 @@ footer {
 .product-description {
     min-height: 40px;
 }
+/* ------------ Login page --------------- */
+.login-page{
+    padding: 110px 25%;
+    background: url("../images/forum.jpg") no-repeat center top fixed ;
+}
+.login-section{
+    padding: 30px 60px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+.form-login{
+    margin: 40px 0;
+}
+/* ---------- Registration page ---------------- */
 
 /* -------------- Profile page ------------------- */
 .profile-page{
@@ -99,14 +117,53 @@ footer {
 
 /* ------------ Registration page ----------------- */
 .registration-page{
-    background: url("../images/background.jpg") no-repeat center center fixed ;
+    padding: 110px 25%;
+    background: url("../images/forum.jpg") no-repeat center top fixed ;
 }
 .register-form{
-    width: 50%;
-    padding: 50px 0px;
-    margin: auto;
+    padding: 30px 60px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
 }
-
+.form-registration{
+    margin: 40px 0;
+}
+/* --------------- Password reset page ---------------- */
+.password-reset-page{
+    padding: 200px 25%;
+    background: url("../images/forum.jpg") no-repeat center top fixed ;
+}
+.password-reset-form{
+    padding: 30px 60px 0;
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+.password-reset-email-input{
+    font-size: 18px;
+    font-weight: 500;
+}
+.form-password-reset{
+    margin: 40px 0;
+}
+.btn-password-reset{
+    margin: 40px 0 0;
+}
+/* ------------ Password reset done --------- */
+.password-reset-done-form{
+    padding: 45px 40px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+/* ------------ Password reset complete --------- */
+.password-reset-complete{
+    padding: 45px 60px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
 /* ------------ News page ------------------*/
 .news-page{
     padding: 30px 0 30px;
@@ -162,7 +219,7 @@ footer {
 }
 /* ----------------- Home page ------------- */
 .home-page{
-    background: url("../images/forum.jpg") no-repeat center top fixed ;
+    background: url("../images/STDS9.jpg") no-repeat center top fixed ;
     padding: 200px 15% 0px;
     height: 90vh;
 }
