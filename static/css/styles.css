@@ -88,31 +88,58 @@ footer {
 .form-login{
     margin: 40px 0;
 }
-/* ---------- Registration page ---------------- */
-
+/* ---------- Order page ---------------- */
+.order-page{
+    background: url("../images/forum.jpg") no-repeat center top fixed ;
+    padding: 200px 15%;
+}
+.order-info-section{
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.order-info-section > h3 {
+    margin: 40px;
+}
 /* -------------- Profile page ------------------- */
 .profile-page{
-    background-color: rgba(0, 0, 0, 0.185);
-    
+    background: url("../images/forum.jpg") no-repeat center top fixed ;
+    padding: 80px 15% 160px;
 }
-.profile-info{
-    max-width: 800px;
-    margin: 100px auto;
-    padding: 20px 0;
+.profile-info-section{
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 15px 30px;
     border: 1px solid black;
+    border-radius: 5px;
 }
 .profile-img{
-    margin-top: 15px;
     border:1px solid black;
-    width: 250px;
-    height: 250px;
+    width: 100%;
+    min-width: 200px;
+    height: 200px;
+    border-radius: 5px;
 }
-
+.profile-info{
+    padding: 40px 20px;
+}
+.profile-info > h1{
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+.profile-info > h3{
+    font-weight: 500;
+}
 /* ---------- Edit profile ------------------------*/
+.profile-form{
+    padding: 80px 15%;
+    background: url("../images/forum.jpg") no-repeat center top fixed ;
+}
 .profile-form-edit{
-    max-width: 800px;
-    margin: 40px auto;
-    background-color: rgba(0, 0, 255, 0.363)
+    padding: 30px 20px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid black;
+    border-radius: 5px;
 }
 
 /* ------------ Registration page ----------------- */
@@ -304,7 +331,24 @@ footer {
 .product-detail-card-img{
     height: 350px;
 }
-
+/* --------------- Shopping cart ------------ */
+.cart-page{
+    background: url("../images/picard-vine.jpg") no-repeat center center fixed;
+    padding: 100px 60px;
+}
+.cart-page-empty{
+    background: url("../images/picard-vine.jpg") no-repeat center center fixed;
+    padding: 200px 60px;
+}
+.cart-empty{
+    padding: 50px 20px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 5px;
+    text-align: center;
+}
+.cart-empty > h3{
+    margin-top: 40px;
+}
 /* --------------- Forum -------------- */
 .forum-page{
     padding: 30px 0px 0px;
@@ -387,7 +431,7 @@ footer {
     padding: 25px 25px 5px;
     background-color: rgba(255, 255, 255, 0.8);
 }
-/* ------------ Cart - Checkut ------------------ */
+/* ------------ Cart - Checkout ------------------ */
 .total-cart-checkout{
     padding: 50px 0 20px;
 
@@ -396,6 +440,10 @@ footer {
     margin: 0 15px;
     padding: 8px 15px;
     background-color: white;
+}
+.checkout-page{
+    padding: 100px 60px;
+    background: url("../images/picard-vine.jpg") no-repeat center center fixed;
 }
 .checkout-section{
     margin: 30px;

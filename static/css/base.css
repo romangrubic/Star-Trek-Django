@@ -1,6 +1,11 @@
 /*body {
     background-color: rgba(0, 0, 0, 0.418);
 }*/
+
+/* ---------- Django messages ---------- */
+.alert{
+    margin: 0px;
+}
 /* --------- Navigation bar --------------- */
 .fixed-top {
     border-radius: 0px;

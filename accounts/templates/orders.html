@@ -5,15 +5,24 @@
 {% block page_heading %}{{ user }}'s Profile{% endblock %}
 
 {% block content %}
-
+<div class="order-page">
+    <div class="order-info-section text-center">
+{% if user.orders.all.count == 0 %}
+<h1>You do not have any orders!</h1>
+<hr>
+<h3>Visit our <a href="{% url 'products' %}" class="btn btn-star-trek"><i class="fas fa-store-alt"></i> Shop</a></h3>
+{% else %}
+<div class="order-page">
+    <div class="profile-info-section">
 <h1>My orders</h1>
-
-
 {% for order in user.orders.all %}
 <h1>{{ order.date }}</h1>
 {% for line in order.orderline.all %}
 <p>{{ line.product }}</p>
 {% endfor %}
 {% endfor %}
+{% endif %}
+    </div>
+</div>
 
 {% endblock %}

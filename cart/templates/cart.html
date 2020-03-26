@@ -3,8 +3,18 @@
 {% load static from staticfiles %}
 {% load bootstrap_tags %}
 {% block content %}
-<div class="products-page">
-<div class="row">
+
+
+    {% if total == 0 %}
+    <div class="cart-page-empty">
+    <div class="cart-empty">
+        <h1>No items in cart!</h1>
+        <hr>
+        <h3>Visit our <a href="{% url 'products' %}" class="btn btn-star-trek"><i class="fas fa-store-alt"></i> Shop</a></h3>
+    </div>
+    {% else %}
+    <div class="cart-page">
+    <div class="row">
 	{% for item in cart_items %}
     <div class="col-3">
         <div class="card products-card">
@@ -21,10 +31,10 @@
                 </div>
                 <form class="form-inline" method="POST" action="{% url 'adjust_cart' item.id %}">
 						{% csrf_token %}
-						<div class="form-group">
+						<div class="form-group  d-flex justify-content-center">
 							<label for="exampleInputAmount" class="sr-only">New Qty</label>
 							<div class="input-group">
-								<div class="input-group-addon">Qty</div>
+								
 								<input type="number" name="quantity" min="0" max="999" value="{{ item.quantity }}" class="form-control">
 								
 							</div>
@@ -36,10 +46,13 @@
     </div>
 	
     {% endfor %}
+    
 </div>
 <div class="row d-flex justify-content-center total-cart-checkout">
-    <p class="total-cart-checkout-sum">Total <span class="glyphicon glyphicon-euro" aria-hidden="true"></span>{{ total }}</p>
+    <p class="total-cart-checkout-sum"> Total <span class="glyphicon glyphicon-euro" aria-hidden="true"></span>{{ total }}</p>
     <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
 </div>
+{% endif %}
 </div>
+
 {% endblock %}
