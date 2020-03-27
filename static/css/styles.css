@@ -338,7 +338,7 @@ footer {
 }
 .cart-page-empty{
     background: url("../images/picard-vine.jpg") no-repeat center center fixed;
-    padding: 200px 60px;
+    padding: 200px 15%;
 }
 .cart-empty{
     padding: 50px 20px;

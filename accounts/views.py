@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from accounts.form import UserLoginForm, UserRegistrationForm, ProfileForm
 from checkout.models import Order
 from .models import Profile
-from django.contrib.auth.forms import UserChangeForm
+
 
 # Create your views here.
 def index(request):
