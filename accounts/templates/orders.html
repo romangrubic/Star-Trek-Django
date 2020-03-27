@@ -7,23 +7,45 @@
 {% block content %}
 
 {% if user.orders.all.count == 0 %}
-<div class="order-page">
-    <div class="order-info-section text-center">
-<h1>You do not have any orders!</h1>
-<hr>
-<h3>Visit our <a href="{% url 'products' %}" class="btn btn-star-trek"><i class="fas fa-store-alt"></i> Shop</a></h3>
-{% else %}
-<div class="order-page">
-    <div class="profile-info-section">
-<h1>My orders</h1>
-{% for order in user.orders.all %}
-<h1>{{ order.date }}</h1>
-{% for line in order.orderline.all %}
-<p>{{ line }}</p>
-{% endfor %}
-{% endfor %}
-{% endif %}
-    </div>
-</div>
+<div class="order-page-empty">
+	<div class="order-info-section text-center">
+		<h1>You do not have any orders!</h1>
+		<hr>
+		<h3>Visit our <a href="{% url 'products' %}" class="btn btn-star-trek"><i class="fas fa-store-alt"></i> Shop</a>
+		</h3>
+		{% else %}
+		<div class="order-page">
+			<div class="profile-info-section">
+				<h1>My orders</h1>
+				<hr>
+				{% for order in user.orders.all %}
+				<div class="order-individual">
+					<h3 class="text-center order-date-margin">{{ order.date }}</h3>
+					<table class="text-center">
+						<tr class="text-center">
+							<th class="text-center">Product name</th>
+							<th class="text-center">Price per unit </th>
+							<th class="text-center">Quantity</th>
+							<th class="text-center">Total</th>
+						</tr>
+						{% for line in order.orderline.all %}
+						<tr class="text-center">
+							<th class="text-center"><a href="{% url 'product_detail' line.product.id %}">
+									{{ line.product.name }}</a></th>
+							<th class="text-center">{{ line.product.price }} </th>
+							<th class="text-center">{{ line.quantity }}</th>
+							<th class="text-center">{{ line.line_total }}</th>
+						</tr>
+						{% endfor %}
+					</table>
+				</div>
+				<hr>
+				{% endfor %}
 
-{% endblock %}
+			</div>
+			{% endif %}
+		</div>
+	</div>
+
+
+	{% endblock %}
