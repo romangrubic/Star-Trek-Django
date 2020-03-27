@@ -3,11 +3,12 @@ from .models import News
 from .forms import NewsForm
 
 
+
 # Create your views here.
 def get_news(request):
     """Create a view that will return a list of post and
     render them to the blogposts.html template"""
-    news = News.objects.filter()
+    news = News.objects.filter().order_by('-published_date')
     return render(request, "newsblog.html", {'news': news})
 
 
@@ -53,5 +54,5 @@ def get_news_updates(request):
 def get_news_federation(request):
     """Create a view that will return a list of new with tag: update and
     render them to the blogposts.html template"""
-    news = News.objects.filter(tag='FFN')
+    news = News.objects.filter(tag='FNN')
     return render(request, "newsblog.html", {'news': news})

@@ -13,12 +13,13 @@
 <form method="POST" class="form-login">
     {% csrf_token %}
     {{ login_form  | as_bootstrap }}
+    <p><a href="{% url 'password_reset' %}">Forgot my password</a></p>
     <div class="row d-flex justify-content-center">
     <button type="submit" class="btn btn-star-trek">Login</button>
     </div>
 </form>
-<p>If you do not have account, you can <a href="{% url 'registration' %}">register here</a></p>
-<p><a href="{% url 'password_reset' %}">Forgot my password</a></p>
+<hr>
+<h5>Looking to join? <a href="{% url 'registration' %}">Register here</a></h5>
 </div>
 </div>
 {% endblock %}

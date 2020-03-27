@@ -22,6 +22,7 @@ def checkout(request):
         if order_form.is_valid() and payment_form.is_valid():
             order = order_form.save(commit=False)
             order.date = timezone.now()
+            order.user_id = request.user.id
             order.save()
 
             cart = request.session.get('cart', {})
@@ -30,7 +31,6 @@ def checkout(request):
                 product = get_object_or_404(Product, pk=id)
                 total += quantity * product.price
                 order_line_item = OrderLineItem(
-                    user=request.user,
                     order=order,
                     product=product,
                     quantity=quantity
