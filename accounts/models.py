@@ -8,7 +8,12 @@ class Profile(models.Model):
     image = models.ImageField(default='default.jpg', upload_to='profile_pic')
     name = models.CharField(max_length=40)
     bio = models.TextField(max_length=500)
-    password = models.CharField(max_length=40)
+    favourite_series = models.CharField(max_length=40)
+    favourite_character = models.CharField(max_length=40)
+    favourite_quote = models.TextField(max_length=500)
+    cosplay_input = models.TextField(max_length=500)
+    cosplay_image1 = models.ImageField(default='default.jpg', upload_to='cosplay_pic')
+    cosplay_image2 = models.ImageField(default='default.jpg', upload_to='cosplay_pic')
 
     def __str__(self):
         return self.name
