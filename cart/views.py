@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from products.models import Product
 
 
 # Create your views here.
@@ -12,9 +13,16 @@ def add_to_cart(request, id):
     quantity = int(request.POST.get('quantity'))
 
     cart = request.session.get('cart', {})
+    total = 0
     cart[id] = cart.get(id, quantity)
 
     request.session['cart'] = cart
+
+    for id, quantity in cart.items():
+        product = get_object_or_404(Product, pk=id)
+        total += quantity * product.price
+        request.session['total'] = float(total)
+
     return redirect(reverse('products'))
 
 
