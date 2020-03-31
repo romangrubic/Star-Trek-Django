@@ -234,7 +234,7 @@ td, th {
     height: 225px;
 }
 .news-row{
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.9);
     margin: 0 60px 0 80px;
     border: 1px solid black;
     border-radius: 5px;
@@ -247,6 +247,7 @@ td, th {
     text-decoration: none;
 }
 .btn-star-trek{
+    margin: 0 5px;
     background-color: rgba(251, 207, 61, 0.75);
 }
 .btn-star-trek:hover{
@@ -256,10 +257,12 @@ td, th {
 /* ------------- News detail page ---------------*/
 .news-detail-page{
     background: url("../images/picard-vine.jpg") no-repeat center center fixed;
-    padding: 50px 20% 80px;
+    padding: 50px 25% 80px;
 }
 .news-detail-info{
     background-color: rgba(255, 255, 255, 0.85);
+    border: 1px solid black;
+    border-radius: 5px;
 }
 .news-detail-image{
     height: 400px;
@@ -348,6 +351,7 @@ td, th {
 }
 .products-card-body{
     padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0.9);
 }
 .products-card-img{
     height: 200px;
@@ -361,10 +365,28 @@ td, th {
 /* ------------- Product detail page ----------- */
 .product-detail-page{
     background: url("../images/picard-vine.jpg") no-repeat center center fixed;
-    padding: 75px 25%;
+    padding: 75px 50px;
+}
+.product-detail-card{
+    width: 450px;
+    margin: auto;
+}
+.product-detail-card-body{
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 25px 7.5%;
 }
 .product-detail-card-img{
-    height: 350px;
+    height: 300px;
+}
+.product-detail-card-price{
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 20px;
+    text-align: center;
+}
+.product-detail-add-input{
+    margin: auto;
+    width: 120px;
 }
 /* --------------- Shopping cart ------------ */
 .cart-page{
@@ -429,7 +451,7 @@ td, th {
 .thread-container{
     padding: 10px;
     border: 2px solid black;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.9);
 }
 .forum-thread-user-image{
     height: 75px;
@@ -453,7 +475,7 @@ td, th {
     border: 1px solid black;
     border-radius: 5px;
     padding: 25px 25px 5px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.9);
 }
 /* ----------- Comment form -------------------- */
 .comment-form-page{
@@ -464,7 +486,7 @@ td, th {
     border: 1px solid black;
     border-radius: 5px;
     padding: 25px 25px 5px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.9);
 }
 /* ------------ Cart - Checkout ------------------ */
 .total-cart-checkout{
@@ -485,7 +507,7 @@ td, th {
     border: 1px solid black;
     border-radius: 5px;
     padding: 25px 25px 5px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.9);
 }
 /* -------------- Pagination ----------- */
 .pagination{
