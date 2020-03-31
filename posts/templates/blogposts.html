@@ -13,6 +13,11 @@
             <a href="{% url 'new_post' %}" class="btn btn-danger btn-post-thread">Share your opinion!</a>
         </div>
 
+{% if posts.count == 0 %}
+<div class="forum-no-search-result">
+    <h3 class="forum-no-search-result-text">There is no topic with requested search!<br> Why don't you start it?</h3>
+</div>
+{% else %}
 <div class="container forum-threads">
     <div class="row forum-thread forum-filters">
             <div class="col-2 text-right">
@@ -49,6 +54,8 @@
         <hr class="forum-hr">
     {% endfor %}
 </div>
+{% endif %}
+{% if posts.count != 0 %}
 <div class="d-flex justify-content-center">
 <div class="pagination">
     <span class="step-links">
@@ -66,4 +73,5 @@
     </span>
 </div>
 </div>
+{% endif %}
 {% endblock %}

@@ -346,6 +346,17 @@ td, th {
     height:39px;
     border-radius: 10px;    
 }
+.no-search-products{
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 100px auto;
+    width: 600px;
+    text-align: center;
+}
+.no-search-products-text{
+    padding: 75px 30px;
+}
 .products-card{
     border: 1px solid rgba(0, 0, 0, 0.4);
 }
@@ -358,9 +369,10 @@ td, th {
 }
 .products-card-price{
     margin: 0px;
-    padding: 8px;
+    padding: 2px 8px;
     font-weight: 700;
     text-align: center;
+    font-size: 20px;
 }
 /* ------------- Product detail page ----------- */
 .product-detail-page{
@@ -465,6 +477,17 @@ td, th {
 }
 .btn-back-to-forum{
     margin: 30px 0 0;
+}
+.forum-no-search-result{
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 100px auto 150px;
+    width: 600px;
+    text-align: center;
+}
+.forum-no-search-result-text{
+    padding: 75px 30px;
 }
 /* ---------------- Post thread form -------------- */
 .post-thread-form{

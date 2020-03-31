@@ -5,7 +5,7 @@ from posts.models import Post
 
 # Create your views here.
 def search_products(request):
-    products = Product.objects.filter(name__icontains=request.GET['q'])
+    products = Product.objects.filter(description__icontains=request.GET['q'])
     return render(request, "products.html", {"products": products})
 
 

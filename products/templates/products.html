@@ -10,7 +10,13 @@
         </form>
         </div>
     </div>
+    <hr>
 <div class="row">
+    {% if products.count == 0 %}
+    <div class="no-search-products">
+    <h3 class="no-search-products-text">Sorry, but there was no products for requested search!</h3>
+    </div>
+    {% else %}
     {% for product in products %}
     <div class="col-3">
         <div class="card products-card">
@@ -18,8 +24,9 @@
             <img class="card-img-top products-card-img" src="{{ MEDIA_URL }}{{ product.image }}" alt="Card image cap">
             </a>
             <div class="card-body products-card-body">
-                <h3 class="card-title">{{ product.name }}</h3>
-                <p class="card-text no-margin">{{ product.description }}</p>
+                <h3 class="card-title text-center">{{ product.name }}</h3>
+                <p class="card-text no-margin">{{ product.description|truncatechars:50 }}</p>
+                <hr>
                 <div class="row">
                     <div class="col-5">
                         <p class="products-card-price">{{ product.price }} €</p>
@@ -40,8 +47,10 @@
         </div>
     </div>
     {% endfor %}
+    {% endif %}
 </div>
 <hr>
+{% if products.count != 0 %}
 <div class="d-flex justify-content-center">
 <div class="pagination">
     <span class="step-links">
@@ -57,6 +66,7 @@
     </span>
 </div>
 </div>
+{% endif %}
 </div>
 
 {% endblock %}
