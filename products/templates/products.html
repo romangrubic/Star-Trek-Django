@@ -11,21 +11,21 @@
         </div>
     </div>
     <hr>
-<div class="row">
+<div class="row products-page-list">
     {% if products.count == 0 %}
     <div class="no-search-products">
     <h3 class="no-search-products-text">Sorry, but there was no products for requested search!</h3>
     </div>
     {% else %}
     {% for product in products %}
-    <div class="col-3">
+    <div class="col-3 products-card-padding">
         <div class="card products-card">
         <a href="{% url 'product_detail' product.id %}">
             <img class="card-img-top products-card-img" src="{{ MEDIA_URL }}{{ product.image }}" alt="Card image cap">
             </a>
             <div class="card-body products-card-body">
                 <h3 class="card-title text-center">{{ product.name }}</h3>
-                <p class="card-text no-margin">{{ product.description|truncatechars:50 }}</p>
+                <p class="card-text no-margin">{{ product.description|truncatechars:60 }}</p>
                 <hr>
                 <div class="row">
                     <div class="col-5">

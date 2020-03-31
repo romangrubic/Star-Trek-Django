@@ -7,9 +7,9 @@
         <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form | as_bootstrap }}
-        <div class="d-flex justify-content-center">
-        <button type="submit" class="btn margin-5 btn-star-trek">Comment!</button>
-        <a href="{% url 'get_posts' %}" class="btn margin-5 btn-light">Cancel</a>
+        <div class="d-flex justify-content-center margin-5">
+        <button type="submit" class="btn btn-star-trek">Comment!</button>
+        <a href="{% url 'get_posts' %}" class="btn btn-light">Cancel</a>
         </div>
     </form>
     </div>

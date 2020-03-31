@@ -3,12 +3,16 @@
 {% block content %}
 <div class="profile-form">
 <div class="profile-form-edit">
-    <h1>Edit profile</h1>
+    <h1 class="text-center">{{ request.user }}'s profile</h1>
+    <div class="profile-form-style">
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form | as_bootstrap }}
-        <button type="submit" class="btn btn-info">Save</button>
+        <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-info profile-form-button">Save</button>
+        </div>
     </form>
+    </div>
 </div>
 </div>
 

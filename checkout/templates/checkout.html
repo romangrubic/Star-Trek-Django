@@ -22,8 +22,9 @@
             <img class="card-img-top products-card-img" src="{{ MEDIA_URL }}{{ item.product.image }}" alt="Card image cap">
             </a>
             <div class="card-body products-card-body">
-                <h3 class="card-title">{{ item.product.name }}</h3>
-                <p class="card-text no-margin">{{ item.product.description }}</p>
+                <h3 class="card-title text-center">{{ item.product.name }}</h3>
+                <p class="card-text no-margin">{{ item.product.description|truncatechars:60 }}</p>
+                <hr>
                 <div class="row">
                     <div class="col-12">
                         <p class="products-card-price">Quantity {{ item.quantity}} x {{item.product.price }} € </p>
@@ -35,18 +36,18 @@
     {% endfor %}
 </div>
 <div class="row d-flex justify-content-center total-cart-checkout">
-    <p class="total-cart-checkout-sum">Total <span class="glyphicon glyphicon-euro" aria-hidden="true"></span>{{ total }}</p>
+    <p class="total-cart-checkout-sum text-center">Total <span class="glyphicon glyphicon-euro" aria-hidden="true"></span>{{ total }} €</p>
 </div>
-
+<hr>
 <div class="checkout-section">
 <form class="text-center" role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
-    <legend>Payment Details</legend>
+    <legend><h3>Payment Details</h3></legend>
 
     <div id="credit-card-errors" style="display: none;">
         <div class="alert-message block-message error" id="stripe-error-message"></div>
     </div>
-    <div class="row">
-    <div class="form-group col-md-6">
+    <div class="row checkout-order">
+    <div class="form-group col-md-6 ">
         {{ order_form | as_bootstrap }}
     </div>
     <div class="form-group col-md-6">
@@ -55,7 +56,7 @@
     </div>
     {% csrf_token %}
     <div class="row d-flex justify-content-center total-cart-checkout">
-    <p class="total-cart-checkout-sum">Total <span class="glyphicon glyphicon-euro" aria-hidden="true"></span>{{ total }}</p>
+    <p class="total-cart-checkout-sum">Total <span class="glyphicon glyphicon-euro" aria-hidden="true"></span>{{ total }} €</p>
     <input class=" btn btn-danger" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
 </div>
 </form>
