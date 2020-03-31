@@ -26,19 +26,20 @@
 							<th class="text-center">Product name</th>
 							<th class="text-center">Price per unit </th>
 							<th class="text-center">Quantity</th>
-							<th class="text-center">Total</th>
+							<th class="text-center">Sub-Total</th>
 						</tr>
 						{% for line in order.orderline.all %}
 						<tr class="text-center">
 							<th class="text-center"><a href="{% url 'product_detail' line.product.id %}">
 									{{ line.product.name }}</a></th>
-							<th class="text-center">{{ line.product.price }} </th>
+							<th class="text-center">{{ line.product.price }} €</th>
 							<th class="text-center">{{ line.quantity }}</th>
-							<th class="text-center">{{ line.line_total }}</th>
+							<th class="text-center">{{ line.line_total }} €</th>
 						</tr>
 						{% endfor %}
-                    <h5>{{ order.total_price }}</h5>
-					</table>                    
+                        </table>
+                    <h4 class="total-order-price text-center">Total order: {{ order.total_price }} €</h4>
+					                    
 				</div>
                 
 				<hr>

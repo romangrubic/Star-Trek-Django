@@ -17,3 +17,14 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Message(models.Model):
+    sender = models.ForeignKey(User, related_name="sender")
+    reciever = models.ForeignKey(User, related_name="receiver")
+    msg_title = models.CharField(max_length=40)
+    msg_content = models.TextField(max_length=150)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name

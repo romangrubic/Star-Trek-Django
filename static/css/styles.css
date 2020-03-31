@@ -10,6 +10,7 @@
 .margin-5{
     margin: 5px;
 }
+
 .decoration-none{
     text-decoration: none;
 }
@@ -102,9 +103,10 @@ footer {
 }
 .order-date-margin{
     margin: 0 0 20px;
+    font-weight: 500;
 }
 .order-info-section{
-    background-color: rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 30px;
     border: 1px solid black;
     border-radius: 5px;
@@ -125,13 +127,17 @@ td, th {
   text-align: left;
   padding: 8px;
 }
+.total-order-price{
+    margin: 20px;
+    font-weight: 500;
+}
 /* -------------- Profile page ------------------- */
 .profile-page{
     background: url("../images/forum.jpg") no-repeat center top fixed ;
     padding: 80px 15% 160px;
 }
 .profile-info-section{
-    background-color: rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 15px 30px;
     border: 1px solid black;
     border-radius: 5px;
