@@ -29,7 +29,8 @@
     font-size: 28px;
     font-weight: 700;
     width: 200px;
-    margin: 0 10px;
+    margin: 0 auto;
+    padding-left: 30px;
     transition-duration: 0.15s;
 }
 .navbar-brand:hover{
