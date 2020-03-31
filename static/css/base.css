@@ -41,7 +41,7 @@
     text-decoration: none;
 }
 nav {
-    height: 84px;
+    height: 90px;
     background-color: rgb(0, 0, 0);
 }
 .navbar-nav > a {
@@ -72,6 +72,8 @@ nav {
     background-color: black!important
 }
 .expanded-nav{
+    margin: auto;
+    padding-right: auto;
     background-color: black;
 }
 .navbar-dark .navbar-toggler {

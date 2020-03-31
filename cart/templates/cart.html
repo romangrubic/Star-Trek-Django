@@ -24,13 +24,15 @@
             </a>
         </div>
             <div class="col-4">
-                <h3 class="card-title text-center">{{ item.product.name }}</h3>
+            <a href="{% url 'product_detail' item.product.id %}">
+                <h3 class="card-title text-center cart-item-name">{{ item.product.name }}</h3>
+            </a>
             </div>
             <div class="col-3">
-                <p class="products-card-price">{{ item.product.price }} €</p>
+                <p class="products-card-price cart-item-price">{{ item.product.price }} €</p>
             </div>
             <div class="col-3">            
-                <div class="d-flex justify-content-center">                
+                <div class="d-flex justify-content-center cart-item-edit">                
                 <form class="form-inline" method="POST" action="{% url 'adjust_cart' item.id %}">
 						{% csrf_token %}
 						<div class="form-group">
@@ -57,7 +59,7 @@
 
 <div class="row d-flex justify-content-center total-cart-checkout">
     
-    <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
+    <a href="{% url 'checkout' %}" class="btn btn-danger" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
 </div>
 {% endif %}
 </div>

@@ -16,11 +16,13 @@
 </head>
 <body>
     <!-- Fixed masthead -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <a class="navbar-brand" href="{% url 'index' %}"><span class="home-link">Star Trek</span></a>
+        <div class="d-flex justify-content-end">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="d-flex justify-content-center expanded-nav">
         <ul class="navbar-nav">
