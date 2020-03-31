@@ -11,31 +11,28 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css">
     <script src="https://kit.fontawesome.com/41a908fb89.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     {% block head_js %}
     {% endblock head_js %}
 </head>
 <body>
     <!-- Fixed masthead -->
-    <nav>
-    <div class="navbar navbar-expand fixed-top">
-        <div class="container">
-            <div class="text-center">
-                <a class="navbar-brand" href="{% url 'index' %}">Star Trek</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'index' %}"><span class="home-link">Star Trek</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="d-flex justify-content-center expanded-nav">
+        <ul class="navbar-nav">
+            <div class="dropdown">
+                <a href="{% url 'get_news' %}"><button class="dropbtn"><i class="far fa-newspaper"></i> News</button></a>
+                    <div class="dropdown-content">
+                        <a href="{% url 'get_news_news' %}"><i class="fa fa-user-plus"></i> News</a>
+                        <a href="{% url 'get_news_updates' %}"><i class="fa fa-sign-in"></i> Updates</a>
+                        <a href="{% url 'get_news_federation' %}"><i class="fas fa-globe"></i> FNN</a>
+                    </div>
             </div>
-            <div id="navbar" class="navbar-collapse collapse d-flex justify-content-end">
-                <ul class="navbar-nav">                    
-                        <li>
-                            <div class="dropdown">
-                                <a href="{% url 'get_news' %}"><button class="dropbtn"><i class="far fa-newspaper"></i> News</button></a>
-                                <div class="dropdown-content">
-                                    <a href="{% url 'get_news_news' %}"><i class="fa fa-user-plus"></i> News</a>
-                                    <a href="{% url 'get_news_updates' %}"><i class="fa fa-sign-in"></i> Updates</a>
-                                    <a href="{% url 'get_news_federation' %}"><i class="fas fa-globe"></i> FNN</a>
-                                </div>
-                            </div>
-                        </li>
-                        <a href="{% url 'products' %} "><li class="nav-item"><i class="fas fa-store-alt"></i> Shop</li></a>
+        <a href="{% url 'products' %} "><li class="nav-item"><i class="fas fa-store-alt"></i> Shop</li></a>
                         <a href="{% url 'games' %}"><li class="nav-item"><i class="fas fa-gamepad"></i> Games</li></a>
                         {% if user.is_authenticated %}
                         <a href="{% url 'get_posts' %}"><li class="nav-item"><i class="fas fa-hand-spock"></i> Forum</li></a>
@@ -48,9 +45,8 @@
                                 <label class="badge badge-warning">{{ product_count }}</label>
                                 {% endif %}
                                 </li>
-                            </a>
-                        
-                    {% if user.is_authenticated %}
+                            </a>                        
+                        {% if user.is_authenticated %}
                         <li>
                             <div class="dropdown">
                                 <button class="dropbtn"><i class="fas fa-portrait"></i> Account</button>
@@ -70,14 +66,13 @@
                                     <a href="{% url 'login' %}"><i class="fa fa-sign-in-alt"></i> Log In</a>
                                 </div>
                             </div>
-                        </li>
-                        
-                    {% endif %}                     
-                </ul>
-            </div>
-        </div>
-        </div>
-    </nav>
+                        </li>                        
+                    {% endif %}
+      
+    </ul>
+    </div>
+  </div>
+</nav>
     {% if messages %}
         <div class="alert alert-success">
             <div class="messages">
@@ -93,6 +88,7 @@
             <p>Made by Roman Grubic</p>
         </div>
     </footer>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
