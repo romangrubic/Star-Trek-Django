@@ -1,7 +1,3 @@
-/*body {
-    background-color: rgba(0, 0, 0, 0.418);
-}*/
-
 /* ---------- Django messages ---------- */
 .alert{
     margin: 0px;
@@ -81,6 +77,13 @@ nav {
     color: rgba(255, 255, 255);
     border-color: rgba(255,255,255);
 }
+.badge {
+    padding-left: 9px;
+    padding-right: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+}
 /* --------- From W3 Schools https://www.w3schools.com/howto/howto_css_dropdown.asp ------------
 /* Dropdown Button */
 .dropbtn {
@@ -137,3 +140,4 @@ nav {
 .dropdown:hover .dropbtn {
     background-color: rgba(255, 255, 255, 0.3);
 }
+

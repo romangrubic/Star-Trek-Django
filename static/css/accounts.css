@@ -1,0 +1,182 @@
+/* ----------------- Index page ------------- */
+.home-page{
+    background: url("../images/picard-vine.jpg") no-repeat center top fixed ;
+    padding: 200px 15% 0px;
+    height: 90vh;
+}
+.lead{
+    margin: 0px 10%;
+    background-color: black;
+    color: rgb(251, 206, 61);
+    text-align: center;
+    font-size: 35px;
+}
+.jumbo-text{
+    padding: 0px 10%;
+    width: 100%;
+    height: 120px;
+}
+/* ------------ Login page --------------- */
+.login-page{
+    padding: 110px 25%;
+    background: url("../images/forum.jpg") no-repeat center top fixed ;
+}
+.login-section{
+    padding: 30px 60px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+.form-login{
+    margin: 40px 0;
+}
+/* ---------- Order page ---------------- */
+.order-page-empty{
+    background: url("../images/forum.jpg") no-repeat center top fixed ;
+    padding: 200px 15%;
+}
+.order-page{
+    background: url("../images/forum.jpg") no-repeat center top fixed ;
+    padding: 130px 5px;
+}
+.order-info-section{
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: auto;
+    max-width: 750px;
+}
+.order-individual{
+    padding: 10px 0 30px;
+}
+.order-date-margin{
+    padding-top: 2px;
+    margin: 0 0 20px;
+    color: rgba(0, 0, 0, 0.65);
+    font-weight: 500;
+    letter-spacing: 2px;
+    transition-duration: 0.25s;
+}
+.order-date-margin:hover{
+    color: black;
+    font-size: 30px;
+    transition-duration: 0.25s;
+}
+.order-info-section > h3 {
+    margin: 40px;
+}
+.order-card-header{
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.05);
+    height: 65px;
+}
+.order-card-body{
+    padding: 30px 0 10px;
+}
+.order-product-image{
+    width: 100%;
+    height: 100px;
+}
+table{
+    width: 95%;
+    margin: auto;
+}
+td, th {
+  border: 1px solid #3a3a3a;
+  text-align: left;
+  padding: 8px;
+}
+.total-order-price{
+    margin: 20px;
+    font-weight: 500;
+}
+/* -------------- Profile page ------------------- */
+.profile-page{
+    background: url("../images/forum.jpg") no-repeat center top fixed ;
+    padding: 80px 20px 160px;
+}
+.profile-info-section{
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: auto;
+    max-width: 850px;
+}
+.profile-img{
+    border:1px solid black;
+    width: 100%;
+    min-width: 200px;
+    height: 200px;
+    border-radius: 5px;
+}
+.profile-info{
+    padding: 40px 20px;
+}
+.profile-info > h1{
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+.profile-info > h3{
+    font-weight: 500;
+}
+.profile-info-section-header{
+    letter-spacing: 2px;
+    font-weight: 500;
+    font-size: 30px;
+    color: rgb(43, 33, 0);
+    margin-bottom: 20px;
+}
+.profile-bio-p{
+    margin:0px 0px 15px 15px;
+    font-size: 17.5px;
+}
+.profile-favourite-p{
+    margin-bottom: 15px;
+    font-size: 17.5px;
+}
+.profile-cosplay-p{
+    margin:0px 0px 25px 15px;
+    font-size: 17.5px;
+}
+.cosplay-carousel-image{
+    height: 400px;
+    width: 100%
+}
+/* ---------- Edit profile ------------------------*/
+.profile-form{
+    padding: 80px 20px;
+    background: url("../images/forum.jpg") no-repeat center top fixed ;
+}
+.profile-form-edit{
+    padding: 30px 40px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: auto;
+    max-width: 750px;
+}
+.profile-form-style{
+    padding: 30px 0px 0px;
+    max-width: 600px;
+    margin: auto;
+}
+.profile-form-button{
+    margin: 35px 10px 20px;
+}
+/* ------------ Registration page ----------------- */
+.registration-page{
+    padding: 110px 25%;
+    background: url("../images/forum.jpg") no-repeat center top fixed ;
+}
+.register-form{
+    padding: 30px 60px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+.form-registration{
+    margin: 40px 0;
+}

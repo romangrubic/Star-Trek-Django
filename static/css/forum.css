@@ -1,0 +1,100 @@
+/* --------------- Forum -------------- */
+.forum-page{
+    padding: 30px 0px 0px;
+    background: url("../images/landing-image.jpg") no-repeat center center fixed;
+}
+.btn-post-thread{
+    background-color: rgb(255, 102, 0);
+    color: white;
+    font-size: 20px;
+    margin: 20px 0 0;
+}
+.forum-threads{
+    background-color: rgba(255, 255, 255, 0.95);
+    margin: 60px auto 40px;
+    padding: 0px 10px;
+}
+.forum-filters{
+    background-color:rgb(251, 206, 60);
+    border: 2px solid rgba(0, 0, 0);
+}
+.forum-filters > div > a >h4:hover{
+    color: white;
+}
+.forum-thread > div {
+    padding-top: 5px;
+}
+.forum-thread > div > a {
+    text-decoration: none;
+    color:black;
+}
+.forum-thread > div > h5 > a{
+    text-decoration: none;
+}
+.forum-post-user-image{
+    width: 100%;
+    height: 30px;
+}
+.forum-hr{
+    margin: 1px 0px;
+}
+/* ----------- Forum thread -------------- */
+.forum-thread-page{
+    background: url("../images/landing-image.jpg") no-repeat center center fixed;
+    padding: 100px 10%;
+}
+.thread-container{
+    padding: 10px;
+    border: 2px solid black;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+.forum-thread-user-image{
+    height: 75px;
+    width: 150px;
+}
+.thread-hr{
+    margin: 10px 0;
+}
+.thread-comment{
+    padding: 15px 10px
+}
+.btn-back-to-forum{
+    margin: 30px 0 0;
+}
+.forum-no-search-result{
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 100px auto 150px;
+    width: 600px;
+    text-align: center;
+}
+.forum-no-search-result-text{
+    padding: 75px 30px;
+}
+/* ---------------- Post thread form -------------- */
+.post-thread-form{
+    background: url("../images/landing-image.jpg") no-repeat center center fixed;
+    padding: 100px 20px;
+}
+.thread-form-section{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 25px 25px 5px;
+    background-color: rgba(255, 255, 255, 0.9);
+    max-width: 750px;
+    margin: auto;
+}
+/* ----------- Comment form -------------------- */
+.comment-form-page{
+    background: url("../images/landing-image.jpg") no-repeat center center fixed;
+    padding: 100px 20px;
+}
+.comment-form-section{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 25px 25px 5px;
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: auto;
+    max-width: 650px;
+}
