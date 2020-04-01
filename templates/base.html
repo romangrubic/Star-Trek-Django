@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{% static 'css/games.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/products.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/forum.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css">
     <script src="https://kit.fontawesome.com/41a908fb89.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     {% block head_js %}
@@ -76,8 +77,7 @@
                                 </div>
                             </div>
                         </li>                        
-                    {% endif %}
-      
+                    {% endif %}      
     </ul>
     </div>
   </div>
@@ -93,8 +93,59 @@
     {% endif %}
         {% block content %} {% endblock %}
     <footer>
-        <div class="container">
-            <p>Made by Roman Grubic</p>
+        <div class="row no-margin footer-three-columns">
+            <div class="d-none d-md-block col-md-4 text-center">
+                    <div><a href="{% url 'get_news' %}"><i class="far fa-newspaper"></i> News</a></div>
+                    <div><a href="{% url 'products' %} "><i class="fas fa-store-alt"></i> Shop</a></div>
+                    <div><a href="{% url 'games' %}"><i class="fas fa-gamepad"></i> Games</a></div>
+                    {% if user.is_authenticated %}
+                    <div><a href="{% url 'get_posts' %}"><i class="fas fa-hand-spock"></i> Forum</a></div>
+                    {% else %}
+                    <div><a href="{% url 'registration' %}"><i class="fas fa-users"></i> Forum</a></div>
+                    {% endif %}
+                    <div><a href="{% url 'view_cart' %}">
+                                <i class="fas fa-shopping-cart"></i> Cart
+                                {% if product_count > 0 %}
+                                <label class="badge badge-warning">{{ product_count }}</label>
+                                {% endif %}
+                                
+                            </a></div>
+                    <div></div>
+            </div>
+            <div class="col-12 col-md-4 text-center footer-middle-column">
+            <h3>For education purpose only!</h3>
+            <h5>Contact me!</h5>
+            <div>
+                <a href="https://www.linkedin.com/in/roman-grubic-b835ab67/" target="_blank" rel="noopener">
+						    <i class="fab fa-linkedin  footer-icon linkedin" aria-hidden="true"></i>
+						        <span class="sr-only">LinkedIn</span>
+                        </a>
+                <a href="https://github.com/romangrubic" target="_blank" rel="noopener">
+						    <i class="fab fa-github  footer-icon github" aria-hidden="true"></i>
+						        <span class="sr-only">Github</span>
+                        </a>
+                <a><i class="fas fa-envelope-open-text footer-icon e-mail" aria-hidden="true" data-toggle="modal" data-target="#contactModal"></i>
+					        <span class="sr-only">E-mail</span></a>
+            </div>
+            </div>
+            <div class="d-none d-md-block col-md-4 text-center">
+            <h4>My other projects</h4>
+            <div><a href="https://romangrubic.github.io/Roman-Grubic-portfolio/" target="_blank" rel="noopener">
+						    <i class="fas fa-portrait  footer-icon" aria-hidden="true"></i>
+						        <span class="sr-only">Portfolio </span>
+                        </a> Portfolio</div>
+            <div><a href="https://romangrubic.github.io/weather-app-openweather/" target="_blank" rel="noopener">
+						    <i class="fas fa-cloud-sun-rain  footer-icon" aria-hidden="true"></i>
+						        <span class="sr-only">Weather 360° </span>
+                        </a> Weather 360° </div>
+            <div><a href="https://adverts-project.herokuapp.com/home" target="_blank" rel="noopener">
+					        <i class="fas fa-border-all  footer-icon" aria-hidden="true"></i>
+						        <span class="sr-only">Snoop</span>
+                        </a> Snoop</div>
+            </div>
+        </div>
+        <div class="row no-margin footer-last-row justify-content-center">
+            <p>Made by Roman Grubic.</p>
         </div>
     </footer>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

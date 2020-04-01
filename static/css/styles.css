@@ -44,8 +44,29 @@ body {
 /* ------------ Footer ------------------ */
 footer {
     padding-top: 20px;
-    padding-bottom: 20px;
     border-top: 1px solid #ededed;
     background-color: black;
-    height: 200px;
+
+}
+.footer-three-columns{
+    color: rgb(251, 206, 60);
+}
+.footer-three-columns > div > div{
+    padding: 5px;
+}
+.footer-three-columns > div > div > a{
+    color: rgb(251, 206, 60);
+    padding: 3px 5px;
+}
+.footer-three-columns > div > div > a:hover{
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+    padding: 3px 5px;
+}
+.footer-middle-column{
+    padding: 40px 0px 0px;
+}
+.footer-last-row{
+    margin: 20px 0px 0px;
+    color: white;
 }
