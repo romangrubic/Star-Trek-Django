@@ -329,6 +329,7 @@ td, th {
     color: black;
     font-weight: 500;
     margin: 35px 20px 10px;
+    text-align: center;
 }
 .news-detail-content{
     padding: 10px 45px 20px;
