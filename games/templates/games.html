@@ -10,7 +10,7 @@
     {% for game in games %}
     <div class="col-6">
         <div class="card no-padding margin-5">
-            <img src="{{ MEDIA_URL }}{{ game.image }}" class="games-image" alt="{{ game.name }} photo">
+            <img src="{{ MEDIA_URL }}{{ game.image1 }}" class="games-image" alt="{{ game.name }} photo">
             <div class="card-body">
                 <h1 class="card-title">{{ game.name }}</h1>
                 <p class="card-text">{{ game.description|truncatechars:175 }}</p>

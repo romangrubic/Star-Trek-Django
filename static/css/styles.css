@@ -207,6 +207,10 @@ td, th {
     margin:0px 0px 25px 15px;
     font-size: 17.5px;
 }
+.cosplay-carousel-image{
+    height: 400px;
+    width: 100%
+}
 /* ---------- Edit profile ------------------------*/
 .profile-form{
     padding: 80px 20px;
