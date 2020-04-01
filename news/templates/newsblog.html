@@ -28,13 +28,13 @@
         <div class="pagination">
             <span class="step-links">
                 {% if news.has_previous %}
-                    <a href="?page={{ news.previous_page_number }}">previous</a>
+                    <a href="?page={{ news.previous_page_number }}" class="btn btn-star-trek no-margin">Previous</a>
                 {% endif %}
                 <span class="current">
                     Page {{ news.number }} of {{ news.paginator.num_pages }}
                 </span>
                 {% if news.has_next %}
-                    <a href="?page={{ news.next_page_number }}">next</a>
+                    <a href="?page={{ news.next_page_number }}" class="btn btn-star-trek no-margin">Next</a>
                 {% endif %}
             </span>
         </div>

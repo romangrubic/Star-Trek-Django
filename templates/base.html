@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Star Trek</title>
+    <link rel="icon" type="image/png" sizes="20x20" href="{% static 'images/insignia.png' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css">
@@ -19,6 +20,7 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css">
     <script src="https://kit.fontawesome.com/41a908fb89.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
     {% block head_js %}
     {% endblock head_js %}
 </head>
@@ -105,20 +107,20 @@
                     {% endif %}
             </div>
             <div class="col-12 col-md-4 text-center footer-middle-column">
-            <h3>For education purpose only!</h3>
-            <h5>Contact me!</h5>
-            <div>
-                <a href="https://www.linkedin.com/in/roman-grubic-b835ab67/" target="_blank" rel="noopener">
-						    <i class="fab fa-linkedin  footer-icon linkedin" aria-hidden="true"></i>
-						        <span class="sr-only">LinkedIn</span>
-                        </a>
-                <a href="https://github.com/romangrubic" target="_blank" rel="noopener">
-						    <i class="fab fa-github  footer-icon github" aria-hidden="true"></i>
-						        <span class="sr-only">Github</span>
-                        </a>
-                <a><i class="fas fa-envelope-open-text footer-icon e-mail" aria-hidden="true" data-toggle="modal" data-target="#contactModal"></i>
-					        <span class="sr-only">E-mail</span></a>
-            </div>
+                <h3>For education purpose only!</h3>
+                <h5>Contact me!</h5>
+                <div class="contact-icons">
+                        <a href="https://www.linkedin.com/in/roman-grubic-b835ab67/" target="_blank" rel="noopener">
+                                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+                                        <span class="sr-only">LinkedIn</span>
+                                </a>
+                        <a href="https://github.com/romangrubic" target="_blank" rel="noopener">
+                                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+                                        <span class="sr-only">Github</span>
+                                </a>
+                        <a><i class="fas fa-envelope-open-text fa-2x" aria-hidden="true" data-toggle="modal" data-target="#contactModal"></i>
+                                    <span class="sr-only">E-mail</span></a>
+                </div>
             </div>
             <div class="d-none d-md-block col-md-4 text-center">
             <h4>My other projects</h4>
@@ -136,11 +138,32 @@
                          Snoop</a></div>
             </div>
         </div>
-        <div class="row no-margin footer-last-row justify-content-center">
+        <div class="row footer-last-row justify-content-center">
             <p>Made by Roman Grubic.</p>
         </div>
     </footer>
+    <!-- Contact form modal -->
+	<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModal" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header justify-content-center">
+					<h2 class="modal-title" id="contactModalheading">Contact me!</h2>
+				</div>
+				<div class="modal-body">
+					<form id="contactForm">
+						<input type="text" name="name" class="form-control margin-5" id="fullname" placeholder="Name*" required/>
+						<input type="email" name="emailaddress" class="form-control margin-5" id="emailaddress" minlength="10" pattern=".+.com" placeholder="Email adress*" required/>
+						<textarea rows="5" name="projectsummary" class="form-control margin-5" id="projectsummary" placeholder="Write your query and click submit!*" required></textarea>
+						<div class="d-flex justify-content-center btn-modal">
+                        <button form="contactForm" type="submit" id="submit" class="btn btn-star-trek" >Submit!</button>
+                        </div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/email.js' %}"></script>
 </body>
 </html>

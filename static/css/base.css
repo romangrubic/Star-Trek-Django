@@ -141,3 +141,13 @@ nav {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
+/* -------------- Modal ---------------------- */
+.modal-header{
+    padding: 20px 0 0;
+}
+.modal-body{
+    padding: 0px 20px 0 15px;
+}
+.btn-modal{
+    margin: 15px;
+}

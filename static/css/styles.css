@@ -5,7 +5,7 @@ html {
     padding: 0px;
 }
 .no-margin{
-    margin: 0px;
+    margin: 0px!important;
 }
 .padding-bottom{
     padding-bottom: 15px;
@@ -41,8 +41,10 @@ body {
 /* -------------- Pagination ----------- */
 .pagination{
     background-color: white;
-    padding: 5px 10px;
     margin: 30px 0px 30px;
+}
+.current{
+    padding: 10px 10px;
 }
 /* ------------ Footer ------------------ */
 footer {
@@ -62,12 +64,20 @@ footer {
     padding: 3px 5px;
 }
 .footer-three-columns > div > div > a:hover{
-    background-color: rgba(255, 255, 255, 0.3);
     border-radius: 3px;
     padding: 3px 5px;
+    color: white;
 }
 .footer-middle-column{
-    padding: 40px 0px 0px;
+    padding: 15px 0px 0px;
+}
+.fa-2x{
+    margin: 5px;
+    color: rgb(251, 206, 60);
+}
+.fa-2x:hover{
+    color: white;
+    cursor: pointer; 
 }
 .footer-last-row{
     margin: 35px 0px 0px;
