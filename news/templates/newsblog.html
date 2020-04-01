@@ -5,16 +5,18 @@
     {% for new in news %}
     <hr>
         <div class="row news-row">
-            <div class="col-lg-4 col-sm-5 no-padding">
+            <div class="col-12 col-md-4 no-padding">
             <a href="{% url 'news_detail' new.id %}" >
                <img class="news-image" src="{{ MEDIA_URL }}{{ new.image }}">
             </a>
             </div>
-            <div class="col-lg-8 col-sm-7 news-info">
-                <h2><a href="{% url 'news_detail' new.id %}" >{{ new.title }}</a></h2>
-                <p>{{ new.content|truncatewords:20 }}</p>
-                <p class="no-margin"><span class="boldtext">{{ new.published_date }} - <span class="boldtext">Views:</span> {{new.views}}</p>
+            <div class="col-12 col-md-8 news-info">
+                <h2><a href="{% url 'news_detail' new.id %}" class="news-page-title-1">{{ new.title|truncatechars:29 }}</a></h2>
+                <h2><a href="{% url 'news_detail' new.id %}" class="news-page-title-2">{{ new.title|truncatechars:22 }}</a></h2>
+                <p class="news-page-title-1">{{ new.content|truncatechars:150 }}</p>
+                <p class="news-page-title-2">{{ new.content|truncatechars:120 }}</p>
                 <div class="d-flex justify-content-end">
+                <p class="no-margin news-page-details"><span class="boldtext">{{ new.published_date }} - <span class="boldtext">Views:</span> {{new.views}}</p>           
                     <p><a href="{% url 'news_detail' new.id %}"  class="btn btn-star-trek">Read more</a></p>
                 </div>
                 </div>
