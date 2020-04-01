@@ -58,7 +58,7 @@
             <a href="?page={{ products.previous_page_number }}">previous</a>
         {% endif %}
         <span class="current">
-            Page {{ products.number }} of {{ products.paginator.num_pages }}.
+            Page {{ products.number }} of {{ products.paginator.num_pages }}
         </span>
         {% if products.has_next %}
             <a href="?page={{ products.next_page_number }}">next</a>

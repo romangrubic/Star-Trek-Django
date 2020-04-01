@@ -1,14 +1,22 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import News
 from .forms import NewsForm
-
 
 
 # Create your views here.
 def get_news(request):
     """Create a view that will return a list of post and
     render them to the blogposts.html template"""
-    news = News.objects.filter().order_by('-published_date')
+    news_list = News.objects.filter().order_by('-published_date')
+    paginator = Paginator(news_list, 8)
+    page = request.GET.get('page')
+    try:
+        news = paginator.page(page)
+    except PageNotAnInteger:
+        news = paginator.page(1)
+    except EmptyPage:
+        news = paginator.page(paginator.num_pages)
     return render(request, "newsblog.html", {'news': news})
 
 
@@ -40,19 +48,43 @@ def create_or_edit_news(request, pk=None):
 def get_news_news(request):
     """Create a view that will return a list of new with tag: news and
     render them to the blogposts.html template"""
-    news = News.objects.filter(tag='News')
+    news_list = News.objects.filter(tag='News')
+    paginator = Paginator(news_list, 8)
+    page = request.GET.get('page')
+    try:
+        news = paginator.page(page)
+    except PageNotAnInteger:
+        news = paginator.page(1)
+    except EmptyPage:
+        news = paginator.page(paginator.num_pages)
     return render(request, "newsblog.html", {'news': news})
 
 
 def get_news_updates(request):
     """Create a view that will return a list of new with tag: update and
     render them to the blogposts.html template"""
-    news = News.objects.filter(tag='Updates')
+    news_list = News.objects.filter(tag='Updates')
+    paginator = Paginator(news_list, 8)
+    page = request.GET.get('page')
+    try:
+        news = paginator.page(page)
+    except PageNotAnInteger:
+        news = paginator.page(1)
+    except EmptyPage:
+        news = paginator.page(paginator.num_pages)
     return render(request, "newsblog.html", {'news': news})
 
 
 def get_news_federation(request):
     """Create a view that will return a list of new with tag: update and
     render them to the blogposts.html template"""
-    news = News.objects.filter(tag='FNN')
+    news_list = News.objects.filter(tag='FNN')
+    paginator = Paginator(news_list, 8)
+    page = request.GET.get('page')
+    try:
+        news = paginator.page(page)
+    except PageNotAnInteger:
+        news = paginator.page(1)
+    except EmptyPage:
+        news = paginator.page(paginator.num_pages)
     return render(request, "newsblog.html", {'news': news})

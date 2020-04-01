@@ -103,14 +103,6 @@
                     {% else %}
                     <div><a href="{% url 'registration' %}"><i class="fas fa-users"></i> Forum</a></div>
                     {% endif %}
-                    <div><a href="{% url 'view_cart' %}">
-                                <i class="fas fa-shopping-cart"></i> Cart
-                                {% if product_count > 0 %}
-                                <label class="badge badge-warning">{{ product_count }}</label>
-                                {% endif %}
-                                
-                            </a></div>
-                    <div></div>
             </div>
             <div class="col-12 col-md-4 text-center footer-middle-column">
             <h3>For education purpose only!</h3>
