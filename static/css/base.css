@@ -8,7 +8,9 @@
     margin-bottom: 0px;
     background-image: none;
     border-bottom: none;  
-
+    padding: 0px;
+    color: rgba(0, 0, 0, 0.2);
+    text-decoration: none;
 }
 .nav-item{
     padding: 15px;
@@ -26,7 +28,7 @@
     font-weight: 700;
     width: 200px;
     margin: 0 auto;
-    padding-left: 30px;
+    padding:0 0 0 30px;
     transition-duration: 0.15s;
 }
 .navbar-brand:hover{
@@ -36,17 +38,17 @@
     transition-duration: 0.15s;
     text-decoration: none;
 }
+.index-page-logo{
+    height: 85px;
+    width: 60px;
+    margin-left: 100px;
+}
 nav {
     height: 90px;
     background-color: rgb(0, 0, 0);
 }
 .navbar-nav > a {
     text-decoration: none;
-}
-.navbar {
-    color: rgba(0, 0, 0, 0.2);
-    text-decoration: none;
-    padding: 10px 0;
 }
 .navbar-nav>a>li {
     color: rgb(251, 206, 61);
