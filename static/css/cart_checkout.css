@@ -73,19 +73,19 @@ a:hover {
     letter-spacing: 1px;
 }
 .checkout-page{
-    padding: 100px 60px;
+    padding: 100px 15px;
     background: url("../images/picard-vine.jpg") no-repeat center center fixed;
 }
 .checkout-section{
-    margin: 30px auto;
+    margin: 60px auto 40px;
     border: 1px solid black;
     border-radius: 5px;
-    padding: 25px 20px 5px;
+    padding: 25px 10px 5px;
     background-color: rgba(255, 255, 255, 0.9);
-    width: 800px;
+    max-width: 800px;
 }
 .checkout-order{
-    width: 75%;
+    width: 90%;
     margin: auto;
 }
 
