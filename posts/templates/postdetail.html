@@ -3,30 +3,31 @@
 <div class="forum-thread-page">
     <div class="thread-container">
     <div class="row">
-        <div class="col-3 text-center">
+        <div class="col-12 text-center">
         <img src="{{ MEDIA_URL }}{{ post.profile.image }}" class="forum-thread-user-image">
             <p class="no-margin"><a href="{% url 'profile' post.user_id %}" target="_blank" rel="noopener"> {{ post.user }}</a></p>
             <p class="no-margin"> {{ post.published_date }} </p>
         </div>
-        <div class="col-9">
-            <h2>{{ post.title }}</h2>
-                    <p>{{ post.content|linebreaks }}</p>
-                    {% if post.user == user %}
-                    <a href="{% url 'edit_post' post.id %}" class="btn btn-star-trek">Edit Post</a>
-                    {% endif %}
-                </div>
+        <div class="col-12">
+            <h2 class="text-center">{{ post.title }}</h2>
+            <p class="thread-content">{{ post.content }}</p>
+            {% if post.user == user %}
+            <div class="d-flex justify-content-center">
+                <a href="{% url 'edit_post' post.id %}" class="btn btn-star-trek">Edit Post</a>
             </div>
-
+            {% endif %}
+        </div>
+    </div>
     <hr class="thread-hr">
     {% for comment in post.comments.all %}
     <div class="row">
-        <div class="col-3 text-center">
+        <div class="col-4 col-md-3 text-center">
         <img src="{{ MEDIA_URL }}{{ comment.profile.image }}" class="forum-thread-user-image">
         <p class="no-margin"><a href="{% url 'profile' comment.user_id %}" target="_blank" rel="noopener">{{ comment.user}} </a></p>
         <p class="no-margin"> {{ comment.created_date }} </p>  
             
         </div>
-        <div class="col-9 thread-comment">
+        <div class="col-8 col-md-9 thread-comment no-padding-left">
             {{ comment.content }}
         </div>
         </div>

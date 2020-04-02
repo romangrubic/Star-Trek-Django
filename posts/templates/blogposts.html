@@ -1,77 +1,76 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="forum-page">
-<div class="d-flex justify-content-center">
-    <div class="products-search">
-        <form action="{% url 'search_threads' %}" method="GET">
-            <input type="text" name="d" class="products-search-input">
-            <button type="submit" class="btn btn-star-trek">Search</button>
-        </form>
+    <div class="d-flex justify-content-center">
+        <div class="products-search">
+            <form action="{% url 'search_threads' %}" method="GET">
+                <input type="text" name="d" class="products-search-input">
+                <button type="submit" class="btn btn-star-trek">Search</button>
+            </form>
         </div>
     </div>
-<div class="d-flex justify-content-center">
-            <a href="{% url 'new_post' %}" class="btn btn-post-thread">Start a topic!</a>
-        </div>
-
-{% if posts.count == 0 %}
-<div class="forum-no-search-result">
-    <h3 class="forum-no-search-result-text">There is no topic with requested search!<br> Why don't you start it?</h3>
+    <div class="d-flex justify-content-center">
+        <a href="{% url 'new_post' %}" class="btn btn-post-thread">Start a topic!</a>
+    </div>
+    {% if posts.count == 0 %}
+    <div class="forum-no-search-result">
+        <h3 class="forum-no-search-result-text">There is no topic with requested search!<br> Why don't you start it?</h3>
+    </div>
 </div>
-{% else %}
-<div class="container forum-threads">
-    <div class="row forum-thread forum-filters">
-            <div class="col-2 text-right">
+    {% else %}
+    <div class="forum-threads">
+        <div class="row forum-thread forum-filters">
+            <div class="col-4 col-sm-2 text-right">
                 <a href="{% url 'get_posts_author' %}"><h4>Author</h4></a>       
             </div>
-            <div class="col-6">
+            <div class="col-8 col-sm-6">
                 <a href="{% url 'get_posts_title' %}"><h4>Post title</h4></a>
             </div>
-            <div class="col-1 text-right">
-                <a href="{% url 'get_posts' %}"><h4>Views</h4></a>
+            <div class="d-none d-md-block col-md-1 text-right">
+                <a href="{% url 'get_posts' %}"><h4>View</h4></a>
             </div>
-            <div class="col-3">               
+            <div class="d-none d-sm-block col-sm-4 col-md-3">               
                <a href="{% url 'get_posts_date' %}"><h4>Date</h4></a>
             </div>
         </div>
-    {% for post in posts %}
+        {% for post in posts %}
         <div class="row forum-thread">
-            <div class="col-1">
+            <div class="col-2 col-sm-1 no-padding-right">
                 <img class="forum-post-user-image" src="/media/{{ post.profile.image }}">
             </div>
-            <div class="col-1 text-center">            
+            <div class="col-2 col-sm-1 text-center">            
                 <a href="{% url 'profile' post.user_id %}" target="_blank" rel="noopener">{{ post.user }}</a>                 
             </div>
-            <div class="col-6">
+            <div class="col-8 col-sm-6">
                 <h5><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h5>
             </div>
-            <div class="col-1 text-center">
+            <div class="d-none d-md-block col-md-1 text-center">
                 {{ post.views }}
             </div>
-            <div class="col-3">
+            <div class="d-none d-sm-block col-sm-4 col-md-3">
                {{ post.published_date }}
             </div>
         </div>
         <hr class="forum-hr">
-    {% endfor %}
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% if posts.count != 0 %}
+    <div class="d-flex justify-content-center">
+        <div class="pagination">
+            <span class="step-links">
+                {% if posts.has_previous %}
+                    <a href="?page={{ posts.previous_page_number }}" class="btn btn-star-trek no-margin">Previous</a>
+                {% endif %}
+                <span class="current">
+                    Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+                </span>
+                {% if posts.has_next %}
+                    <a href="?page={{ posts.next_page_number }}" class="btn btn-star-trek no-margin">Next</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+    {% endif %}
 </div>
-{% endif %}
-{% if posts.count != 0 %}
-<div class="d-flex justify-content-center">
-<div class="pagination">
-    <span class="step-links">
-        {% if posts.has_previous %}
-            <a href="?page={{ posts.previous_page_number }}" class="btn btn-star-trek no-margin">previous</a>
-        {% endif %}
-
-        <span class="current">
-            Page {{ posts.number }} of {{ posts.paginator.num_pages }}
-        </span>
-
-        {% if posts.has_next %}
-            <a href="?page={{ posts.next_page_number }}" class="btn btn-star-trek no-margin">next</a>
-        {% endif %}
-    </span>
-</div>
-</div>
-{% endif %}
 {% endblock %}
