@@ -1,6 +1,6 @@
 /* ------------- Products page ----------------*/
 .products-page{
-    padding: 30px 60px;
+    padding: 30px 20px;
     background: url("../images/picard-vine.jpg") no-repeat center center fixed;
 }
 .products-page-list{
@@ -32,6 +32,8 @@
     padding: 5px;
 }
 .products-card{
+    max-width: 350px;
+    margin: auto;
     border: 1px solid rgba(0, 0, 0, 0.4);
 }
 .products-card-body{
@@ -43,26 +45,35 @@
 }
 .products-card-price{
     margin: 0px;
-    padding: 2px 8px;
+    padding: 7px 2px 7px 8px;
     font-weight: 700;
     text-align: center;
     font-size: 20px;
 }
+.btn-products{
+    height: 45px;
+    margin: 0 5px;
+    background-color: rgba(251, 207, 61, 0.75);
+}
+.btn-products:hover{
+    background-color: rgba(251, 207, 61);
+}
 /* ------------- Product detail page ----------- */
 .product-detail-page{
     background: url("../images/picard-vine.jpg") no-repeat center center fixed;
-    padding: 75px 50px;
+    padding: 75px 10px;
 }
 .product-detail-card{
-    width: 450px;
+    max-width: 500px;
     margin: auto;
 }
 .product-detail-card-body{
     background-color: rgba(255, 255, 255, 0.9);
     padding: 25px 7.5%;
 }
-.product-detail-card-img{
+.product-detail-image{
     height: 300px;
+    width:100%;
 }
 .product-detail-card-price{
     font-size: 20px;
@@ -72,5 +83,5 @@
 }
 .product-detail-add-input{
     margin: auto;
-    width: 120px;
+    width: 135px;
 }

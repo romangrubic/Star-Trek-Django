@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="products-page">
+<div class="products-page" id="top">
 <div class="row d-flex justify-content-center">
     <div class="products-search">
         <form action="{% url 'search_products' %}" method="GET">
@@ -18,7 +18,7 @@
     </div>
     {% else %}
     {% for product in products %}
-    <div class="col-3 products-card-padding">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 products-card-padding">
         <div class="card products-card">
         <a href="{% url 'product_detail' product.id %}">
             <img class="card-img-top products-card-img" src="{{ MEDIA_URL }}{{ product.image }}" alt="Card image cap">
@@ -28,16 +28,16 @@
                 <p class="card-text no-margin">{{ product.description|truncatechars:60 }}</p>
                 <hr>
                 <div class="row">
-                    <div class="col-5">
+                    <div class="col-5 no-padding-right">
                         <p class="products-card-price">{{ product.price }} €</p>
                     </div>
-                    <div class="col-7">
+                    <div class="col-7 no-padding-left">
                         <form method="POST" action="{% url 'add_to_cart' product.id %}">
                                 {% csrf_token %}
                                 <div class="input-group">
                                     <input type="number" name="quantity" min="1" max="999" class="form-control" value="1">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-star-trek" type="submit">Add</button>
+                                        <button class="btn btn-products" type="submit">Add</button>
                                     </span>
                                 </div>
                         </form>
@@ -49,7 +49,9 @@
     {% endfor %}
     {% endif %}
 </div>
-<hr>
+<div class="d-flex justify-content-end">
+<a href="#top" class="btn btn-light btn-back-to-forum">Back to top!</a>
+</div>
 {% if products.count != 0 %}
 <div class="d-flex justify-content-center">
 <div class="pagination">

@@ -4,6 +4,12 @@ html {
 .no-padding{
     padding: 0px;
 }
+.no-padding-right{
+    padding-right: 0px!important;
+}
+.no-padding-left{
+    padding-left: 0px!important;
+}
 .no-margin{
     margin: 0px!important;
 }
@@ -37,6 +43,15 @@ body {
 .label-warning[href],
 .badge-warning[href] {
     background-color: #c67605;
+}
+
+/* ------------ Star trek btn --------------- */
+.btn-star-trek{
+    margin: 0 5px;
+    background-color: rgba(251, 207, 61, 0.75);
+}
+.btn-star-trek:hover{
+    background-color: rgba(251, 207, 61);
 }
 /* -------------- Pagination ----------- */
 .pagination{
