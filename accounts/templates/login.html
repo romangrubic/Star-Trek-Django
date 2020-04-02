@@ -1,26 +1,21 @@
 {% extends 'base.html' %}
-
 {% load bootstrap_tags %}
-
 {% block page_title %}Login Page{% endblock %}
-
 {% block page_heading %}User Login{% endblock %}
-
 {% block content %}
 <div class="login-page">
-<div class="login-section">
-<h1 class="text-center">- Join our community! -</h1>
-<form method="POST" class="form-login">
-    {% csrf_token %}
-    {{ login_form  | as_bootstrap }}
-    <p><a href="{% url 'password_reset' %}">Forgot my password</a></p>
-    <div class="row d-flex justify-content-center">
-    <button type="submit" class="btn btn-star-trek">Login</button>
-    </div>
-</form>
-<hr>
-<h5>Looking to join? <a href="{% url 'registration' %}">Register here</a></h5>
-</div>
+	<div class="login-section">
+		<h1 class="text-center">Join our community!</h1>
+		<form method="POST" class="form-login">
+			{% csrf_token %}
+			{{ login_form  | as_bootstrap }}
+			<p><a href="{% url 'password_reset' %}">Forgot my password</a></p>
+			<div class="row d-flex justify-content-center">
+				<button type="submit" class="btn btn-star-trek">Login</button>
+			</div>
+		</form>
+		<hr>
+		<h5>Looking to join? <a href="{% url 'registration' %}">Register here</a></h5>
+	</div>
 </div>
 {% endblock %}
-

@@ -1,15 +1,33 @@
 /* ------------ Login page --------------- */
 .login-page{
-    padding: 110px 25%;
+    padding: 110px 15px;
     background: url("../images/forum.jpg") no-repeat center top fixed ;
 }
 .login-section{
-    padding: 30px 60px;
-    background-color: rgba(255, 255, 255, 0.75);
+    max-width: 600px;
+    margin: auto;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 5px;
 }
 .form-login{
+    margin: 40px 0;
+}
+/* ------------ Registration page ----------------- */
+.registration-page{
+    padding: 110px 15px;
+    background: url("../images/forum.jpg") no-repeat center top fixed ;
+}
+.register-form{
+    max-width: 600px;
+    margin: auto;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+.form-registration{
     margin: 40px 0;
 }
 /* ---------- Order page ---------------- */
@@ -148,21 +166,6 @@ td, th {
 .profile-form-button{
     margin: 35px 10px 20px;
 }
-/* ------------ Registration page ----------------- */
-.registration-page{
-    padding: 110px 25%;
-    background: url("../images/forum.jpg") no-repeat center top fixed ;
-}
-.register-form{
-    padding: 30px 60px;
-    background-color: rgba(255, 255, 255, 0.75);
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-}
-.form-registration{
-    margin: 40px 0;
-}
-
 /* ----------- Media queries -------------------------- */
 @media only screen and (max-width: 769px) {
     .cosplay-carousel-image{
