@@ -3,8 +3,8 @@ from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from accounts.form import UserLoginForm, UserRegistrationForm, ProfileForm
-from checkout.models import Order
-from .models import Profile
+from .models import Profile, Message
+from django.utils import timezone
 
 
 # Create your views here.
@@ -82,6 +82,7 @@ def user_profile(request, id):
     return render(request, 'profile.html', {"profile": user}, )
 
 
+@login_required
 def edit_profile(request, id):
     profile = get_object_or_404(Profile, pk=id)
     if profile.user.username != request.user.username:
@@ -102,3 +103,9 @@ def edit_profile(request, id):
 @login_required
 def user_orders(request):
     return render(request, 'orders.html')
+
+
+@login_required
+def inbox(request):
+    message = Message.objects.filter().order_by('-created_date')
+    return render(request, 'inbox.html', {'message': message})

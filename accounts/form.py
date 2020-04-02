@@ -52,4 +52,4 @@ class ProfileForm(forms.ModelForm):
 class MessageForm(forms.ModelForm):
     class Meta:
         model = Message
-        fields = ('msg_title', 'msg_content',)
+        fields = ('title', 'message',)

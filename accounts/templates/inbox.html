@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="profile-page">
+	<div class="profile-info-section">
+        <h1>Inbox</h1>
+        {{ message }}
+        
+        {{ message.sender }}
+        {{ message.receiver.id }}
+        {{ user.id }}
+        <p>{{ message.title}}</p>
+
+        {% if message_list.sender.id == user.id %}
+            <p>{{ message_list.title}}</p>
+        {% endif %}
+        <div>
+            <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+                <li class="inbox-nav">
+                    <a class="nav-link active text-center" id="Received-tab" data-toggle="tab" href="#Received" role="tab" aria-controls="Received" aria-selected="true">Received</a>
+                </li>
+                <li class="inbox-nav">
+                    <a class="nav-link text-center" id="Sent-tab" data-toggle="tab" href="#Sent" role="tab" aria-controls="Sent" aria-selected="false">Sent</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="Received" role="tabpanel" aria-labelledby="Received-tab">
+                    <h1>Received</h1>
+
+                    <div class="row">
+                        <div class="col-4">Sent by</div>
+                        <div class="col-4"> Title</div>
+                        <div class="col-4">Date</div>
+                    </div>
+                    {% for msg in message %}
+                    {% if user.id == msg.receiver.id %}
+                    <div class="row">
+                        <div class="col-4">{{ msg.sender }}</div>
+                        <div class="col-4">{{ msg.title }}</div>
+                        <div class="col-4">{{ msg.created_date}}</div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="tab-pane fade" id="Sent" role="tabpanel" aria-labelledby="Sent-tab">
+                    <h1>Sent</h1>
+                     
+                    <div class="row">
+                        <div class="col-4">Received by</div>
+                        <div class="col-4"> Title</div>
+                        <div class="col-4">Date</div>
+                    </div>
+                    {% for msg in message %}
+                    {% if user.id == msg.sender.id %}
+                    <div class="row">
+                        <div class="col-4">{{ msg.receiver }}</div>
+                        <div class="col-4">{{ msg.title }}</div>
+                        <div class="col-4">{{ msg.created_date}}</div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+{% endblock %}

@@ -16,17 +16,27 @@ class Profile(models.Model):
     cosplay_image2 = models.ImageField(upload_to='cosplay_pic', blank=True)
     cosplay_image3 = models.ImageField(upload_to='cosplay_pic', blank=True)
 
-
     def __str__(self):
         return self.name
 
 
 class Message(models.Model):
     sender = models.ForeignKey(User, related_name="sender")
-    reciever = models.ForeignKey(User, related_name="receiver")
-    msg_title = models.CharField(max_length=40)
-    msg_content = models.TextField(max_length=150)
-    created_at = models.DateTimeField(auto_now_add=True)
+    receiver = models.ForeignKey(User, related_name="receiver")
+    title = models.CharField(max_length=40)
+    message = models.TextField(max_length=200)
+    created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.name
+        return '{}-{}-{}'.format(self.sender, str(self.receiver), str(self.title))
+
+
+class Reply(models.Model):
+    message = models.ForeignKey(Message, related_name="reply")
+    profile = models.ForeignKey(Profile)
+    user = models.ForeignKey(User)
+    content = models.TextField(max_length=200)
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return '{}-{}'.format(self.message, str(self.created_date))
