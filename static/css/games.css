@@ -1,12 +1,14 @@
 /* -------------- Games page ------------ */
 .games-page{
-    padding:75px 10%;
+    padding:75px 10px;
     background: url("../images/games-back.jpg") no-repeat center center fixed;
 }
-.games-header>h1{
-    color: rgb(251, 206, 61);    
-    padding: 30px;
-    text-align: center;
+.games-info{
+    margin:auto
+}
+.games-card{
+    max-width: 600px;
+    margin: 15px auto;
 }
 .games-image{
     width: 100%;
@@ -17,11 +19,15 @@
 }
 /* ----------- Games detail page ------------- */
 .games-detail-page{
-    padding: 50px 20% 80px;
+    padding: 50px 15px 80px;
     background: url("../images/games-back.jpg") no-repeat center center fixed;
 }
+.games-detail-section{
+    max-width: 750px;
+    margin: auto;
+}
 .games-detail-image{
-    height: 400px;
+    height: 350px;
     width:100%;
 }
 .games-detail-info{
