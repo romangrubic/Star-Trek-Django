@@ -77,7 +77,7 @@ td, th {
 /* -------------- Profile page ------------------- */
 .profile-page{
     background: url("../images/forum.jpg") no-repeat center top fixed ;
-    padding: 80px 20px 80px;
+    padding: 80px 10px 80px;
 }
 .profile-info-section{
     background-color: rgba(255, 255, 255, 0.9);
@@ -95,7 +95,7 @@ td, th {
     border-radius: 5px;
 }
 .profile-info{
-    padding: 40px 20px;
+    padding: 40px 20px 0px;
 }
 .profile-info > h1{
     font-weight: 500;
@@ -133,7 +133,7 @@ td, th {
     background: url("../images/forum.jpg") no-repeat center top fixed ;
 }
 .profile-form-edit{
-    padding: 30px 40px;
+    padding: 30px 20px;
     background-color: rgba(255, 255, 255, 0.9);
     border: 1px solid black;
     border-radius: 5px;
@@ -161,4 +161,12 @@ td, th {
 }
 .form-registration{
     margin: 40px 0;
+}
+
+/* ----------- Media queries -------------------------- */
+@media only screen and (max-width: 769px) {
+    .cosplay-carousel-image{
+    height: 250px;
+    width: 100%
+    }
 }
