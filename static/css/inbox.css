@@ -1,10 +1,22 @@
 /* ----------------- Inbox ----------------- */
+.message-page{
+    background: url("../images/forum.jpg") no-repeat center top fixed ;
+    padding: 80px 10px 100px;
+}
 .message-info-section{
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 15px 30px;
+    padding: 25px 30px;
     border: 1px solid black;
     border-radius: 5px;
     margin: auto;
+    max-width: 650px;
+}
+.message-info-section-empty{
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 65px 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 100px auto;
     max-width: 650px;
 }
 .tab-content{
@@ -25,3 +37,20 @@
     border: 1px solid #dee2e6;
     border-top: none;
 }
+.message-main-row{
+    padding: 15px 0 5px;
+    font-size: 23px;
+}
+.message-short-info{
+    font-size: 17px;
+    margin: 5px 0px;
+}
+/* ---------------- Message ------------ */
+.message-img{
+    max-width: 180px;
+    max-height: 100px;
+}
+.message-title{
+
+}
+/* ------------- Reply ------------------ */

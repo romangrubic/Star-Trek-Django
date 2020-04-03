@@ -1,16 +1,65 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<div class="profile-page">
+{% if message.sender == request.user or message.receiver == request.user %}
+<div class="message-page">
 	<div class="message-info-section">
-        <h1>{{ message.title }}</h1>
-        <p>{{ message.message }}</p>
-        {% for reply in message.reply.all %}
-        {{ reply.reply }}
-        {% endfor %}
-        <div class="d-flex justify-content-center">
-            <a href="{% url 'send_reply' message.id %}" class="btn btn-star-trek">Send reply!</a>
-        </div>
-    </div>
+		<div class="row">
+			<div class="col-6 text-center no-padding">
+            <h3>Sender <i class="fas fa-sign-out-alt"></i></h3>
+				<a href="{% url 'profile' message.sender.id %}"><img class="message-img" src="{{ MEDIA_URL }}{{ message.sender.uprofile.image }}">
+					<h2> {{ message.sender }} </h2>
+				</a>
+			</div>
+			<div class="col-6 text-center no-padding">
+            <h4><i class="fas fa-sign-in-alt"></i> Receiver</h4>
+				<a href="{% url 'profile' message.receiver.id %}"><img class="message-img" src="{{ MEDIA_URL }}{{ message.receiver.uprofile.image }}">
+					<h2> {{ message.receiver }}</h2>
+				</a>
+			</div>
+		</div>
+		<hr class="hr-forum">
+        <h2 class="text-center message-title">{{ message.title }}</h2>
+        <hr>
+		<div class="row">
+			<div class="col-4 col-md-3 text-center">
+				<img src="{{ MEDIA_URL }}{{ message.sender.uprofile.image }}" class="forum-thread-user-image">
+				<p class="no-margin"><a href="{% url 'profile' message.sender.id %}" target="_blank"
+						rel="noopener">{{ message.sender}} </a></p>
+				<p class="no-margin"> {{ message.created_date }} </p>
+			</div>
+			<div class="col-8 col-md-9 thread-comment no-padding-left">
+				<p class="thread-content">{{ message.message }}</p>
+			</div>
+		</div>
+		<hr class="thread-hr">
+		{% for reply in message.reply.all %}
+		<div class="row">
+			<div class="col-4 col-md-3 text-center">
+				<img src="{{ MEDIA_URL }}{{ reply.profile.image }}" class="forum-thread-user-image">
+				<p class="no-margin"><a href="{% url 'profile' reply.user_id %}" target="_blank"
+						rel="noopener">{{ reply.user}} </a></p>
+				<p class="no-margin"> {{ reply.created_date }} </p>
+			</div>
+			<div class="col-8 col-md-9 thread-comment no-padding-left">
+				<p>{{ reply.reply }}</p>
+			</div>
+		</div>
+		<hr class="thread-hr">
+		{% endfor %}
+		<div class="d-flex justify-content-center">
+			<a href="{% url 'send_reply' message.id %}" class="btn btn-star-trek">Send reply! <i class="fas fa-reply"></i></a>
+            <a href="{% url 'inbox' %}" class="btn btn-primary">Back to Inbox <i class="fas fa-comments"></i></a>
+		</div>
+	</div>
 </div>
+{% else %}
+<div class="message-page">
+	<div class="message-info-section-empty">
+		<h1 class="text-center">You are not part of this conversation!</h1>
+		<div class="d-flex justify-content-center">
+			<a href="{% url 'inbox' %}" class="btn btn-primary"> Go to Inbox <i class="fas fa-comments"></i></a>
+		</div>
+	</div>
+</div>
+{% endif %}
 {% endblock %}

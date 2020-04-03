@@ -2,13 +2,15 @@
 {% load bootstrap_tags %}
 {% block content %}
 
-<div class="profile-page">
+<div class="message-page">
 	<div class="message-info-section">
+    <h1 class="text-center">Reply to a message!</h1>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form | as_bootstrap }}
         <div class="d-flex justify-content-center margin-5">
-        <button type="submit" class="btn btn-star-trek">Send reply!</button>
+        <button type="submit" class="btn btn-star-trek">Send reply! <i class="fas fa-reply"></i></button>
+        <a href="{% url 'inbox' %}" class="btn btn-primary"> Go to Inbox <i class="fas fa-comments"></i></a>
         </div>
     </form>
     </div>

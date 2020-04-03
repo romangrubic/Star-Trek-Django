@@ -2,54 +2,58 @@
 {% block content %}
 <div class="profile-page">
 	<div class="message-info-section">
-        <div>
-            <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-                <li class="inbox-nav">
-                    <a class="nav-link active text-center" id="Received-tab" data-toggle="tab" href="#Received" role="tab" aria-controls="Received" aria-selected="true">Received</a>
-                </li>
-                <li class="inbox-nav">
-                    <a class="nav-link text-center" id="Sent-tab" data-toggle="tab" href="#Sent" role="tab" aria-controls="Sent" aria-selected="false">Sent</a>
-                </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="Received" role="tabpanel" aria-labelledby="Received-tab">
-                    <h1>Received</h1>
-
-                    <div class="row">
-                        <div class="col-3 text-center">Sent by</div>
-                        <div class="col-5"> Title</div>
-                        <div class="col-4">Date</div>
-                    </div>
-                    {% for msg in message %}
-                    {% if user.id == msg.receiver.id %}
-                    <div class="row">
-                        <div class="col-3 text-center"><a href="{% url 'profile' msg.sender_id %}" target="_blank" rel="noopener">{{ msg.sender }}</a></div>
-                        <div class="col-5"><a href="{% url 'message_detail' msg.id %}">{{ msg.title }}</a></div>
-                        <div class="col-4">{{ msg.created_date}}</div>
-                    </div>
-                    {% endif %}
-                    {% endfor %}
-                </div>
-                <div class="tab-pane fade" id="Sent" role="tabpanel" aria-labelledby="Sent-tab">
-                    <h1>Sent</h1>
-                     
-                    <div class="row">
-                        <div class="col-3 text-center">Received by</div>
-                        <div class="col-5"> Title</div>
-                        <div class="col-4">Date</div>
-                    </div>
-                    {% for msg in message %}
-                    {% if user.id == msg.sender.id %}
-                    <div class="row">
-                        <div class="col-3 text-center"><a href="{% url 'profile' msg.receiver_id %}" target="_blank" rel="noopener">{{ msg.receiver }}</a></div>
-                        <div class="col-5"><a href="{% url 'message_detail' msg.id %}">{{ msg.title }}</a></div>
-                        <div class="col-4">{{ msg.created_date}}</div>
-                    </div>
-                    {% endif %}
-                    {% endfor %}                    
-                </div>
-            </div>
-        </div>
+		<div>
+			<ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+				<li class="inbox-nav">
+					<a class="nav-link active text-center" id="Received-tab" data-toggle="tab" href="#Received"
+						role="tab" aria-controls="Received" aria-selected="true">Received</a>
+				</li>
+				<li class="inbox-nav">
+					<a class="nav-link text-center" id="Sent-tab" data-toggle="tab" href="#Sent" role="tab"
+						aria-controls="Sent" aria-selected="false">Sent</a>
+				</li>
+			</ul>
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade show active" id="Received" role="tabpanel" aria-labelledby="Received-tab">
+					<div class="row message-main-row">
+						<div class="col-3 text-center"><span>Sent by</span></div>
+						<div class="col-5"><span>Title</span></div>
+						<div class="col-4 no-padding"><span>Date</span></div>
+					</div>
+                    <hr class="forum-hr">
+					{% for msg in message %}
+					{% if user.id == msg.receiver.id %}
+					<div class="row message-short-info">
+						<div class="col-3 text-center"><a href="{% url 'profile' msg.sender_id %}" target="_blank"
+								rel="noopener">{{ msg.sender }}</a></div>
+						<div class="col-5"><a href="{% url 'message_detail' msg.id %}">{{ msg.title|truncatechars:20 }}</a></div>
+						<div class="col-4 no-padding">{{ msg.created_date}}</div>
+					</div>
+                    <hr class="forum-hr">
+					{% endif %}
+					{% endfor %}
+				</div>
+				<div class="tab-pane fade" id="Sent" role="tabpanel" aria-labelledby="Sent-tab">
+					<div class="row message-main-row">
+						<div class="col-3 text-center">Received</div>
+						<div class="col-5"> Title</div>
+						<div class="col-4 no-padding">Date</div>
+					</div>
+                    <hr class="forum-hr">
+					{% for msg in message %}
+					{% if user.id == msg.sender.id %}
+					<div class="row message-short-info">
+						<div class="col-3 text-center"><a href="{% url 'profile' msg.receiver_id %}" target="_blank"
+								rel="noopener">{{ msg.receiver }}</a></div>
+						<div class="col-5"><a href="{% url 'message_detail' msg.id %}">{{ msg.title }}</a></div>
+						<div class="col-4 no-padding">{{ msg.created_date}}</div>
+					</div>
+                    <hr class="forum-hr">
+					{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 {% endblock %}
