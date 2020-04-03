@@ -16,6 +16,9 @@
 				<div class="col-sm-7 profile-info text-center">
 					<h1>{{ profile.uprofile.name }}</h1>
 					<h3><i class="fa fa-user"></i> {{ profile.username }}</h3>
+                    <div class="d-flex justify-content-center">
+							<a href="{% url 'create_message' %}" class="btn btn-info">Send message!</a>
+						</div>
 				</div>
 			</div>
 			<hr>

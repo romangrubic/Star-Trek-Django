@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from accounts.form import UserLoginForm, UserRegistrationForm, ProfileForm
+from accounts.form import UserLoginForm, UserRegistrationForm, ProfileForm, MessageForm
 from .models import Profile, Message
-from django.utils import timezone
+from checkout.models import Order
 
 
 # Create your views here.
@@ -109,3 +109,24 @@ def user_orders(request):
 def inbox(request):
     message = Message.objects.filter().order_by('-created_date')
     return render(request, 'inbox.html', {'message': message})
+
+
+@login_required
+def message_detail(request, pk):
+    message = get_object_or_404(Message, pk=pk)
+    return render(request, "message.html", {'message': message})
+
+
+@login_required
+def create_message(request, pk=None):
+    message = get_object_or_404(Message, pk=pk) if pk else None
+    if request.method == "POST":
+        form = MessageForm(request.POST, request.FILES, instance=message)
+        if form.is_valid():
+            message = form.save(commit=False)
+            message.sender = request.user
+            message.save()
+            return redirect(message_detail, message.pk)
+    else:
+        form = MessageForm(instance=message)
+    return render(request, 'messageform.html', {'form': form})

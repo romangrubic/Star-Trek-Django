@@ -1,5 +1,5 @@
 from django.conf.urls import url, include
-from accounts.views import logout, login, registration, user_profile, user_orders, edit_profile, inbox
+from accounts.views import logout, login, registration, user_profile, user_orders, edit_profile, inbox, message_detail, create_message
 from accounts import url_reset
 from . import views
 
@@ -12,4 +12,6 @@ urlpatterns = [
     url(r'^password-reset/', include(url_reset)),
     url(r'^profile/(?P<id>\d+)/edit/$', edit_profile, name="edit_profile"),
     url(r'^inbox/$', inbox, name="inbox"),
+    url(r'^(?P<pk>\d+)/$', message_detail, name='message_detail'),
+    url(r'^newMessage/$', create_message, name='create_message'),
 ]

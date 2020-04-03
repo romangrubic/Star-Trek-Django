@@ -1,0 +1,27 @@
+/* ----------------- Inbox ----------------- */
+.message-info-section{
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: auto;
+    max-width: 850px;
+}
+.tab-content{
+    background-color: white;
+    min-height: 500px;
+}
+.nav-tabs{
+    border: none;
+}
+.inbox-nav{
+    width: 150px;
+}
+.nav-link{
+    padding: 10px 16px;
+    font-size: 25px;
+}
+.tab-content{
+    border: 1px solid #dee2e6;
+    border-top: none;
+}
