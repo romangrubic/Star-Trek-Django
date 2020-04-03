@@ -2,6 +2,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .models import Post, Comment
 from .forms import BlogPostForm, CommentForm
 
@@ -97,6 +98,7 @@ def edit_post(request, pk=None):
                 post.user_id = request.user.id
                 post.profile_id = request.user.id
                 post.save()
+                messages.success(request, "You have successfuly edited the post!")
                 return redirect(post_detail, post.pk)
         else:
             form = BlogPostForm(instance=post)
@@ -118,6 +120,7 @@ def create_post(request, pk=None):
             post.user_id = request.user.id
             post.profile_id = request.user.id
             post.save()
+            messages.success(request, "You have successfuly added a new post!")
             return redirect(post_detail, post.pk)
     else:
         form = BlogPostForm(instance=post)
@@ -133,5 +136,6 @@ def add_comment(request, pk):
         comment.user = request.user
         comment.profile_id = request.user.id
         comment.save()
+        messages.success(request, "You have successfuly commented on a post!")
         return redirect('post_detail', pk=post.id)
     return render(request, 'commentform.html', {'form': form}, )

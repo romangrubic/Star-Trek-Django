@@ -113,14 +113,15 @@ td, th {
     border-radius: 5px;
 }
 .profile-info{
-    padding: 40px 20px 0px;
+    padding: 30px 20px 0px;
 }
 .profile-info > h1{
     font-weight: 500;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 .profile-info > h3{
     font-weight: 500;
+    margin-bottom: 20px
 }
 .profile-info-section-header{
     letter-spacing: 2px;

@@ -94,6 +94,7 @@ def edit_profile(request, id):
             if form.is_valid():
                 profile = form.save(commit=False)
                 profile.save()
+                messages.success(request, "You have successfuly edited your Profile!")
                 return redirect(user_profile, profile.id)        
         else:
             form = ProfileForm(instance=profile)
@@ -127,6 +128,7 @@ def create_message(request, id, pk=None):
             message.sender = request.user
             message.receiver_id = id
             message.save()
+            messages.success(request, "You have successfuly sent a message!")
             return redirect(message_detail, message.pk)
     else:
         form = MessageForm(instance=message)
@@ -143,5 +145,6 @@ def send_reply(request, pk):
         reply.user = request.user
         reply.profile_id = request.user.id
         reply.save()
+        messages.success(request, "You have successfuly replied to a message!")
         return redirect('message_detail', pk=message.id)
     return render(request, 'replyform.html', {'form': form}, )
