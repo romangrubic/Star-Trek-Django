@@ -35,7 +35,7 @@ class Reply(models.Model):
     message = models.ForeignKey(Message, related_name="reply")
     profile = models.ForeignKey(Profile)
     user = models.ForeignKey(User)
-    content = models.TextField(max_length=200)
+    reply = models.TextField(max_length=200)
     created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

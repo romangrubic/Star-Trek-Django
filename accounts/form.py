@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
-from .models import Profile, Message
+from .models import Profile, Message, Reply
 
 
 class UserLoginForm(forms.Form):
@@ -52,4 +52,10 @@ class ProfileForm(forms.ModelForm):
 class MessageForm(forms.ModelForm):
     class Meta:
         model = Message
-        fields = ('receiver', 'title', 'message',)
+        fields = ('title', 'message',)
+
+
+class ReplyForm(forms.ModelForm):
+    class Meta:
+        model = Reply
+        fields = ('reply',)
