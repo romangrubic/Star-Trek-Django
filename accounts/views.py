@@ -17,7 +17,7 @@ def index(request):
 def logout(request):
     """ Log the user out """
     auth.logout(request)
-    messages.success(request, "You have successfuly been loged out!")
+    messages.success(request, "I have been – and always shall be – your friend. Live long and prosper!")
     return redirect(reverse('index'))
 
 
@@ -34,11 +34,12 @@ def login(request):
 
             if user:
                 auth.login(user=user, request=request)
-                messages.success(request, "You have successfuly logged in!")
+                name = request.user.username
+                messages.success(request, "Live long and prosper, %s. You have successfully beamed aboard!" % name)
                 return redirect(reverse('index'))
             else:
                 login_form.add_error(
-                    None, "Your username of password is incorrect!")
+                    None, "Your username or password is incorrect!")
     else:
         login_form = UserLoginForm()
     return render(request, 'login.html', {"login_form": login_form})
@@ -62,7 +63,8 @@ def registration(request):
                 """ Next line of code, automatically creates Profile
                      for user after valid registration"""
                 Profile.objects.create(user=request.user)
-                messages.success(request, "You have successfuly registered!")
+                name = request.user.username
+                messages.success(request, "Live long and prosper, %s. You have successfully beamed aboard!" % name)
                 return redirect(reverse('index'))
                 # When User registers, a new profile wil be made.
             else:
@@ -103,7 +105,8 @@ def edit_profile(request, id):
 
 @login_required
 def user_orders(request):
-    return render(request, 'orders.html')
+    orders = Order.objects.filter().order_by('-date')
+    return render(request, 'orders.html', {'orders': orders})
 
 
 @login_required

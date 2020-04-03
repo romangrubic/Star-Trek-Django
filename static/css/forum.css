@@ -12,7 +12,7 @@
 .forum-threads{
     background-color: rgba(255, 255, 255, 0.95);
     margin: 60px auto 40px;
-    padding: 0px 10px;
+    padding: 0px;
     max-width: 1000px;
 }
 .forum-filters{
@@ -21,6 +21,10 @@
 }
 .forum-filters > div > a >h4:hover{
     color: white;
+}
+.forum-thread{
+    margin: 0px;
+    padding: 0px 0 3px;
 }
 .forum-thread > div {
     padding-top: 5px;
@@ -33,11 +37,11 @@
     text-decoration: none;
 }
 .forum-post-user-image{
-    width: 100%;
+    width: 80%;
     height: 30px;
 }
 .forum-hr{
-    margin: 5px 0px;
+    margin: 1.5px 0px;
 }
 .forum-no-search-result{
     background-color: rgba(255, 255, 255, 0.9);
@@ -49,6 +53,23 @@
 }
 .forum-no-search-result-text{
     padding: 75px 30px;
+}
+/* ------------ Alternating color for messages ------- */
+.forum-gray{
+    background-color: rgba(128, 128, 128, 0.05);
+    transition-duration: 0.25s;
+}
+.forum-gray:hover{
+    background-color: rgb(251, 206, 61);
+    transition-duration: 0.25s;
+}
+.forum-white{
+    background-color: rgba(255, 255, 255, 0.9);
+    transition-duration: 0.25s;
+}
+.forum-white:hover{
+    background-color: rgb(251, 206, 61);
+    transition-duration: 0.25s;
 }
 /* ----------- Forum thread -------------- */
 .forum-thread-page{

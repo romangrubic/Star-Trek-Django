@@ -36,6 +36,15 @@
 .tab-content{
     border: 1px solid #dee2e6;
     border-top: none;
+
+}
+#Received-tab, #Sent-tab{
+    background-color: white;
+    transition-duration: 0.25s;
+}
+#Received-tab:hover, #Sent-tab:hover{
+    background-color: rgb(251, 206, 61);
+    transition-duration: 0.25s;
 }
 .message-main-row{
     padding: 15px 0 5px;
@@ -62,8 +71,18 @@
 /* ------------ Alternating color for messages ------- */
 .color-gray{
     background-color: rgba(128, 128, 128, 0.05);
+    transition-duration: 0.25s;
+}
+.color-gray:hover{
+    background-color: rgb(251, 206, 61);
+    transition-duration: 0.25s;
 }
 .color-white{
     background-color: rgba(255, 255, 255, 0.9);
+    transition-duration: 0.25s;
+}
+.color-white:hover{
+    background-color: rgb(251, 206, 61);
+    transition-duration: 0.25s;
 }
 /* ------------- Reply ------------------ */

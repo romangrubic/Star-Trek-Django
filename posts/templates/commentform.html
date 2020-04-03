@@ -8,8 +8,8 @@
         {% csrf_token %}
         {{ form | as_bootstrap }}
         <div class="d-flex justify-content-center margin-5">
-        <button type="submit" class="btn btn-star-trek">Comment!</button>
-        <a href="{% url 'get_posts' %}" class="btn btn-light">Cancel</a>
+        <button type="submit" class="btn btn-star-trek">Comment! <i class="fas fa-reply"></i></button>
+        <a href="{% url 'get_posts' %}" class="btn btn-light">Cancel <i class="fas fa-ban"></i></a>
         </div>
     </form>
     </div>

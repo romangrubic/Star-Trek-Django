@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="d-flex justify-content-center">
-        <a href="{% url 'new_post' %}" class="btn btn-post-thread">Start a topic!</a>
+        <a href="{% url 'new_post' %}" class="btn btn-post-thread">Start a topic! <i class="fas fa-comment-dots"></i></a>
     </div>
     {% if posts.count == 0 %}
     <div class="forum-no-search-result">
@@ -20,35 +20,35 @@
     {% else %}
     <div class="forum-threads">
         <div class="row forum-thread forum-filters">
-            <div class="col-4 col-sm-2 text-right">
+            <div class="col-4 col-md-2 text-right">
                 <a href="{% url 'get_posts_author' %}"><h4>Author</h4></a>       
             </div>
-            <div class="col-8 col-sm-6">
+            <div class="col-8 col-md-6">
                 <a href="{% url 'get_posts_title' %}"><h4>Post title</h4></a>
             </div>
-            <div class="d-none d-md-block col-md-1 text-right">
+            <div class="d-none d-lg-block col-lg-1 text-right">
                 <a href="{% url 'get_posts' %}"><h4>View</h4></a>
             </div>
-            <div class="d-none d-sm-block col-sm-4 col-md-3">               
+            <div class="d-none d-md-block col-md-4 col-lg-3">               
                <a href="{% url 'get_posts_date' %}"><h4>Date</h4></a>
             </div>
         </div>
         <hr class="forum-hr">
         {% for post in posts %}
-        <div class="row forum-thread">
-            <div class="col-2 col-sm-1 no-padding-right">
+        <div class="row {% cycle 'forum-gray' 'forum-white' %} forum-thread">
+            <div class="col-2 col-sm-2 col-md-1 no-padding-right">
                 <img class="forum-post-user-image" src="/media/{{ post.profile.image }}">
             </div>
-            <div class="col-2 col-sm-1 text-center">            
+            <div class="col-2 col-sm-2 col-md-1 text-center">            
                 <a href="{% url 'profile' post.user_id %}" target="_blank" rel="noopener">{{ post.user }}</a>                 
             </div>
-            <div class="col-8 col-sm-6">
-                <h5><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h5>
+            <div class="col-8 col-sm-8 col-md-6">
+                <a href="{% url 'post_detail' post.id %}"><h5><span class="tablet-screen">{{ post.title|truncatechars:38 }}</span><span class="mobile-screen">{{ post.title|truncatechars:20 }}</span></h5></a>
             </div>
-            <div class="d-none d-md-block col-md-1 text-center">
+            <div class="d-none d-lg-block col-lg-1 text-center">
                 {{ post.views }}
             </div>
-            <div class="d-none d-sm-block col-sm-4 col-md-3">
+            <div class="d-none d-md-block col-md-4 col-lg-3">
                {{ post.published_date }}
             </div>
         </div>
