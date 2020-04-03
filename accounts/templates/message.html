@@ -4,14 +4,14 @@
 <div class="message-page">
 	<div class="message-info-section">
 		<div class="row">
-			<div class="col-6 text-center no-padding">
+			<div class="col-12 col-sm-6 text-center no-padding">
             <h3>Sender <i class="fas fa-sign-out-alt"></i></h3>
 				<a href="{% url 'profile' message.sender.id %}"><img class="message-img" src="{{ MEDIA_URL }}{{ message.sender.uprofile.image }}">
 					<h2> {{ message.sender }} </h2>
 				</a>
 			</div>
-			<div class="col-6 text-center no-padding">
-            <h4><i class="fas fa-sign-in-alt"></i> Receiver</h4>
+			<div class="col-12 col-sm-6 text-center no-padding">
+            <h3><i class="fas fa-sign-in-alt"></i> Receiver</h3>
 				<a href="{% url 'profile' message.receiver.id %}"><img class="message-img" src="{{ MEDIA_URL }}{{ message.receiver.uprofile.image }}">
 					<h2> {{ message.receiver }}</h2>
 				</a>
@@ -37,7 +37,7 @@
 			<div class="col-4 col-md-3 text-center">
 				<img src="{{ MEDIA_URL }}{{ reply.profile.image }}" class="forum-thread-user-image">
 				<p class="no-margin"><a href="{% url 'profile' reply.user_id %}" target="_blank"
-						rel="noopener">{{ reply.user}} </a></p>
+						rel="noopener"><span class="tablet-screen">{{ reply.user }}</span><span class="mobile-screen">{{ reply.user|truncatechars:9}} </span></a></p>
 				<p class="no-margin"> {{ reply.created_date }} </p>
 			</div>
 			<div class="col-8 col-md-9 thread-comment no-padding-left">

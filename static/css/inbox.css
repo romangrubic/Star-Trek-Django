@@ -5,7 +5,7 @@
 }
 .message-info-section{
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 25px 30px;
+    padding: 25px 15px;
     border: 1px solid black;
     border-radius: 5px;
     margin: auto;
@@ -41,9 +41,16 @@
     padding: 15px 0 5px;
     font-size: 23px;
 }
+.inbox-message-author{
+    color: black;
+}
 .message-short-info{
     font-size: 17px;
-    margin: 5px 0px;
+    padding: 5px 0px;
+    margin: 0px;
+}
+.inbox-hr{
+    margin: 0px;
 }
 /* ---------------- Message ------------ */
 .message-img{
@@ -51,6 +58,12 @@
     max-height: 100px;
 }
 .message-title{
-
+}
+/* ------------ Alternating color for messages ------- */
+.color-gray{
+    background-color: rgba(128, 128, 128, 0.05);
+}
+.color-white{
+    background-color: rgba(255, 255, 255, 0.9);
 }
 /* ------------- Reply ------------------ */

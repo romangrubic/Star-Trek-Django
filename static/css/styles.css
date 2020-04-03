@@ -98,3 +98,20 @@ footer {
     margin: 35px 0px 0px;
     color: white;
 }
+/* ------------ Color graz ---------- */
+.color-gray{
+    background-color: gray;
+}
+/* -------------- For tablet screen ------------- */
+.mobile-screen{
+    display: none;
+}
+/* ------ Media queries ----------- */
+@media only screen and (max-width: 600px) {
+    .tablet-screen{
+        display: none;
+    }
+    .mobile-screen{
+        display: inline;
+    }
+}

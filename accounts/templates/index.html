@@ -6,17 +6,18 @@
 
 {% block content %}
 <div class="home-page">
-
-    <div class="landing-image">
-    <a href="{% url 'registration' %}">
-    <img src="static/images/jumbo-text.png" class="index-image">
-    <p class="lead">Website for everything Star Trek!</p>
-    </a>
-    </div>
-  </div>
+	<div class="landing-image">
+		<a href="{% url 'registration' %}">
+			<img src="static/images/jumbo-text.png" class="index-image">
+			<p class="lead">Website for everything Star Trek!</p>
+		</a>
+	</div>
+	<div class="index-info-section">
+		<div class="col-12 col-sm-6"> News</div>
+		<div class="col-12 col-sm-6"> Shop</div>
+		<div class="col-12 col-sm-6"> Games</div>
+		<div class="col-12 col-sm-6"> Forum</div>
+	</div>
+</div>
 
 {% endblock %}
-
-
-
-
