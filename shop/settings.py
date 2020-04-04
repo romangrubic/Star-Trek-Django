@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', 'star-trek-by-romangrubic.herokuapp.com']
 
 
 # Application definition
@@ -176,16 +176,16 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 # --------- Email messages --------------------------
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-"""
-This code doesn't work on Gitpod but it will work on Heroku
+"""EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend""""
+
+#This code doesn't work on Gitpod but it will work on Heroku
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 EMAIL_PORT = 587
-"""
+
 
 # ------- Stripe keys ------------------------
 STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
