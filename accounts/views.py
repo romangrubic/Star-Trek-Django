@@ -66,7 +66,7 @@ def registration(request):
                 Profile.objects.create(user=request.user)
                 name = request.user.username
                 Message.objects.create(
-                    sender_id=3,
+                    sender_id=1,
                     receiver=request.user,
                     title="Welcome, %s!" % name,
                     message="Welcome, %s, to my Star Trek website. I'm glad you decided to join our community. You have plenty to do here, you can read fresh news from Star Trek world, find something for youself or friends in our Shop, see all the games about Star Trek and join discussions on our forum where you can meet people who like Star Trek as much as you do! If you have any questions, just ask. Live long and prosper!" % name)
