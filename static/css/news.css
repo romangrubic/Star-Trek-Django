@@ -83,10 +83,10 @@
     }
     /* ----------- News details ---------- */
     .news-detail-info{
-    max-width: 500px;
+    max-width: 600px;
     }
     .news-detail-image{
-        height: 250px;
+        height: 300px;
     }
     .news-detail-title{
     margin: 20px 0px 10px;

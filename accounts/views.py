@@ -7,6 +7,7 @@ from .models import Profile, Message
 from checkout.models import Order
 
 
+
 # Create your views here.
 def index(request):
     """Return the index.html file"""
@@ -17,7 +18,8 @@ def index(request):
 def logout(request):
     """ Log the user out """
     auth.logout(request)
-    messages.success(request, "I have been – and always shall be – your friend. Live long and prosper!")
+    messages.success(
+        request, "I have been – and always shall be – your friend. Live long and prosper!")
     return redirect(reverse('index'))
 
 
@@ -31,11 +33,11 @@ def login(request):
         if login_form.is_valid():
             user = auth.authenticate(username=request.POST['username'],
                                      password=request.POST['password'])
-
             if user:
                 auth.login(user=user, request=request)
                 name = request.user.username
-                messages.success(request, "Live long and prosper, %s. You have successfully beamed aboard!" % name)
+                messages.success(
+                    request, "Live long and prosper, %s. You have successfully beamed aboard!" % name)
                 return redirect(reverse('index'))
             else:
                 login_form.add_error(
@@ -57,18 +59,24 @@ def registration(request):
             registration_form.save()
             user = auth.authenticate(username=request.POST['username'],
                                      password=request.POST['password1'])
-
             if user:
                 auth.login(user=user, request=request)
                 """ Next line of code, automatically creates Profile
                      for user after valid registration"""
                 Profile.objects.create(user=request.user)
                 name = request.user.username
-                messages.success(request, "Live long and prosper, %s. You have successfully beamed aboard!" % name)
+                Message.objects.create(
+                    sender_id=3,
+                    receiver=request.user,
+                    title="Welcome, %s!" % name,
+                    message="Welcome, %s, to my Star Trek website. I'm glad you decided to join our community. You have plenty to do here, you can read fresh news from Star Trek world, find something for youself or friends on our Shop, see all the games about Star Trek and join discussions on our forum where you can meet people who like Star Trek as much as you do! If you have any questions, just ask. Live long and prosper!" % name)
+                messages.success(
+                    request, "Live long and prosper, %s. You have successfully beamed aboard!" % name)
                 return redirect(reverse('index'))
                 # When User registers, a new profile wil be made.
             else:
-                messages.error(request, "Unable to register your account at this time!")
+                messages.error(
+                    request, "Unable to register your account at this time!")
 
     else:
         registration_form = UserRegistrationForm()
@@ -91,13 +99,15 @@ def edit_profile(request, id):
         return redirect("index")
     else:
         if request.method == "POST":
-            form = ProfileForm(request.POST, request.FILES, id, instance=profile)
+            form = ProfileForm(request.POST, request.FILES,
+                               id, instance=profile)
 
             if form.is_valid():
                 profile = form.save(commit=False)
                 profile.save()
-                messages.success(request, "You have successfuly edited your Profile!")
-                return redirect(user_profile, profile.id)        
+                messages.success(
+                    request, "You have successfuly edited your Profile!")
+                return redirect(user_profile, profile.id)
         else:
             form = ProfileForm(instance=profile)
     return render(request, 'profileform.html', {'form': form}, {'profile': profile})
@@ -105,14 +115,23 @@ def edit_profile(request, id):
 
 @login_required
 def user_orders(request):
-    orders = Order.objects.filter().order_by('-date')
+    orders = Order.objects.filter(user=request.user).order_by('-date')
     return render(request, 'orders.html', {'orders': orders})
 
 
 @login_required
 def inbox(request):
-    message = Message.objects.filter().order_by('-created_date')
-    return render(request, 'inbox.html', {'message': message})
+    inbox = Message.objects.filter(
+        receiver=request.user).order_by('-created_date')
+    return render(request, 'inbox.html', {'inbox': inbox})
+
+
+@login_required
+def outbox(request):
+    outbox = Message.objects.filter(
+        sender=request.user).order_by('-created_date')
+    print(outbox)
+    return render(request, 'outbox.html', {'outbox': outbox})
 
 
 @login_required

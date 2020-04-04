@@ -5,24 +5,24 @@
 		<div>
 			<ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
 				<li class="inbox-nav">
-					<a class="nav-link active text-center" id="Received-tab" data-toggle="tab" href="#Received"
-						role="tab" aria-controls="Received" aria-selected="true">Inbox</a>
+					<a class="nav-link active text-center" id="Received-tab" href="{% url 'inbox' %}">Inbox</a>
 				</li>
 				<li class="inbox-nav">
-					<a class="nav-link text-center" id="Sent-tab" data-toggle="tab" href="#Sent" role="tab"
-						aria-controls="Sent" aria-selected="false">Outbox</a>
+					<a class="nav-link text-center" id="Sent-tab" href="{% url 'outbox' %}" >Outbox</a>
 				</li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade show active" id="Received" role="tabpanel" aria-labelledby="Received-tab">
+                {% if inbox.count == 0 %}
+                no inbox
+                {% else %}
 					<div class="row message-main-row">
 						<div class="col-5 col-sm-3 text-center"><span>Sender</span></div>
 						<div class="col-7 col-sm-5"><span>Title</span></div>
 						<div class="d-none d-sm-block col-sm-4 no-padding"><span>Date</span></div>
 					</div>
                     <hr class="inbox-hr">
-					{% for msg in message %}
-					{% if user.id == msg.receiver.id %}
+					{% for msg in inbox %}
 					<div class="row {% cycle 'color-gray' 'color-white' %} message-short-info">
 						<div class="col-5 col-sm-3 text-center"><a href="{% url 'profile' msg.sender_id %}" target="_blank"
 								rel="noopener"><span class="tablet-screen inbox-message-author">{{ msg.sender }}</span><span class="mobile-screen inbox-message-author">{{ msg.sender|truncatechars:9}} </span></a></div>
@@ -30,27 +30,8 @@
 						<div class="d-none d-sm-block col-sm-4 no-padding">{{ msg.created_date}}</div>
 					</div>
                     <hr class="inbox-hr">
-					{% endif %}
 					{% endfor %}
-				</div>
-				<div class="tab-pane fade" id="Sent" role="tabpanel" aria-labelledby="Sent-tab">
-					<div class="row message-main-row">
-						<div class="col-5 col-sm-3 text-center">Receiver</div>
-						<div class="col-7 col-sm-5"> Title</div>
-						<div class="d-none d-sm-block col-sm-4 no-padding">Date</div>
-					</div>
-                    <hr class="inbox-hr">
-					{% for msg in message %}
-					{% if user.id == msg.sender.id %}
-					<div class="row {% cycle 'color-gray' 'color-white' %} message-short-info">
-						<div class="col-5 col-sm-3 text-center inbox-message-author"><a href="{% url 'profile' msg.receiver_id %}" target="_blank"
-								rel="noopener"><span class="tablet-screen inbox-message-author">{{ msg.receiver }}</span><span class="mobile-screen inbox-message-author">{{ msg.receiver|truncatechars:12 }}</span></a></div>
-						<div class="col-7 col-sm-5"><a href="{% url 'message_detail' msg.id %}">{{ msg.title }}</a></div>
-						<div class="d-none d-sm-block col-sm-4 no-padding">{{ msg.created_date}}</div>
-					</div>
-                    <hr class="inbox-hr">
-					{% endif %}
-					{% endfor %}
+                    {% endif %}
 				</div>
 			</div>
 		</div>

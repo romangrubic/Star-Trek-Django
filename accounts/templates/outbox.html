@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="profile-page">
+	<div class="message-info-section">
+		<div>
+			<ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+				<li class="inbox-nav">
+					<a class="nav-link active text-center" id="Received-tab" href="{% url 'inbox' %}">Inbox</a>
+				</li>
+				<li class="inbox-nav">
+					<a class="nav-link text-center" id="Sent-tab" href="{% url 'outbox' %}" >Outbox</a>
+				</li>
+			</ul>
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade show active" id="Sent" role="tabpanel" aria-labelledby="Sent-tab">
+                {% if outbox.count == 0 %}
+                <div class="empty-outbox">
+                    <h1>No messages in your outbox! </h1>
+                    <br>
+                    <h3> Go to <a href="{% url 'get_posts' %}" class="btn btn-star-trek"><i class="fas fa-hand-spock"></i> Forum</a></h3>
+                </div>
+                {% else %}
+					<div class="row message-main-row">
+						<div class="col-5 col-sm-3 text-center">Receiver</div>
+						<div class="col-7 col-sm-5"> Title</div>
+						<div class="d-none d-sm-block col-sm-4 no-padding">Date</div>
+					</div>
+                    <hr class="inbox-hr">
+					{% for msg in outbox %}
+					<div class="row {% cycle 'color-gray' 'color-white' %} message-short-info">
+						<div class="col-5 col-sm-3 text-center inbox-message-author"><a href="{% url 'profile' msg.receiver_id %}" target="_blank"
+								rel="noopener"><span class="tablet-screen inbox-message-author">{{ msg.receiver }}</span><span class="mobile-screen inbox-message-author">{{ msg.receiver|truncatechars:12 }}</span></a></div>
+						<div class="col-7 col-sm-5"><a href="{% url 'message_detail' msg.id %}">{{ msg.title }}</a></div>
+						<div class="d-none d-sm-block col-sm-4 no-padding">{{ msg.created_date}}</div>
+					</div>
+                    <hr class="inbox-hr">
+					{% endfor %}
+                {% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

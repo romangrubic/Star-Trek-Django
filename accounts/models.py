@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 
 # Create your models here.
@@ -25,7 +26,7 @@ class Message(models.Model):
     receiver = models.ForeignKey(User, related_name="receiver")
     title = models.CharField(max_length=40)
     message = models.TextField(max_length=200)
-    created_date = models.DateTimeField(auto_now_add=True)
+    created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return '{}-{}-{}'.format(self.sender, str(self.receiver), str(self.title))
@@ -36,7 +37,7 @@ class Reply(models.Model):
     profile = models.ForeignKey(Profile)
     user = models.ForeignKey(User)
     reply = models.TextField(max_length=200)
-    created_date = models.DateTimeField(auto_now_add=True)
+    created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return '{}-{}'.format(self.message, str(self.created_date))

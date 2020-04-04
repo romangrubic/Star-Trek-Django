@@ -39,9 +39,16 @@
     text-decoration: none;
 }
 .index-page-logo{
+    height: 55px;
+    width: 40px;
+    margin-left: 100px;
+    transition-duration: 1s;
+}
+.index-page-logo:hover{
     height: 85px;
     width: 60px;
-    margin-left: 100px;
+    margin-left: 90px;
+    transition-duration: 0.4s;
 }
 nav {
     height: 90px;

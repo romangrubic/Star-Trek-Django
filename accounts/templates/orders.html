@@ -22,7 +22,6 @@
 		<hr>
 		<div id="accordion">
 			{% for order in orders %}
-			{% if order.user == user %}
 			<div class="card">
 				<button class="btn" data-toggle="collapse" data-target="#collapse{{ order.id }}" aria-expanded="false" aria-controls="collapse{{ order.id }}">
 				<div class="card-header order-card-header text-center" id="heading{{ order.id}}">
@@ -53,8 +52,7 @@
 					<h4 class="total-order-price text-center">Total order: {{ order.total_price }} €</h4>
 				</div>
 			</div>
-			<hr>
-			{% endif %}
+			<hr>			
 			{% endfor %}
 		</div>
 		{% endif %}

@@ -4,7 +4,7 @@
     padding: 80px 10px 100px;
 }
 .message-info-section{
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.95);
     padding: 25px 15px;
     border: 1px solid black;
     border-radius: 5px;
@@ -12,7 +12,7 @@
     max-width: 650px;
 }
 .message-info-section-empty{
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.95);
     padding: 65px 30px;
     border: 1px solid black;
     border-radius: 5px;
@@ -67,6 +67,14 @@
     max-height: 100px;
 }
 .message-title{
+}
+.message-comment{
+    padding: 0px 20px
+}
+/*----------- Outbox ------------------- */
+.empty-outbox{
+    text-align: center;
+    padding: 25% 5px;
 }
 /* ------------ Alternating color for messages ------- */
 .color-gray{

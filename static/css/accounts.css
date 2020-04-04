@@ -34,10 +34,12 @@
 .order-page-empty{
     background: url("../images/forum.jpg") no-repeat center top fixed ;
     padding: 200px 15%;
+    min-height: 85vh;
 }
 .order-page{
     background: url("../images/forum.jpg") no-repeat center top fixed ;
-    padding: 130px 5px;
+    padding: 150px 5px;
+    min-height: 80vh;
 }
 .order-info-section{
     background-color: rgba(255, 255, 255, 0.95);
