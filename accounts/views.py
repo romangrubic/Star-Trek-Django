@@ -69,7 +69,7 @@ def registration(request):
                     sender_id=3,
                     receiver=request.user,
                     title="Welcome, %s!" % name,
-                    message="Welcome, %s, to my Star Trek website. I'm glad you decided to join our community. You have plenty to do here, you can read fresh news from Star Trek world, find something for youself or friends on our Shop, see all the games about Star Trek and join discussions on our forum where you can meet people who like Star Trek as much as you do! If you have any questions, just ask. Live long and prosper!" % name)
+                    message="Welcome, %s, to my Star Trek website. I'm glad you decided to join our community. You have plenty to do here, you can read fresh news from Star Trek world, find something for youself or friends in our Shop, see all the games about Star Trek and join discussions on our forum where you can meet people who like Star Trek as much as you do! If you have any questions, just ask. Live long and prosper!" % name)
                 messages.success(
                     request, "Live long and prosper, %s. You have successfully beamed aboard!" % name)
                 return redirect(reverse('index'))
