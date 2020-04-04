@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+#-------- Turn off for TravisCI -------
 #import env
 import dj_database_url
 
@@ -156,8 +157,9 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 # ------------- Custom storages ----------------------
 # ----- Static ---------------------------------
-STATICFILES_LOCATION = 'static'
-STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+#----------- Turn it ON for AWS
+"""STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'"""
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
@@ -176,7 +178,7 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 # --------- Email messages --------------------------
 
-"""EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend""""
+"""EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"""
 
 #This code doesn't work on Gitpod but it will work on Heroku
 
