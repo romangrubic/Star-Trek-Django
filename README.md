@@ -7,10 +7,7 @@ Or just join for discussion about everything Star Trek in our Forum where you ca
 
 
 #### Click on the link to see live demo!
-[Star Trek project](https://adverts-project.herokuapp.com/home)
-
----
-[![Build Status](https://travis-ci.org/romangrubic/django-project.svg?branch=master)](https://travis-ci.org/romangrubic/django-project)
+[Star Trek project](https://star-trek-by-romangrubic.herokuapp.com/)
 
 ---
 ## Summary
@@ -28,3 +25,5 @@ user can also read news from Star Trek franchise, find games about Star Trek and
 messaging system and edit their profiles so beside this project being a web-shop, it is also a form of social network for people who like Star Trek.
 
 [Back to top](#summary)
+
+[![Build Status](https://travis-ci.org/romangrubic/django-project.svg?branch=master)](https://travis-ci.org/romangrubic/django-project)
