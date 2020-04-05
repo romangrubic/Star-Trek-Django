@@ -23,8 +23,8 @@
     color: white;
 }
 .forum-thread{
-    margin: 0px;
-    padding: 0px 0 3px;
+    margin: -2px;
+    padding: 0px 0px 3px;
 }
 .forum-thread > div {
     padding-top: 5px;

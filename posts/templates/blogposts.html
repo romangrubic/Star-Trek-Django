@@ -38,7 +38,7 @@
         <div class="row {% cycle 'forum-gray' 'forum-white' %} forum-thread">
             <div class="col-2 col-sm-2 col-md-1 no-padding-right">
             <a href="{% url 'profile' post.user_id %}" target="_blank" rel="noopener">
-                <img class="forum-post-user-image" src="/media/{{ post.profile.image }}">
+                <img class="forum-post-user-image" src="{{ MEDIA_URL }}{{ post.profile.image }}">
                 </a> 
             </div>
             <div class="col-2 col-sm-2 col-md-1 text-center">            
