@@ -43,6 +43,9 @@
 .products-card-img{
     height: 200px;
 }
+.products-name{
+    color: black;
+}
 .products-card-price{
     margin: 0px;
     padding: 7px 2px 7px 8px;

@@ -31,26 +31,19 @@
 			<div class="card products-card">
 				<a href="{% url 'product_detail' product.id %}">
 					<img class="card-img-top products-card-img" src="{{ MEDIA_URL }}{{ product.image }}" alt="Card image cap">
-            </a>
+                </a>
 					<div class="card-body products-card-body">
-						<h3 class="card-title text-center">{{ product.name }}</h3>
+						<a href="{% url 'product_detail' product.id %}">
+                            <h3 class="card-title text-center products-name">{{ product.name }}</h3>
+                        </a>
 						<p class="card-text no-margin">{{ product.description|truncatechars:65 }}</p>
 						<hr>
 						<div class="row">
 							<div class="col-5 no-padding-right">
 								<p class="products-card-price">{{ product.price }} €</p>
 							</div>
-							<div class="col-7 no-padding-left">
-								<form method="POST" action="{% url 'add_to_cart' product.id %}">
-									{% csrf_token %}
-									<div class="input-group">
-										<input type="text" name="product" value="{{ product.name }}" hidden>
-										<input type="number" name="quantity" min="1" max="999" class="form-control" value="1">
-										<span class="input-group-btn">
-                                        <button class="btn btn-products" type="submit">Add</button>
-                                    </span>
-									</div>
-								</form>
+							<div class="col-7 no-padding-left text-right">
+								<a href="{% url 'product_detail' product.id %}" class="btn btn-star-trek">View more...</a>
 							</div>
 						</div>
 					</div>
