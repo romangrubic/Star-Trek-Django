@@ -2,74 +2,83 @@
 
 {% block content %}
 <div class="products-page" id="top">
-<div class="row d-flex justify-content-center">
-    <div class="products-search">
-        <form action="{% url 'search_products' %}" method="GET">
-            <input type="text" name="q" class="products-search-input">
-            <button type="submit" class="btn btn-star-trek">Search</button>
-        </form>
-        </div>
-    </div>
-    <hr>
-<div class="row products-page-list">
-    {% if products.count == 0 %}
-    <div class="no-search-products">
-    <h3 class="no-search-products-text">Sorry, but there was no products for requested search!</h3>
-    </div>
-    {% else %}
-    {% for product in products %}
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3 products-card-padding">
-        <div class="card products-card">
-        <a href="{% url 'product_detail' product.id %}">
-            <img class="card-img-top products-card-img" src="{{ MEDIA_URL }}{{ product.image }}" alt="Card image cap">
+	<div class="row d-flex justify-content-center">
+		<div class="products-search">
+			<form action="{% url 'search_products' %}" method="GET">
+				<input type="text" name="q" class="products-search-input">
+				<button type="submit" class="btn btn-star-trek">Search</button>
+			</form>
+		</div>
+	</div>
+	<div class="row d-flex justify-content-center">
+		<div class="products-filters">
+			<a href="{% url 'products_clothing' %}" class="btn btn-light">Clothing</a>
+			<a href="{% url 'products_accesories' %}" class="btn btn-light">Accesories</a>
+			<a href="{% url 'products_drinkware' %}" class="btn btn-light">Drinkware</a>
+			<a href="{% url 'products_home_and_office' %}" class="btn btn-light">Home & Office</a>
+			<a href="{% url 'products_collectibles' %}" class="btn btn-light">Collectibles</a>
+		</div>
+	</div>
+	<hr>
+	<div class="row products-page-list">
+		{% if products.count == 0 %}
+		<div class="no-search-products">
+			<h3 class="no-search-products-text">Sorry, but there was no products for requested search!</h3>
+		</div>
+		{% else %}
+		{% for product in products %}
+		<div class="col-12 col-sm-6 col-md-4 col-lg-3 products-card-padding">
+			<div class="card products-card">
+				<a href="{% url 'product_detail' product.id %}">
+					<img class="card-img-top products-card-img" src="{{ MEDIA_URL }}{{ product.image }}" alt="Card image cap">
             </a>
-            <div class="card-body products-card-body">
-                <h3 class="card-title text-center">{{ product.name }}</h3>
-                <p class="card-text no-margin">{{ product.description|truncatechars:60 }}</p>
-                <hr>
-                <div class="row">
-                    <div class="col-5 no-padding-right">
-                        <p class="products-card-price">{{ product.price }} €</p>
-                    </div>
-                    <div class="col-7 no-padding-left">
-                        <form method="POST" action="{% url 'add_to_cart' product.id %}">
-                                {% csrf_token %}
-                                <div class="input-group">
-                                <input type="text" name="product" value="{{ product.name }}" hidden>
-                                    <input type="number" name="quantity" min="1" max="999" class="form-control" value="1">
-                                    <span class="input-group-btn">
+					<div class="card-body products-card-body">
+						<h3 class="card-title text-center">{{ product.name }}</h3>
+						<p class="card-text no-margin">{{ product.description|truncatechars:65 }}</p>
+						<hr>
+						<div class="row">
+							<div class="col-5 no-padding-right">
+								<p class="products-card-price">{{ product.price }} €</p>
+							</div>
+							<div class="col-7 no-padding-left">
+								<form method="POST" action="{% url 'add_to_cart' product.id %}">
+									{% csrf_token %}
+									<div class="input-group">
+										<input type="text" name="product" value="{{ product.name }}" hidden>
+										<input type="number" name="quantity" min="1" max="999" class="form-control" value="1">
+										<span class="input-group-btn">
                                         <button class="btn btn-products" type="submit">Add</button>
                                     </span>
-                                </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
-    {% endif %}
-</div>
-<div class="d-flex justify-content-end">
-<a href="#top" class="btn btn-light btn-back-to-forum">Back to top!</a>
-</div>
-{% if products.count != 0 %}
-<div class="d-flex justify-content-center">
-<div class="pagination">
-    <span class="step-links">
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
+		{% endfor %}
+		{% endif %}
+	</div>
+	<div class="d-flex justify-content-end">
+		<a href="#top" class="btn btn-light btn-back-to-forum">Back to top!</a>
+	</div>
+	{% if products.count != 0 %}
+	<div class="d-flex justify-content-center">
+		<div class="pagination">
+			<span class="step-links">
         {% if products.has_previous %}
             <a href="?page={{ products.previous_page_number }}" class="btn btn-star-trek no-margin">previous</a>
         {% endif %}
         <span class="current">
             Page {{ products.number }} of {{ products.paginator.num_pages }}
         </span>
-        {% if products.has_next %}
-            <a href="?page={{ products.next_page_number }}" class="btn btn-star-trek no-margin">next</a>
-        {% endif %}
-    </span>
-</div>
-</div>
-{% endif %}
+			{% if products.has_next %}
+			<a href="?page={{ products.next_page_number }}" class="btn btn-star-trek no-margin">next</a>
+			{% endif %}
+			</span>
+		</div>
+	</div>
+	{% endif %}
 </div>
 
 {% endblock %}

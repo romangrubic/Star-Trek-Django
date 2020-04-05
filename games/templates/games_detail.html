@@ -45,7 +45,7 @@
                 <div class="col-xs-9">
                     <p>{{ games.description }}</p>
                     <div class="d-flex justify-content-end">
-                    <a href="{{ games.game_link }}" class="btn btn-info"  target="_blank" rel="noopener">Link to game!</a>
+                    <a href="{{ games.game_link }}" class="btn btn-success"  target="_blank" rel="noopener">Link to game!</a>
                     </div>
                     {% if games.forum_thread %}
                     <hr>
@@ -59,7 +59,7 @@
                     {% endif %}                   
                     <hr>
                     <div class="d-flex justify-content-center padding-bottom">
-                        <a href="{% url 'games' %}" class="btn btn-light" >Back to <i class="fas fa-gamepad"></i> Games!</a>
+                        <a href="{% url 'games' %}" class="btn btn-info" >Back to <i class="fas fa-gamepad"></i> Games!</a>
                     </div>
                 </div>
             </div>

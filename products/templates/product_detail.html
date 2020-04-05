@@ -1,89 +1,108 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="product-detail-page">
-        <div class="card product-detail-card">
-            <div id="product-detail-carousel" class="carousel slide" data-interval="3000" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#product-detail-carousel" data-slide-to="0" class="active"></li>
-                    {% if product.image2 %}
-                    <li data-target="#product-detail-carousel" data-slide-to="1"></li>
-                    {% endif %}
-                    {% if product.image3 %}
-                    <li data-target="#product-detail-carousel" data-slide-to="2"></li>
-                    {% endif %}
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                    <img class="product-detail-image" src="{{ MEDIA_URL }}{{ product.image }}" alt="First slide">
+<div class="product-detail-page">
+	<div class="row d-flex justify-content-center">
+		<div class="products-search">
+			<form action="{% url 'search_products' %}" method="GET">
+				<input type="text" name="q" class="products-search-input">
+				<button type="submit" class="btn btn-star-trek">Search</button>
+			</form>
+		</div>
+	</div>
+	<div class="row d-flex justify-content-center">
+		<div class="products-filters">
+			<a href="{% url 'products_clothing' %}" class="btn btn-info">Clothing</a>
+			<a href="{% url 'products_accesories' %}" class="btn btn-info">Accesories</a>
+			<a href="{% url 'products_drinkware' %}" class="btn btn-info">Drinkware</a>
+			<a href="{% url 'products_home_and_office' %}" class="btn btn-info">Home & Office</a>
+			<a href="{% url 'products_collectibles' %}" class="btn btn-info">Collectibles</a>
+		</div>
+	</div>
+	<hr>
+	<div class="card product-detail-card">
+		<div id="product-detail-carousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#product-detail-carousel" data-slide-to="0" class="active"></li>
+				{% if product.image2 %}
+				<li data-target="#product-detail-carousel" data-slide-to="1"></li>
+				{% endif %}
+				{% if product.image3 %}
+				<li data-target="#product-detail-carousel" data-slide-to="2"></li>
+				{% endif %}
+			</ol>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img class="product-detail-image" src="{{ MEDIA_URL }}{{ product.image }}" alt="First slide">
                     </div>
-                    {% if product.image2 %}
-                    <div class="carousel-item">
-                    <img class="product-detail-image" src="{{ MEDIA_URL }}{{ product.image2 }}" alt="Second slide">
+					{% if product.image2 %}
+					<div class="carousel-item">
+						<img class="product-detail-image" src="{{ MEDIA_URL }}{{ product.image2 }}" alt="Second slide">
                     </div>
-                    {% endif %}
-                    {% if product.image3 %}
-                    <div class="carousel-item">
-                    <img class="product-detail-image" src="{{ MEDIA_URL }}{{ product.image3 }}" alt="Third slide">
+						{% endif %}
+						{% if product.image3 %}
+						<div class="carousel-item">
+							<img class="product-detail-image" src="{{ MEDIA_URL }}{{ product.image3 }}" alt="Third slide">
                     </div>
-                    {% endif %}
-                </div>
-                {% if product.image2 %}
-                <a class="carousel-control-prev" href="#product-detail-carousel" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#product-detail-carousel" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-                {% endif %}
-            </div>
-            <div class="card-body product-detail-card-body">
-                <h3 class="card-title text-center">{{ product.name }}</h3>
-                <hr>
-                <p class="card-text no-margin">{{ product.description }}</p>
-                <hr>
-                        <p class="product-detail-card-price">{{ product.price }} €</p>
-                        <hr>
-                        <form method="POST" action="{% url 'add_to_cart' product.id %}">
-                                {% csrf_token %}
-                                    <input type="text" name="product" value="{{ product.name }}" hidden>
+							{% endif %}
+						</div>
+						{% if product.image2 %}
+						<a class="carousel-control-prev" href="#product-detail-carousel" role="button"
+							data-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="carousel-control-next" href="#product-detail-carousel" role="button"
+							data-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
+						{% endif %}
+					</div>
+					<div class="card-body product-detail-card-body">
+						<h3 class="card-title text-center">{{ product.name }}</h3>
+						<hr>
+						<p class="card-text no-margin">{{ product.description }}</p>
+						<hr>
+						<p class="product-detail-card-price">{{ product.price }} €</p>
+						<hr>
+						<form method="POST" action="{% url 'add_to_cart' product.id %}">
+							{% csrf_token %}
+							<input type="text" name="product" value="{{ product.name }}" hidden>
                                     {% if product.tag == "1" %}
-                                    <div class="d-flex justify-content-center clothes-choices"> 
-                                        <select name="size" required>
+							<div class="d-flex justify-content-center">
+								<select name="size" class="clothes-choices" required>
                                             <option value="" selected="selected">Sizes</option>
                                                     <option value="Small">Small</option>
                                                     <option value="Medium">Medium</option>
                                                     <option value="Large">Large</option>
                                                     <option value="X-Large">X-Large</option>
                                         </select>
-                                    </div>
-                                    {% endif %}
-                                    {% if product.tag == "3" %}
-                                    <div class="d-flex justify-content-center clothes-choices"> 
-                                        <select name="color" required>
+							</div>
+							{% endif %}
+							{% if product.tag == "3" %}
+							<div class="d-flex justify-content-center">
+								<select name="color" class="clothes-choices" required>
                                             <option value="" selected="selected">Color</option>
                                                     <option value="Black">Black</option>
                                                     <option value="Red">Red</option>
                                                     <option value="Green">Green</option>
                                                     <option value="White">White</option>
                                         </select>
-                                    </div>
-                                    {% endif %}
-                                    <div class="input-group product-detail-add-input">
-                                    <input type="number" name="quantity" min="1" max="999" class="form-control" value="1">
-                                    <span class="input-group-btn">
+							</div>
+							{% endif %}
+							<div class="input-group product-detail-add-input">
+								<input type="number" name="quantity" min="1" max="999" class="form-control" value="1">
+								<span class="input-group-btn">
                                         <button class="btn btn-products" type="submit">Add</button>
                                     </span>
-                                </div>
-                        </form>
-            </div>
-            </div>
-            <div class="d-flex justify-content-center">
-        
-        <a href="{% url 'products' %}" class="btn btn-light btn-back-to-forum">Back to <i class="fas fa-store-alt"></i> Shop</a>
-    
-        </div>
-
-    </div>
-{% endblock %}
+							</div>
+						</form>
+						<hr>
+						<div class="d-flex justify-content-center">
+							<a href="{% url 'products' %}" class="btn btn-info">Back to
+								<i class="fas fa-store-alt"></i> Shop</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endblock %}

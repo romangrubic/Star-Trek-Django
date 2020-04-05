@@ -38,7 +38,7 @@
 }
 .products-card-body{
     padding: 10px 15px;
-    background-color: rgba(255, 255, 255, 0.9);
+
 }
 .products-card-img{
     height: 200px;
@@ -61,19 +61,22 @@
 /* ------------- Product detail page ----------- */
 .product-detail-page{
     background: url("../images/picard-vine.jpg") no-repeat center center fixed;
-    padding: 75px 10px;
+    padding: 30px 10px 75px;
 }
 .product-detail-card{
     max-width: 500px;
     margin: auto;
+    border-radius: 10px;
 }
 .product-detail-card-body{
-    background-color: rgba(255, 255, 255, 0.9);
     padding: 25px 7.5%;
+    border-radius: 10px;
 }
 .product-detail-image{
     height: 300px;
     width:100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 .product-detail-card-price{
     font-size: 20px;
@@ -86,5 +89,9 @@
     width: 125px;
 }
 .clothes-choices{
-    margin: 10px auto 20px;
+    margin: 0px auto 15px;
+    border-radius: 5px;
+    font-size: 17px;
+    padding: 5px;
+    width: 100px;
 }

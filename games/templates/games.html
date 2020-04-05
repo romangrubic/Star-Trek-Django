@@ -6,7 +6,9 @@
 		{% for game in games %}
 		<div class="col-12 col-lg-6">
 			<div class="card games-card no-padding margin-5">
+            <a href="{% url 'games_detail' game.id %}">
 				<img src="{{ MEDIA_URL }}{{ game.image1 }}" class="games-image" alt="{{ game.name }} photo">
+            </a>
 				<div class="card-body">
 					<h1 class="card-title">{{ game.name }}</h1>
 					<p class="card-text">{{ game.description|truncatechars:175 }}</p>
