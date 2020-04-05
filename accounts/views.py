@@ -69,9 +69,9 @@ def registration(request):
                     sender_id=1,
                     receiver=request.user,
                     title="Welcome, %s!" % name,
-                    message="Welcome, %s, to my Star Trek website. I'm glad you decided to join our community. You have plenty to do here, you can read fresh news from Star Trek world, find something for youself or friends in our Shop, see all the games about Star Trek and join discussions on our forum where you can meet people who like Star Trek as much as you do! If you have any questions, just ask. Live long and prosper!" % name)
+                    message="Welcome, %s, to my Star Trek website. I'm glad you decided to join our community. You have plenty to do here, you can read fresh news from Star Trek world, find something for youself or friends in our Shop, see all the games about Star Trek and join discussions on our forum where you can meet people who like Star Trek as much as you do! Next step is to customize your profile. If you have any questions, just ask. Live long and prosper!" % name)
                 messages.success(
-                    request, "Live long and prosper, %s. You have successfully beamed aboard!" % name)
+                    request, "Live long and prosper, %s. You have successfully beamed aboard! Check your messages and customize your profile. I hope you enjoy your time here!" % name)
                 return redirect(reverse('index'))
                 # When User registers, a new profile wil be made.
             else:
@@ -95,12 +95,12 @@ def user_profile(request, id):
 @login_required
 def edit_profile(request, id):
     profile = get_object_or_404(Profile, pk=id)
-    if profile.user.username != request.user.username:
+    if profile.id != request.user.id:
         return redirect("index")
     else:
         if request.method == "POST":
             form = ProfileForm(request.POST, request.FILES,
-                               id, instance=profile)
+                                id, instance=profile)
 
             if form.is_valid():
                 profile = form.save(commit=False)
@@ -110,7 +110,7 @@ def edit_profile(request, id):
                 return redirect(user_profile, profile.id)
         else:
             form = ProfileForm(instance=profile)
-    return render(request, 'profileform.html', {'form': form}, {'profile': profile})
+    return render(request, 'profileform.html', {'form': form}, {'profile': profile},)
 
 
 @login_required
