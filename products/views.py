@@ -23,4 +23,6 @@ def product_detail(request, pk):
     'postdetail.html' template. Or return a 404 error if
     the post is not found """
     product = get_object_or_404(Product, pk=pk)
+    product.views += 1
+    product.save()
     return render(request, "product_detail.html", {'product': product})

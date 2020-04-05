@@ -47,8 +47,30 @@
                         <hr>
                         <form method="POST" action="{% url 'add_to_cart' product.id %}">
                                 {% csrf_token %}
-                                <div class="input-group product-detail-add-input">
                                     <input type="text" name="product" value="{{ product.name }}" hidden>
+                                    {% if product.tag == "1" %}
+                                    <div class="d-flex justify-content-center clothes-choices"> 
+                                        <select name="size" required>
+                                            <option value="" selected="selected">Sizes</option>
+                                                    <option value="Small">Small</option>
+                                                    <option value="Medium">Medium</option>
+                                                    <option value="Large">Large</option>
+                                                    <option value="X-Large">X-Large</option>
+                                        </select>
+                                    </div>
+                                    {% endif %}
+                                    {% if product.tag == "3" %}
+                                    <div class="d-flex justify-content-center clothes-choices"> 
+                                        <select name="color" required>
+                                            <option value="" selected="selected">Color</option>
+                                                    <option value="Black">Black</option>
+                                                    <option value="Red">Red</option>
+                                                    <option value="Green">Green</option>
+                                                    <option value="White">White</option>
+                                        </select>
+                                    </div>
+                                    {% endif %}
+                                    <div class="input-group product-detail-add-input">
                                     <input type="number" name="quantity" min="1" max="999" class="form-control" value="1">
                                     <span class="input-group-btn">
                                         <button class="btn btn-products" type="submit">Add</button>
@@ -59,7 +81,7 @@
             </div>
             <div class="d-flex justify-content-center">
         
-        <a href="{% url 'products' %}" class="btn btn-light btn-back-to-forum">Back to Shop</a>
+        <a href="{% url 'products' %}" class="btn btn-light btn-back-to-forum">Back to <i class="fas fa-store-alt"></i> Shop</a>
     
         </div>
 

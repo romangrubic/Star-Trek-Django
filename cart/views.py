@@ -11,19 +11,28 @@ def view_cart(request):
 
 def add_to_cart(request, id):
     """Add a quantity of the specified product to the cart"""
+    product = get_object_or_404(Product, pk=id)
     quantity = int(request.POST.get('quantity'))
     product_name = request.POST.get('product')
+    if request.POST.get('size'):
+        size = request.POST.get('size')
+    if request.POST.get('color'):
+        color = request.POST.get('color')
     cart = request.session.get('cart', {})
     total = 0
     cart[id] = cart.get(id, quantity)
-
     request.session['cart'] = cart
 
-    for id, quantity in cart.items():
+    for id, quantity, in cart.items():
         product = get_object_or_404(Product, pk=id)
         total += quantity * product.price
         request.session['total'] = float(total)
-    messages.success(request, 'You have successfuly added - "%s" x %s unit(s) - to your shopping cart!' % (product_name, quantity))
+        if request.POST.get('size'):
+            messages.success(request, 'You have successfuly added - "%s", size:  %s x %s unit(s) - to your shopping cart!' % (product_name, size, quantity))
+        elif request.POST.get('color'):
+            messages.success(request, 'You have successfuly added - "%s", color:  %s x %s unit(s) - to your shopping cart!' % (product_name, color, quantity))
+        else:
+            messages.success(request, 'You have successfuly added - "%s" x %s unit(s) - to your shopping cart!' % (product_name, quantity))
     return redirect(reverse('products'))
 
 
@@ -31,6 +40,7 @@ def adjust_cart(request, id):
     """Adjust the quantity of the specified product to the specified amount"""
     quantity = int(request.POST.get('quantity'))
     product = request.POST.get('product')
+
     cart = request.session.get('cart', {})
 
     if quantity > 0:
