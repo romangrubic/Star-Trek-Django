@@ -48,7 +48,7 @@ def create_or_edit_news(request, pk=None):
 def get_news_news(request):
     """Create a view that will return a list of new with tag: news and
     render them to the blogposts.html template"""
-    news_list = News.objects.filter(tag='News')
+    news_list = News.objects.filter(tag='N')
     paginator = Paginator(news_list, 8)
     page = request.GET.get('page')
     try:
@@ -63,7 +63,7 @@ def get_news_news(request):
 def get_news_updates(request):
     """Create a view that will return a list of new with tag: update and
     render them to the blogposts.html template"""
-    news_list = News.objects.filter(tag='Updates')
+    news_list = News.objects.filter(tag='U')
     paginator = Paginator(news_list, 8)
     page = request.GET.get('page')
     try:
@@ -78,7 +78,7 @@ def get_news_updates(request):
 def get_news_federation(request):
     """Create a view that will return a list of new with tag: update and
     render them to the blogposts.html template"""
-    news_list = News.objects.filter(tag='FNN')
+    news_list = News.objects.filter(tag='F')
     paginator = Paginator(news_list, 8)
     page = request.GET.get('page')
     try:

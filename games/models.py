@@ -10,7 +10,9 @@ class Games(models.Model):
     image3 = models.ImageField(upload_to='games_images')
     image4 = models.ImageField(upload_to='games_images')
     image5 = models.ImageField(upload_to='games_images')
-    link = models.CharField(max_length=254)
+    game_link = models.CharField(max_length=254)
+    forum_thread = models.CharField(max_length=254, blank=True)
+
 
     def __str__(self):
         return self.name

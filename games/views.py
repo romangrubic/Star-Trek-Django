@@ -5,7 +5,7 @@ from .models import Games
 # Create your views here.
 def games(request):
     """Return the games.html file"""
-    games = Games.objects.filter().order_by('name')
+    games = Games.objects.filter().order_by('id')
     return render(request, "games.html", {'games': games})
 
 
