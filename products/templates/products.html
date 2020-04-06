@@ -10,13 +10,23 @@
 			</form>
 		</div>
 	</div>
-	<div class="row d-flex justify-content-center">
-		<div class="products-filters">
-			<a href="{% url 'products_clothing' %}" class="btn btn-light">Clothing</a>
-			<a href="{% url 'products_accesories' %}" class="btn btn-light">Accesories</a>
-			<a href="{% url 'products_drinkware' %}" class="btn btn-light">Drinkware</a>
-			<a href="{% url 'products_home_and_office' %}" class="btn btn-light">Home & Office</a>
-			<a href="{% url 'products_collectibles' %}" class="btn btn-light">Collectibles</a>
+	<div class="d-flex justify-content-center">
+		<div class="products-filters row">
+            <div class="col-6 offset-sm-1 col-sm-2 d-flex justify-content-center no-padding">
+                <a href="{% url 'products_clothing' %}" class="btn btn-products-filter">Clothing</a>
+            </div>
+            <div class="col-6 col-sm-2 d-flex justify-content-center no-padding">
+                <a href="{% url 'products_accesories' %}" class="btn btn-products-filter">Accesories</a>
+            </div>
+            <div class="col-6 col-sm-2 d-flex justify-content-center no-padding">
+                <a href="{% url 'products_drinkware' %}" class="btn btn-products-filter">Drinkware</a>
+            </div>
+            <div class="col-6 col-sm-2 d-flex justify-content-center no-padding">
+                <a href="{% url 'products_home_and_office' %}" class="btn btn-products-filter">Home</a>
+            </div>
+            <div class="col-12 col-sm-2 d-flex justify-content-center no-padding">
+                <a href="{% url 'products_collectibles' %}" class="btn btn-products-filter">Collectibles</a>
+            </div>			
 		</div>
 	</div>
 	<hr>
