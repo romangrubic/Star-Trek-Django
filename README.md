@@ -17,7 +17,7 @@ Or just join for discussion about everything Star Trek in our Forum where you ca
     * [AWS S3](#aws-deployment)
     * [Heroku](#heroku-deployment)
     * [Local deployment](#local-deployment)
-
+* [Credits](#credits)
 
 ---
 ## Project Background
@@ -106,15 +106,15 @@ The site is hosted through Heroku and is synced to the master branch of the Git 
 This means that the latest push to the heroku branch will update the live site automatically.       
 
 The process for initial deployment is as follows -      
-- 1. Log into Heroku dashboard and select "Create new app" from teh dropdown menu located on the top right.     
-- 2. Enter a name for the app, select a region where you would like your app to be hosted & click the "Create app" button.        
-- 3. In the app dashboard, click on settings. Under "Config Vars", click "Reveal Config Vars" and set the variables in Heroku as they are in you env.py file:
-- 4. Type in your local terminal: `$ heroku login -i` and once you are logged in, create a requirements file `$ pip3 freeze -- local > requirements.txt`
+- Log into Heroku dashboard and select "Create new app" from teh dropdown menu located on the top right.     
+- Enter a name for the app, select a region where you would like your app to be hosted & click the "Create app" button.        
+- In the app dashboard, click on settings. Under "Config Vars", click "Reveal Config Vars" and set the variables in Heroku as they are in you env.py file:
+- Type in your local terminal: `$ heroku login -i` and once you are logged in, create a requirements file `$ pip3 freeze -- local > requirements.txt`
 and create a Procfile for Heroku by typing `echo web: gunicorn <YOUR_PROJECT_NAME>.wsgi:application > Procfile`
-- 5. Go back to Heroku, and at Django `Settings` copy `https://<app_name>.herokuapp.com/` 
-- 6. Go to Heroku and connect it to GitHub repository so that will automatically update itself after each push. You can also click to wait for CI to pass before pushing 
+- Go back to Heroku, and at Django `Settings` copy `https://<app_name>.herokuapp.com/` 
+- Go to Heroku and connect it to GitHub repository so that will automatically update itself after each push. You can also click to wait for CI to pass before pushing 
 if you are using Travis CI or any CI
-- 7. Once the build is complete, go back to Heroku and click on `Open App`
+- Once the build is complete, go back to Heroku and click on `Open App`
 
 
 ### Local deployment
@@ -127,3 +127,16 @@ Further help with cloning can be found on this GitHub Help [page](https://help.g
 [Back to top](#summary)
 
 ---
+## Credits
+### Content
++ Most of the content was used from the official [Star Trek](https://intl.startrek.com/)
+website. Including images, products, news and games.
+
+### Acknowledgement
+* Inspiration was taken from the official [Star Trek](https://intl.startrek.com/) website.
+* Videos on [CodeInstitute](https://codeinstitute.net/).
+* Thanks to my mentor Aaron Sinnott for feedback and ideas.
+* Big thanks to [Django Project](https://www.djangoproject.com/) and [W3 Schools](https://www.w3schools.com/) for all the content and clarification of different methods.
+
+#### This is for educational use.
+[Back to top](#summary)
