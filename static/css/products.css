@@ -1,10 +1,11 @@
 /* ------------- Products page ----------------*/
 .products-page{
-    padding: 30px 20px;
+    padding: 50px 15px;
     background: url("../images/picard-vine.jpg") no-repeat center center fixed;
 }
 .products-page-list{
     margin: auto;
+    max-width: 1200px;
 }
 .products-search{
     padding: 7px 10px;
@@ -63,7 +64,7 @@
 }
 .btn-products-filter{
     color: black;
-    background-color: #ffffff;
+    background-color: #ffffffd7;
     border: 1px solid rgba(0, 0, 0, 0.3);
     width:120px;
     margin: 5px;
@@ -71,8 +72,12 @@
 }
 .btn-products-filter:hover{
     color: black;
-    background-color: rgba(251, 207, 61);
+    background-color: rgb(250, 208, 68);
     transition-duration: 0.5s
+}
+.product-back-to-top{
+    max-width: 1200px;
+    margin: auto;
 }
 /* ------------- Product detail page ----------- */
 .product-detail-page{
@@ -80,24 +85,28 @@
     padding: 30px 10px 75px;
 }
 .product-detail-card{
-    max-width: 500px;
+    background-color: rgba(255, 255, 255, 0.95);
+    max-width: 950px;
     margin: auto;
     border-radius: 10px;
 }
 .product-detail-card-body{
-    padding: 25px 7.5%;
+    padding: 25px 10px 10px;
     border-radius: 10px;
 }
 .product-detail-image{
-    height: 300px;
+    height: 450px;
     width:100%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
+.product-name-description{
+    min-height: 270px;
+}
 .product-detail-card-price{
     font-size: 20px;
     font-weight: 600;
-    margin-top: 20px;
+    margin-top: 15px;
     text-align: center;
 }
 .product-detail-add-input{
@@ -111,11 +120,29 @@
     padding: 5px;
     width: 100px;
 }
-
+.product-detail-hr{
+    margin: 5px;
+}
+.btn-back-to-products{
+    padding: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
 /* ------------ Media queries ------------------- */
+@media only screen and (max-width: 767px) {
+    .product-detail-card{
+        max-width: 500px;
+    }
+    .product-name-description{
+        padding: 10px 5px;
+        min-height: 50px;
+    }
+}
 @media only screen and (max-width: 575px) {
     .btn-products-filter{
         width: 100%;
-        margin: 5px;
+        margin: 5px 25px;
+    }
+    .product-detail-image{
+        height: 350px;
     }
 }

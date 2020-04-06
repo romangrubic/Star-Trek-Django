@@ -1,36 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="product-detail-page">
-	<div class="row d-flex justify-content-center">
-		<div class="products-search">
-			<form action="{% url 'search_products' %}" method="GET">
-				<input type="text" name="q" class="products-search-input">
-				<button type="submit" class="btn btn-star-trek">Search</button>
-			</form>
-		</div>
-	</div>
 	<div class="d-flex justify-content-center">
 		<div class="products-filters row">
-            <div class="col-6 offset-sm-1 col-sm-2 d-flex justify-content-center no-padding">
-                <a href="{% url 'products_clothing' %}" class="btn btn-products-filter">Clothing</a>
-            </div>
-            <div class="col-6 col-sm-2 d-flex justify-content-center no-padding">
-                <a href="{% url 'products_accesories' %}" class="btn btn-products-filter">Accesories</a>
-            </div>
-            <div class="col-6 col-sm-2 d-flex justify-content-center no-padding">
-                <a href="{% url 'products_drinkware' %}" class="btn btn-products-filter">Drinkware</a>
-            </div>
-            <div class="col-6 col-sm-2 d-flex justify-content-center no-padding">
-                <a href="{% url 'products_home_and_office' %}" class="btn btn-products-filter">Home</a>
-            </div>
-            <div class="col-12 col-sm-2 d-flex justify-content-center no-padding">
-                <a href="{% url 'products_collectibles' %}" class="btn btn-products-filter">Collectibles</a>
-            </div>			
+			<div class="col-6 offset-sm-1 col-sm-2 d-flex justify-content-center no-padding">
+				<a href="{% url 'products_clothing' %}" class="btn btn-products-filter">Clothing</a>
+			</div>
+			<div class="col-6 col-sm-2 d-flex justify-content-center no-padding">
+				<a href="{% url 'products_accesories' %}" class="btn btn-products-filter">Accesories</a>
+			</div>
+			<div class="col-6 col-sm-2 d-flex justify-content-center no-padding">
+				<a href="{% url 'products_drinkware' %}" class="btn btn-products-filter">Drinkware</a>
+			</div>
+			<div class="col-6 col-sm-2 d-flex justify-content-center no-padding">
+				<a href="{% url 'products_home_and_office' %}" class="btn btn-products-filter">Home</a>
+			</div>
+			<div class="col-12 col-sm-2 d-flex justify-content-center no-padding">
+				<a href="{% url 'products_collectibles' %}" class="btn btn-products-filter">Collectibles</a>
+			</div>
 		</div>
 	</div>
 	<hr>
-	<div class="card product-detail-card">
-		<div id="product-detail-carousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+	<div class="product-detail-card row">
+		<div id="product-detail-carousel" class="carousel slide col-12 col-md-6 no-padding" data-interval="3000"
+			data-ride="carousel">
 			<ol class="carousel-indicators">
 				<li data-target="#product-detail-carousel" data-slide-to="0" class="active"></li>
 				{% if product.image2 %}
@@ -68,38 +61,18 @@
 						</a>
 						{% endif %}
 					</div>
-					<div class="card-body product-detail-card-body">
-						<h3 class="card-title text-center">{{ product.name }}</h3>
-						<hr>
-						<p class="card-text no-margin">{{ product.description }}</p>
+					<div class="col-12 col-md-6 product-detail-card-body">
+						<div class="product-name-description">
+							<h3 class="card-title text-center">{{ product.name }}</h3>
+							<hr>
+							<p class="card-text no-margin product-detail-description">{{ product.description }}</p>
+						</div>
 						<hr>
 						<p class="product-detail-card-price">{{ product.price }} €</p>
 						<hr>
 						<form method="POST" action="{% url 'add_to_cart' product.id %}">
 							{% csrf_token %}
 							<input type="text" name="product" value="{{ product.name }}" hidden>
-                                    {% if product.tag == "1" %}
-							<div class="d-flex justify-content-center">
-								<select name="size" class="clothes-choices" required>
-                                            <option value="" selected="selected">Sizes</option>
-                                                    <option value="Small">Small</option>
-                                                    <option value="Medium">Medium</option>
-                                                    <option value="Large">Large</option>
-                                                    <option value="X-Large">X-Large</option>
-                                        </select>
-							</div>
-							{% endif %}
-							{% if product.size == "color" %}
-							<div class="d-flex justify-content-center">
-								<select name="color" class="clothes-choices" required>
-                                            <option value="" selected="selected">Color</option>
-                                                    <option value="Black">Black</option>
-                                                    <option value="Red">Red</option>
-                                                    <option value="Green">Green</option>
-                                                    <option value="White">White</option>
-                                        </select>
-							</div>
-							{% endif %}
 							<div class="input-group product-detail-add-input">
 								<input type="number" name="quantity" min="1" max="999" class="form-control" value="1">
 								<span class="input-group-btn">
@@ -107,11 +80,10 @@
                                     </span>
 							</div>
 						</form>
-						<hr>
-						<div class="d-flex justify-content-center">
-							<a href="{% url 'products' %}" class="btn btn-info">Back to
-								<i class="fas fa-store-alt"></i> Shop</a>
-						</div>
+					</div>
+					<div class="col-12 d-flex justify-content-center btn-back-to-products">
+						<a href="{% url 'products' %}" class="btn btn-info">Back to
+							<i class="fas fa-store-alt"></i> Shop</a>
 					</div>
 				</div>
 			</div>

@@ -1,15 +1,7 @@
 {% extends 'base.html' %}
-
 {% block content %}
 <div class="products-page" id="top">
-	<div class="row d-flex justify-content-center">
-		<div class="products-search">
-			<form action="{% url 'search_products' %}" method="GET">
-				<input type="text" name="q" class="products-search-input">
-				<button type="submit" class="btn btn-star-trek">Search</button>
-			</form>
-		</div>
-	</div>
+<hr>
 	<div class="d-flex justify-content-center">
 		<div class="products-filters row">
             <div class="col-6 offset-sm-1 col-sm-2 d-flex justify-content-center no-padding">
@@ -44,16 +36,16 @@
                 </a>
 					<div class="card-body products-card-body">
 						<a href="{% url 'product_detail' product.id %}">
-                            <h3 class="card-title text-center products-name">{{ product.name }}</h3>
+                            <h4 class="card-title text-center products-name">{{ product.name|truncatechars:15 }}</h4>
                         </a>
-						<p class="card-text no-margin">{{ product.description|truncatechars:65 }}</p>
+						<p class="card-text no-margin">{{ product.description|truncatechars:50 }}</p>
 						<hr>
 						<div class="row">
-							<div class="col-5 no-padding-right">
+							<div class="col-6 no-padding-right">
 								<p class="products-card-price">{{ product.price }} €</p>
 							</div>
-							<div class="col-7 no-padding-left text-right">
-								<a href="{% url 'product_detail' product.id %}" class="btn btn-star-trek">View more...</a>
+							<div class="col-6 no-padding-left text-right">
+								<a href="{% url 'product_detail' product.id %}" class="btn btn-star-trek">View!</a>
 							</div>
 						</div>
 					</div>
@@ -62,21 +54,22 @@
 		{% endfor %}
 		{% endif %}
 	</div>
-	<div class="d-flex justify-content-end">
-		<a href="#top" class="btn btn-light btn-back-to-forum">Back to top!</a>
+    <hr>
+	<div class="d-flex justify-content-end product-back-to-top">
+		<a href="#top" class="btn btn-info btn-back-to-forum">Back to top!</a>
 	</div>
 	{% if products.count != 0 %}
 	<div class="d-flex justify-content-center">
 		<div class="pagination">
 			<span class="step-links">
         {% if products.has_previous %}
-            <a href="?page={{ products.previous_page_number }}" class="btn btn-star-trek no-margin">previous</a>
+            <a href="?page={{ products.previous_page_number }}" class="btn btn-star-trek no-margin">Previous</a>
         {% endif %}
         <span class="current">
             Page {{ products.number }} of {{ products.paginator.num_pages }}
         </span>
 			{% if products.has_next %}
-			<a href="?page={{ products.next_page_number }}" class="btn btn-star-trek no-margin">next</a>
+			<a href="?page={{ products.next_page_number }}" class="btn btn-star-trek no-margin">Next</a>
 			{% endif %}
 			</span>
 		</div>

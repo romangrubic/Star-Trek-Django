@@ -14,10 +14,6 @@ def add_to_cart(request, id):
     product = get_object_or_404(Product, pk=id)
     quantity = int(request.POST.get('quantity'))
     product_name = request.POST.get('product')
-    if request.POST.get('size'):
-        size = request.POST.get('size')
-    if request.POST.get('color'):
-        color = request.POST.get('color')
     cart = request.session.get('cart', {})
     total = 0
     cart[id] = cart.get(id, quantity)
@@ -27,12 +23,7 @@ def add_to_cart(request, id):
         product = get_object_or_404(Product, pk=id)
         total += quantity * product.price
         request.session['total'] = float(total)
-        if request.POST.get('size'):
-            messages.success(request, 'You have successfuly added - "%s", size:  %s x %s unit(s) - to your shopping cart!' % (product_name, size, quantity))
-        elif request.POST.get('color'):
-            messages.success(request, 'You have successfuly added - "%s", color:  %s x %s unit(s) - to your shopping cart!' % (product_name, color, quantity))
-        else:
-            messages.success(request, 'You have successfuly added - "%s" x %s unit(s) - to your shopping cart!' % (product_name, quantity))
+    messages.success(request, 'You have successfuly added - "%s" x %s unit(s) - to your shopping cart!' % (product_name, quantity))
     return redirect(reverse('products'))
 
 
