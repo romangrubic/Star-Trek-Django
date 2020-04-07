@@ -12,6 +12,9 @@ Or just join for discussion about everything Star Trek in our Forum where you ca
 ---
 ## Summary
 * [Project Background](#project-background)
+* [Features](#features)
+    * [Existing Features](#existing-features)
+    * [Future Features](#future-features)
 * [Technologies used](#technologies-used)
 * [Deployment](#deployment)
     * [AWS S3](#aws-deployment)
@@ -35,6 +38,82 @@ messaging system and edit their profiles so beside this project being a web-shop
 [![Build Status](https://travis-ci.org/romangrubic/Star-Trek-Django.svg?branch=master)](https://travis-ci.org/romangrubic/Star-Trek-Django)
 
 ---
+## Features
+### Existing Features
+* Navigation bar
+  - Navigation bar is visible on all pages and on all sizes (on a smaller width, it toggles into "hamburger"). It contains web-site logo and a set of links for 
+  each section and subsection of web-site.
+
+* Footer section
+  - Footer section contains three columns with links to different section of web-site, my contact information with Github, LinkedIn and a contact modal 
+  so users can contact me and last part are my projects to date. On a medium and smaller size screen, only section with my contact information is visible.
+
+* News section
+  - In news section, users can read about new things in Star Trek franchise. By clicking on a specific news, user can see the news in full size, with 
+  pictures and all content. Content for this section was borrowed from the official [Star Trek](https://intl.startrek.com/) website.
+
+* Shop section
+  - In the Shop, user can see products available for sell. There are filters in place so user, can easily serch for any type of things (clothes, accessory, drinkware, 
+home and collectible). By clicking on a product, user can see the full product info including pictures of product in a Bootstrap carousel, name, description, price and
+an add button if they would like to add product. Content for this section was borrowed from the official [Star Trek](https://intl.startrek.com/) website.
+
+* Games section
+  - Users can see games about Star Trek franchise available to play. When they click to read more, they can see photos of the game in a carousel, description of the game
+and links to the game main page as well as a link that will forward them to Forum post about that game.
+
+* Forum section
+  - I wanted for this website to be something more than just another web-shop so I created a discussion forum where users can post their opinion on things Star Trek.
+  They can join discusion by commenting bellow post or creating their own. There is a search bar for a quick topic search and also user can filter by 
+  author, title, views and date created. User has to register or log-in in order to visit this part of web-site!
+
+* Cart/Checkout section
+  - Here users can edit quantity of items or remove them from cart and see price total amount. In order to proceed with checkout, user will be required to register 
+  on the site. When user decides to finish shopping, they will need to input their information and credit card details so that purchase can be completed.
+
+* Account section
+  - Account is needed if user wants to finish shopping or visit the discussion forum section. Also, when user creates account, it automatically creates a user 
+  profile where user can edit information about self and gives opportunity to join the discussion forum and ability to privately chat with other users.
+
+* Django messages
+  - I am using a number of django messages to inform user. Whenever user adds, edit or remove a product, they are notified. Same when posting or commenting 
+  in Forum section, editing their profile and when sending or replying to private messages. 
+  - When user registers, they will see a message instructing 
+  them to check their inbox messages and customize their profile
+
+* Forum posts
+  - Each forum post has author so users can click on the name or the picture and they will be redirected to that users profile. User can edit post if it is creator
+ of the post, and any user can comment to any post in the Forum.
+
+* Profile page
+  - Since this is also a social network, users can modifiy their profiles and present themselves to the other users and check other people profiles 
+  and send them messages.
+
+* Private chat
+  - User can start chatting by going to another user profile and seeing button `send message`. Once sent message will be stored in sender outbox and receivers inbox.
+ I have put a check in place so that only these two users can see the message.
+  - Whenever new user registers to the site, they will receive a welcoming message from admin where they will be introduced to what they can do on the web-site 
+  and customize their profile and join the discussion Forum and become part of the community.
+
+* Orders
+  - Users can check their past orders on Orders page.
+
+* Pagination 
+  - I have added pagination to News, Shop and Forum sections. 
+
+* "Go to top" button
+  - Instead of user scrolling back to the top of the page when he reaches the bottom, I have put a button that will return to top once pressed.
+
+* No results - page 404
+  - If user search for an topic in Forum that is not in database, they will see a message that searched item is not in database.
+
+[Back to top](#summary)
+
+### Future Features
+  - I would like to expand web-site with more content and more options for the user.
+
+[Back to top](#summary)
+
+---
 ## Technologies Used 
 The website is designed using following technologies:
 
@@ -56,6 +135,8 @@ The website is designed using following technologies:
 
 -	**[EmailJS](https://www.emailjs.com/)** – Service that helps sending emails using client side technologies only. It only requires to connect EmailJS to one of the supported email services, 
 create an email template, and use their Javascript library to trigger an email.
+
+-	**[Stripe](https://stripe.com/ie)** – Allows individuals and businesses to make and receive payments over the Internet.
 
 
 ### Database

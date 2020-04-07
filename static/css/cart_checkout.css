@@ -22,7 +22,7 @@
     max-width: 1000px;
     margin: auto;
     padding: 0px 5px;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.95);
     border-radius: 5px;
 }
 .cart-product-img{
@@ -81,7 +81,7 @@ a:hover {
     border: 1px solid black;
     border-radius: 5px;
     padding: 25px 10px 5px;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.95);
     max-width: 800px;
 }
 .checkout-order{
@@ -95,3 +95,12 @@ a:hover {
         padding: 0px;
     }
 }
+@media only screen and (max-width: 576px) {
+    .cart-product-img{
+        width: 125px;
+    }
+}
+
+
+
+
