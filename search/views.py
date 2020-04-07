@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from products.models import Product
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from posts.models import Post
+from posts.forms import BlogPostForm
+from django.contrib import messages
 
 
 # Create your views here.
@@ -15,4 +17,13 @@ def search_threads(request):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
+    if request.method == "POST":
+        form = BlogPostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user_id = request.user.id
+            post.profile_id = request.user.id
+            post.save()
+            messages.success(request, "You have successfuly added a new post!")
+            return redirect('post_detail', post.pk)
     return render(request, "blogposts.html", {'posts': posts})
