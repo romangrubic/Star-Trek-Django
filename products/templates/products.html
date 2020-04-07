@@ -41,14 +41,16 @@
 						<p class="card-text no-margin">{{ product.description|truncatechars:50 }}</p>
 						<hr>
 						<div class="row">
-							<div class="col-6 no-padding-right">
+							<div class="col-12 no-padding-right">
 								<p class="products-card-price">{{ product.price }} €</p>
-							</div>
-							<div class="col-6 no-padding-left text-right">
-								<a href="{% url 'product_detail' product.id %}" class="btn btn-star-trek">View!</a>
 							</div>
 						</div>
 					</div>
+                    <a href="{% url 'product_detail' product.id %}">
+                    <div class="product-overlay">
+                        <button class="btn btn-star-trek products-view-btn">Click to view!</button>
+                    </div>
+                    </a>
 			</div>
 		</div>
 		{% endfor %}
