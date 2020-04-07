@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+<!---------------------->
+{% load bootstrap_tags %}
+<!------------------------->
 {% block content %}
 {% if message.sender == request.user or message.receiver == request.user %}
 <div class="message-page">
@@ -48,11 +51,17 @@
 		</div>
 		<hr class="thread-hr">
 		{% endfor %}
-		<div class="d-flex justify-content-center">
-			<a href="{% url 'send_reply' message.id %}" class="btn btn-star-trek">Send reply!
-				<i class="fas fa-reply"></i></a>
-			<a href="{% url 'inbox' %}" class="btn btn-primary">Back to messages <i class="fas fa-comments"></i></a>
-		</div>
+        <!----------------------Moved reply form from separate HTML to message.html ------------------------------------------------>
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="reply" hidden>Write a reply!</label>
+        <textarea rows="5" name="reply" class="form-control" id="reply" placeholder="Write your reply!" required></textarea>
+        <div class="d-flex justify-content-center margin-10">
+        <button type="submit" class="btn btn-star-trek">Send reply! <i class="fas fa-reply"></i></button>
+        <a href="{% url 'inbox' %}" class="btn btn-primary"> Go to Inbox <i class="fas fa-comments"></i></a>
+        </div>
+        </form>
+        <!------------------------------------------------------------------------------>
 	</div>
 </div>
 {% else %}

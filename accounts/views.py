@@ -130,14 +130,23 @@ def inbox(request):
 def outbox(request):
     outbox = Message.objects.filter(
         sender=request.user).order_by('-created_date')
-    print(outbox)
     return render(request, 'outbox.html', {'outbox': outbox})
 
 
 @login_required
 def message_detail(request, pk):
     message = get_object_or_404(Message, pk=pk)
-    return render(request, "message.html", {'message': message})
+    form = ReplyForm(request.POST)
+    ctx = {'form': form}
+    if form.is_valid():
+        reply = form.save(commit=False)
+        reply.message = message
+        reply.user = request.user
+        reply.profile_id = request.user.id
+        reply.save()
+        messages.success(request, "You have successfuly replied to a message!")
+        return redirect('message_detail', pk=message.id)
+    return render(request, "message.html", {'message': message}, ctx)
 
 
 @login_required
@@ -156,17 +165,3 @@ def create_message(request, id, pk=None):
         form = MessageForm(instance=message)
     return render(request, 'messageform.html', {'form': form})
 
-
-@login_required
-def send_reply(request, pk):
-    message = get_object_or_404(Message, pk=pk)
-    form = ReplyForm(request.POST)
-    if form.is_valid():
-        reply = form.save(commit=False)
-        reply.message = message
-        reply.user = request.user
-        reply.profile_id = request.user.id
-        reply.save()
-        messages.success(request, "You have successfuly replied to a message!")
-        return redirect('message_detail', pk=message.id)
-    return render(request, 'replyform.html', {'form': form}, )

@@ -1,5 +1,5 @@
 from django.conf.urls import url, include
-from accounts.views import logout, login, registration, user_profile, user_orders, edit_profile, inbox, message_detail, create_message, send_reply, outbox
+from accounts.views import logout, login, registration, user_profile, user_orders, edit_profile, inbox, message_detail, create_message, outbox
 from accounts import url_reset
 from . import views
 
@@ -15,5 +15,4 @@ urlpatterns = [
     url(r'^outbox/$', outbox, name="outbox"),
     url(r'^message/(?P<pk>\d+)/$', message_detail, name='message_detail'),
     url(r'^profile/(?P<id>\d+)/newMessage/$', create_message, name='create_message'),
-    url(r'^message/(?P<pk>\d+)/reply/$', send_reply, name='send_reply'),
 ]

@@ -79,7 +79,7 @@
 /* ------------ Alternating color for messages ------- */
 .color-gray{
     background-color: rgba(128, 128, 128, 0.05);
-    transition-duration: 0.25s;
+    transition-duration: 0.5s;
 }
 .color-gray:hover{
     background-color: rgb(251, 206, 61);
@@ -87,7 +87,7 @@
 }
 .color-white{
     background-color: rgba(255, 255, 255, 0.9);
-    transition-duration: 0.25s;
+    transition-duration: 0.5s;
 }
 .color-white:hover{
     background-color: rgb(251, 206, 61);
