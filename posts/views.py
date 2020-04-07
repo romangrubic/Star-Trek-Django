@@ -21,6 +21,15 @@ def get_posts(request):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
+    if request.method == "POST":
+        form = BlogPostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user_id = request.user.id
+            post.profile_id = request.user.id
+            post.save()
+            messages.success(request, "You have successfuly added a new post!")
+            return redirect('post_detail', post.pk)
     return render(request, "blogposts.html", {'posts': posts})
 
 
@@ -36,6 +45,15 @@ def get_posts_date(request):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
+    if request.method == "POST":
+        form = BlogPostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user_id = request.user.id
+            post.profile_id = request.user.id
+            post.save()
+            messages.success(request, "You have successfuly added a new post!")
+            return redirect('post_detail', post.pk)
     return render(request, "blogposts.html", {'posts': posts})
 
 
@@ -51,6 +69,15 @@ def get_posts_title(request):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
+    if request.method == "POST":
+        form = BlogPostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user_id = request.user.id
+            post.profile_id = request.user.id
+            post.save()
+            messages.success(request, "You have successfuly added a new post!")
+            return redirect('post_detail', post.pk)
     return render(request, "blogposts.html", {'posts': posts})
 
 
@@ -66,6 +93,15 @@ def get_posts_author(request):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
+    if request.method == "POST":
+        form = BlogPostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user_id = request.user.id
+            post.profile_id = request.user.id
+            post.save()
+            messages.success(request, "You have successfuly added a new post!")
+            return redirect('post_detail', post.pk)
     return render(request, "blogposts.html", {'posts': posts})
 
 
@@ -109,7 +145,7 @@ def edit_post(request, pk=None):
                 post.profile_id = request.user.id
                 post.save()
                 messages.success(request, "You have successfuly edited the post!")
-                return redirect(post_detail, post.pk)
+                return redirect('post_detail', post.pk)
         else:
             form = BlogPostForm(instance=post)
     return render(request, 'blogpostform.html', {'form': form})
@@ -131,7 +167,7 @@ def create_post(request, pk=None):
             post.profile_id = request.user.id
             post.save()
             messages.success(request, "You have successfuly added a new post!")
-            return redirect(post_detail, post.pk)
+            return redirect('post_detail', post.pk)
     else:
         form = BlogPostForm(instance=post)
     return render(request, 'blogpostform.html', {'form': form})

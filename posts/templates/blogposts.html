@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="d-flex justify-content-center">
-        <a href="{% url 'new_post' %}" class="btn btn-post-thread">Start a topic! <i class="fas fa-comment-dots"></i></a>
+        <button class="btn btn-post-thread" data-toggle="modal" data-target="#new-post">Start a topic! <i class="fas fa-comment-dots"></i></button>
     </div>
     {% if post.count == 0 %} 
     <div class="forum-no-search-result">
@@ -76,4 +76,33 @@
     </div>
     {% endif %}
 </div>
+<!-------------------------------------- New post modal --------------------------------------------------------------->
+<div class="modal fade" id="new-post" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header justify-content-center">
+        <h3 id="exampleModalLongTitle">Share you opinion</h3>
+      </div>
+      <div class="modal-body">
+      <!------------- New post form -------------------------->
+       <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="title" hidden>Post title</label>
+        <textarea rows="1" name="title" class="form-control comment-form" id="title" placeholder="Title here!" required></textarea>
+        <label for="content" hidden>Post content</label>
+        <textarea rows="10" name="content" class="form-control comment-form" id="content" placeholder="Write your opinion here!" required></textarea>
+        <div class="d-flex justify-content-center margin-5">
+        <button type="submit" class="btn btn-star-trek">Share it! <i class="fas fa-comment-dots"></i></button>
+        <a href="{% url 'get_posts' %}" class="btn btn-info">Back to Forum <i class="fas fa-hand-spock"></i></a>
+        </div>
+        <div class="text-center margin-10">
+        <p>* Don't worry, you can edit it later!</p>
+        </div>
+        </form>
+        <!--------------------------------------------------------->
+    </div>
+    </div>
+  </div>
+</div>
+<!--------------------------------------------------------------------------------------------------------------------->
 {% endblock %}

@@ -16,14 +16,18 @@
     max-width: 1000px;
 }
 .forum-filters{
-    background-color:rgb(251, 206, 60);
-    border: 2px solid rgba(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 2px solid gray;
+
+}
+.forum-filters > div > a >h4{
+    color: rgb(251, 206, 61);
 }
 .forum-filters > div > a >h4:hover{
     color: white;
 }
 .forum-thread{
-    margin: -2px;
+    margin:0px;
     padding: 0px 0px 3px;
 }
 .forum-thread > div {
@@ -116,6 +120,6 @@
 }
 /* ----------- Comment form -------------------- */
 .comment-form{
-    max-width: 600px;
-    margin: 15px auto;
+    max-width: 700px;
+    margin: 25px auto 15px;
 }
