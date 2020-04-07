@@ -9,7 +9,7 @@
     border: 1px solid black;
     border-radius: 5px;
     margin: auto;
-    max-width: 650px;
+    max-width: 750px;
 }
 .message-info-section-empty{
     background-color: rgba(255, 255, 255, 0.95);
@@ -94,3 +94,7 @@
     transition-duration: 0.25s;
 }
 /* ------------- Reply ------------------ */
+.reply-form{
+    max-width: 600px;
+    margin: 15px auto;
+}

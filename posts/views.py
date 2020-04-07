@@ -77,7 +77,17 @@ def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.views += 1
     post.save()
-    return render(request, "postdetail.html", {'post': post})
+    form = CommentForm(request.POST)
+    ctx = {'form': form}
+    if form.is_valid():
+        comment = form.save(commit=False)
+        comment.post = post
+        comment.user = request.user
+        comment.profile_id = request.user.id
+        comment.save()
+        messages.success(request, "You have successfuly commented on a post!")
+        return redirect('post_detail', pk=post.id)
+    return render(request, "postdetail.html", {'post': post}, ctx)
 
 
 @login_required()
@@ -125,17 +135,3 @@ def create_post(request, pk=None):
     else:
         form = BlogPostForm(instance=post)
     return render(request, 'blogpostform.html', {'form': form})
-
-
-def add_comment(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    form = CommentForm(request.POST)
-    if form.is_valid():
-        comment = form.save(commit=False)
-        comment.post = post
-        comment.user = request.user
-        comment.profile_id = request.user.id
-        comment.save()
-        messages.success(request, "You have successfuly commented on a post!")
-        return redirect('post_detail', pk=post.id)
-    return render(request, 'commentform.html', {'form': form}, )

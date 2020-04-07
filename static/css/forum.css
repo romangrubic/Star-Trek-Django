@@ -115,15 +115,7 @@
     margin: auto;
 }
 /* ----------- Comment form -------------------- */
-.comment-form-page{
-    background: url("../images/landing-image.jpg") no-repeat center center fixed;
-    padding: 100px 10px;
-}
-.comment-form-section{
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 25px 25px 5px;
-    background-color: rgba(255, 255, 255, 0.95);
-    margin: auto;
-    max-width: 650px;
+.comment-form{
+    max-width: 600px;
+    margin: 15px auto;
 }

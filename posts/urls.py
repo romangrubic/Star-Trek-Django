@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import get_posts, post_detail, edit_post, create_post, add_comment, get_posts_date, get_posts_title, get_posts_author
+from .views import get_posts, post_detail, edit_post, create_post, get_posts_date, get_posts_title, get_posts_author
 
 
 urlpatterns = [
@@ -10,5 +10,4 @@ urlpatterns = [
     url(r'^(?P<pk>\d+)/$', post_detail, name='post_detail'),
     url(r'^new/$', create_post, name='new_post'),
     url(r'^(?P<pk>\d+)/edit/$', edit_post, name='edit_post'),
-    url(r'^(?P<pk>\d+)/comment/$', add_comment, name='add_comment'),
 ]
