@@ -11,11 +11,16 @@ Or just join for discussion about everything Star Trek in our Forum where you ca
 
 ---
 ## Summary
-* [Project Background](#project-background)
+* [Project summary](#project-summary)
+* [User Experience](#ux)
+    * [User Stories](#user-stories)
+    * [Five planes](#strategy)
 * [Features](#features)
     * [Existing Features](#existing-features)
     * [Future Features](#future-features)
+* [Database Architecture](#database-architecture)
 * [Technologies used](#technologies-used)
+* [Testing](#testing)
 * [Deployment](#deployment)
     * [AWS S3](#aws-deployment)
     * [Heroku](#heroku-deployment)
@@ -23,7 +28,7 @@ Or just join for discussion about everything Star Trek in our Forum where you ca
 * [Credits](#credits)
 
 ---
-## Project Background
+## Project summary
 
 Welcome to my Full Stack Frameworks with Django Project for Code Institute. 
 
@@ -35,7 +40,25 @@ messaging system and edit their profiles so beside this project being a web-shop
 
 [Back to top](#summary)
 
-[![Build Status](https://travis-ci.org/romangrubic/Star-Trek-Django.svg?branch=master)](https://travis-ci.org/romangrubic/Star-Trek-Django)
+---
+## UX
+### User Stories
+#### As a new user of the web-site, I would like to be able to:
+[Back to top](#summary)
+
+
+### Strategy
+
+### Scope
+
+### Structure
+
+### Wireframes
+Since this is a big project, I have decided to put wireframes in separate file.
+You can access them [here](https://github.com/romangrubic/Star-Trek-Django/blob/master/wireframes.md)
+
+### Surface 
+[Back to top](#summary)
 
 ---
 ## Features
@@ -114,6 +137,16 @@ and links to the game main page as well as a link that will forward them to Foru
 [Back to top](#summary)
 
 ---
+## Database Architecture
+
+### Database
+This project employs SQL database available as add-on on Heroku known as [Heroku Postgres](https://www.heroku.com/postgres). 
+
+#### Full database schema is located [here](https://github.com/romangrubic/Star-Trek-Django/blob/master/database.md)
+
+[Back to top](#summary)
+
+---
 ## Technologies Used 
 The website is designed using following technologies:
 
@@ -154,6 +187,32 @@ create an email template, and use their Javascript library to trigger an email.
 -	**[AWS-S3](https://aws.amazon.com/s3/)** – Object storage service that offers industry-leading scalability, data availability, security, and performance.
 
 [Back to top](#summary)
+
+---
+## Testing
+
+#### Testing section is located [here](https://github.com/romangrubic/Star-Trek-Django/blob/master/testing.md)
+
+### Travis CI
+ - Travis CI is a hosted continuous integration service used to build and test software projects hosted at GitHub and Bitbucket. 
+
+[![Build Status](https://travis-ci.org/romangrubic/Star-Trek-Django.svg?branch=master)](https://travis-ci.org/romangrubic/Star-Trek-Django)
+
+
+### Validating code
+- HTML
+  - code is validated through [W3 validator](https://validator.w3.org/).
+
+- CSS
+  - code is validated through [W3 Jigsaw](https://jigsaw.w3.org/css-validator/).
+
+- JavaScript
+  - code is validated through [JS Hint](https://jshint.com/).
+
+- Python
+  - code is validated through [PEP8](http://pep8online.com/).
+
+ [Back to top](#summary)
 
 ---
 ## Deployment
