@@ -13,6 +13,12 @@
 * [Forum](#forum-section)
 * [Cart & Checkout](#cart-and-checkout-section)
 * [Account](#account-section)
+    * [Registration](#registration)
+    * [Sign In](#sign-in)
+    * [Profile](#profile)
+    * [Messages](#messages)
+    * [Orders](#orders)
+    * [Log out](#log-out)
 
 
 #### Back to [Readme.md](https://github.com/romangrubic/Star-Trek-Django)
@@ -164,27 +170,50 @@ Web-site is responsive for screens from 350px to 2k. Everything is in order and 
 ---
 ## Account section
 
+### Registration
+| Functionality | Expected Outcome | Actual Outcome | Pass/Fail |
+| :-------------: |:----------------:| :--------------: | :---------: |
+| Clicking on `Register` button | Registers the user and redirects to Index.html. If registration form is incomplete, shows `Please fill out this field.`  | As Expected | Pass |
+
+### Sign in
+| Functionality | Expected Outcome | Actual Outcome | Pass/Fail |
+| :-------------: |:----------------:| :--------------: | :---------: |
+| Clicking on `Log In` button | Logs the user in and redirects to Index.html. If user info not correct, shows error and asks user to try again | As Expected | Pass |
+| Clicking on `Forgot password` | Opens "Forgot password" page | As Expected | Pass |
+
+
 ### Profile
 | Functionality | Expected Outcome | Actual Outcome | Pass/Fail |
 | :-------------: |:----------------:| :--------------: | :---------: |
 | Clicking on `Edit profile` button | Opens "Edit profile" page | As Expected | Pass |
 | Clicking on `Save` button | Saves changes to profile and redirects to "Profile" page | As Expected | Pass |
 | Clicking on `Cancel` button | Cancel changes to profile and redirects to "Profile" page | As Expected | Pass |
-| Clicking on `Send message` button on "Profile" page | Opens "Message" form page | As Expected | Pass |
-| Clicking on `Send message` button on "Message" form page | Creates a conversation between request user and the user  | As Expected | Pass |
+| Clicking on `Send message` button on "Profile" page | Opens "Message" form modal | As Expected | Pass |
+| Clicking on `Send message` button on "Message" form modal | Creates a conversation between request user and the user  | As Expected | Pass |
+| Clicking on `Cancel` button on "Message" form modal | Closes "Message" form modal | As Expected | Pass |
 
+### Messages
+| Functionality | Expected Outcome | Actual Outcome | Pass/Fail |
+| :-------------: |:----------------:| :--------------: | :---------: |
+| Clicking on "Inbox" tab | Shows received messages | As Expected | Pass |
+| Clicking on "Outbox" tab | Shows sent messages | As Expected | Pass |
+| Clicking on message name | Opens "Profile" page of the selected user | As Expected | Pass |
+| Clicking on message title | Opens "Message" page with the conversation history | As Expected | Pass |
+| Clicking on senders image and/or name | Opens profile page of the sender | As Expected | Pass |
+| Clicking on receivers image and/or name | Opens profile page of the receiver | As Expected | Pass |
+| Clicking on `Send reply` button | Adds the reply to the message at the bottom. If reply input is empty, shows `Please fill out this field.` | As Expected | Pass |
+| Clicking on `Go to Messages` button | Opens "Messages" page | As Expected | Pass |
 
-### Profile
+### Orders
 | Functionality | Expected Outcome | Actual Outcome | Pass/Fail |
 | :-------------: |:----------------:| :--------------: | :---------: |
 | If no items, clicking on `Shop` button | Shows "Shop" page | As Expected | Pass |
+| Clicking on a orders date | Expands accordion with the selected order, items and total price | As Expected | Pass |
+| Clicking on products name in order | Shows that products detail page | As Expected | Pass |
 
-### Profile
+### Log out
 | Functionality | Expected Outcome | Actual Outcome | Pass/Fail |
 | :-------------: |:----------------:| :--------------: | :---------: |
-| If no items, clicking on `Shop` button | Shows "Shop" page | As Expected | Pass |
+| Clicking on `Log out` | Log outs the user | As Expected | Pass |
 
-### Profile
-| Functionality | Expected Outcome | Actual Outcome | Pass/Fail |
-| :-------------: |:----------------:| :--------------: | :---------: |
-| If no items, clicking on `Shop` button | Shows "Shop" page | As Expected | Pass |
+[Back to top](#summary)
