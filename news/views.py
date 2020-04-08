@@ -60,21 +60,6 @@ def get_news_news(request):
     return render(request, "newsblog.html", {'news': news})
 
 
-def get_news_updates(request):
-    """Create a view that will return a list of new with tag: update and
-    render them to the blogposts.html template"""
-    news_list = News.objects.filter(tag='U')
-    paginator = Paginator(news_list, 8)
-    page = request.GET.get('page')
-    try:
-        news = paginator.page(page)
-    except PageNotAnInteger:
-        news = paginator.page(1)
-    except EmptyPage:
-        news = paginator.page(paginator.num_pages)
-    return render(request, "newsblog.html", {'news': news})
-
-
 def get_news_federation(request):
     """Create a view that will return a list of new with tag: update and
     render them to the blogposts.html template"""

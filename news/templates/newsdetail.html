@@ -35,7 +35,7 @@
         </div>
                 <div class="col-12">
                     <hr>
-                    <p class="news-detail-content">{{ news.content }}</p>
+                    <p class="news-detail-content">{{ news.content|linebreaks }}</p>
                     <div class="d-flex justify-content-center">
                     {% if news.forum_thread %}
                     {% if user.is_authenticated %} 

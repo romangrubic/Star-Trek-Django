@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="products-page" id="top">
-<hr>
+<div class="products-page">
 	<div class="d-flex justify-content-center">
 		<div class="products-filters row">
             <div class="col-6 offset-sm-1 col-sm-2 d-flex justify-content-center no-padding">
@@ -48,7 +47,7 @@
 					</div>
                     <a href="{% url 'product_detail' product.id %}">
                     <div class="product-overlay">
-                        <button class="btn btn-star-trek products-view-btn">Click to view!</button>
+                        <button class="btn products-view-btn">Click to view!</button>
                     </div>
                     </a>
 			</div>
