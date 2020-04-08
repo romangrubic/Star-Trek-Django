@@ -46,7 +46,19 @@ body {
 .badge-warning[href] {
     background-color: #c67605;
 }
-
+/* ------------------ Carousel ------------------ */
+.carousel-control-prev-icon{
+    background-color: rgba(251, 207, 61);
+    height: 40px;
+}
+.carousel-control-next-icon{
+    background-color: rgba(251, 207, 61);
+    height: 40px;
+}
+.carousel-indicators li{
+    color: rgba(251, 207, 61);
+    padding: 1px;
+}
 /* ------------ Star trek btn --------------- */
 .btn-star-trek{
     margin: 0 5px;

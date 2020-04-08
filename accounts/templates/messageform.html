@@ -5,6 +5,8 @@
 <div class="message-page">
 	<div class="message-info-section">
     <h1 class="text-center">Start a conversation!</h1>
+    {{ request.user}}
+    {{ profile.user }}
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form | as_bootstrap }}

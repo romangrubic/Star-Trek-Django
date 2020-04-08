@@ -43,7 +43,7 @@
             <hr>
             <div class="row">
                 <div class="col-xs-9">
-                    <p>{{ games.description }}</p>
+                    <p>{{ games.description|linebreaks }}</p>
                     <div class="d-flex justify-content-end">
                     <a href="{{ games.game_link }}" class="btn btn-success"  target="_blank" rel="noopener">Link to game!</a>
                     </div>
@@ -51,9 +51,9 @@
                     <hr>
                      <div class="d-flex justify-content-center">                    
                     {% if user.is_authenticated %} 
-                    <a href="{{ games.forum_thread }}" class="btn btn-star-trek"  target="_blank" rel="noopener">Go to <i class="fas fa-hand-spock"></i> Forum thread!</a>
+                    <a href="{{ games.forum_thread }}" class="btn btn-star-trek"  target="_blank" rel="noopener">Go to Forum <i class="fas fa-hand-spock"></i></a>
                     {% else %}
-                    <a href="{% url 'registration' %}" class="btn btn-star-trek">Go to <i class="fas fa-hand-spock"></i> Forum thread!</a>
+                    <a href="{% url 'registration' %}" class="btn btn-star-trek">Go to Forum <i class="fas fa-hand-spock"></i></a>
                     {% endif %}
                     </div>
                     {% endif %}                   

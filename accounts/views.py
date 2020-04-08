@@ -152,6 +152,7 @@ def message_detail(request, pk):
 @login_required
 def create_message(request, id, pk=None):
     message = get_object_or_404(Message, pk=pk) if pk else None
+    profile = get_object_or_404(Profile, pk=id)
     if request.method == "POST":
         form = MessageForm(request.POST, request.FILES, instance=message)
         if form.is_valid():
@@ -163,5 +164,5 @@ def create_message(request, id, pk=None):
             return redirect(message_detail, message.pk)
     else:
         form = MessageForm(instance=message)
-    return render(request, 'messageform.html', {'form': form})
+    return render(request, 'messageform.html', {'form': form}, profile)
 

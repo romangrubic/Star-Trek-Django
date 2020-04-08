@@ -7,10 +7,15 @@
 {% block content %}
 <div class="home-page">
 	<div class="landing-image">
+        {% if user.is_authenticated %}
+        <img src="{{ MEDIA_URL }}jumbo-text.png" class="index-image">
+			<p class="lead">Website for everything Star Trek!</p>
+        {% else %}
 		<a href="{% url 'registration' %}">
 			<img src="{{ MEDIA_URL }}jumbo-text.png" class="index-image">
 			<p class="lead">Website for everything Star Trek!</p>
 		</a>
+        {% endif %}
 	</div>
 	<div class="index-info-section row">
 		<div class="col-12 col-md-6 index-card-padding">
