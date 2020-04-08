@@ -86,9 +86,21 @@ def registration(request):
 
 
 @login_required
-def user_profile(request, id):
+def user_profile(request, id, pk=None):
     """ Users profile page"""
     user = User.objects.get(pk=id)
+    message = get_object_or_404(Message, pk=pk) if pk else None
+    if request.method == "POST":
+        form = MessageForm(request.POST, request.FILES, instance=message)
+        if form.is_valid():
+            message = form.save(commit=False)
+            message.sender = request.user
+            message.receiver_id = id
+            message.save()
+            messages.success(request, "You have successfuly sent a message! You can check it in Account > Messages > Outbox.")
+            return redirect(user_profile, user.id)
+    else:
+        form = MessageForm(instance=message)
     return render(request, 'profile.html', {"profile": user}, )
 
 
@@ -147,22 +159,3 @@ def message_detail(request, pk):
         messages.success(request, "You have successfuly replied to a message!")
         return redirect('message_detail', pk=message.id)
     return render(request, "message.html", {'message': message}, ctx)
-
-
-@login_required
-def create_message(request, id, pk=None):
-    message = get_object_or_404(Message, pk=pk) if pk else None
-    profile = get_object_or_404(Profile, pk=id)
-    if request.method == "POST":
-        form = MessageForm(request.POST, request.FILES, instance=message)
-        if form.is_valid():
-            message = form.save(commit=False)
-            message.sender = request.user
-            message.receiver_id = id
-            message.save()
-            messages.success(request, "You have successfuly sent a message!")
-            return redirect(message_detail, message.pk)
-    else:
-        form = MessageForm(instance=message)
-    return render(request, 'messageform.html', {'form': form}, profile)
-

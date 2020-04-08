@@ -10,7 +10,7 @@
         {{ form | as_bootstrap }}
         <div class="d-flex justify-content-center">
         <button type="submit" class="btn btn-star-trek profile-form-button">Save <i class="fas fa-save"></i></button>
-        <a href="{% url 'profile' request.user.id %}" class="btn btn-dark profile-form-button">Cancel <i class="fas fa-ban"></i></a>
+        <a href="{% url 'profile' request.user.id %}" class="btn btn-info profile-form-button">Cancel <i class="fas fa-ban"></i></a>
         </div>
     </form>
     </div>

@@ -15,15 +15,16 @@
 				<div class="col-sm-7 profile-info text-center">
 					<h1>{{ profile.uprofile.name }}</h1>
 					<h3><i class="fa fa-user"></i> {{ profile.username }}</h3>
-                    {% if profile.username != user.username %}
-                    <div class="d-flex justify-content-center">
-						<a href="{% url 'create_message' profile.id %}" class="btn btn-star-trek">Send message <i class="fas fa-comments"></i></a>
+					{% if profile.username != user.username %}
+					<div class="d-flex justify-content-center">
+						<button class="btn btn-star-trek" data-toggle="modal" data-target="#new-message">Send message <i class="fas fa-comments"></i></button>
 					</div>
-                    {% else %}
-						<div class="d-flex justify-content-center">
-							<a href="{% url 'edit_profile' profile.id %}" class="btn btn-info">Edit Profile <i class="fas fa-user-edit"></i></a>
-						</div>
-                    {% endif %}
+					{% else %}
+					<div class="d-flex justify-content-center">
+						<a href="{% url 'edit_profile' profile.id %}" class="btn btn-star-trek">Edit Profile
+							<i class="fas fa-user-edit"></i></a>
+					</div>
+					{% endif %}
 				</div>
 			</div>
 			<hr>
@@ -105,5 +106,34 @@
 						<hr>
 					</div>
 				</div>
+				<!-------------------------------------- New post modal --------------------------------------------------------------->
+				<div class="modal fade" id="new-message" tabindex="-1" role="dialog"
+					aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<div class="modal-header justify-content-center">
+								<h3 id="exampleModalLongTitle">Start a conversation!</h3>
+							</div>
+							<div class="modal-body">
+								<h5>Sender: {{ request.user }}</h5>
+								<h5>Receiver: {{ profile.username }}</h5>
+								<!------------- New post form -------------------------->
+								<form method="POST" enctype="multipart/form-data">
+									{% csrf_token %}
+									<label for="title" hidden>Post title</label>
+									<textarea rows="1" name="title" class="form-control comment-form" id="title" placeholder="Title here!" required></textarea>
+									<label for="message" hidden>Post content</label>
+									<textarea rows="10" name="message" class="form-control comment-form" id="content" placeholder="Write your message here!" required></textarea>
+									<div class="d-flex justify-content-center margin-5">
+										<button type="submit" class="btn btn-star-trek">Send message! <i class="fas fa-comments"></i></button>
+										<button type="button" class="btn btn-info" data-dismiss="modal">Cancel <i class="fas fa-ban"></i></button>
+									</div>
+								</form>
+								<!--------------------------------------------------------->
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--------------------------------------------------------------------------------------------------------------------->
 
 				{% endblock %}
