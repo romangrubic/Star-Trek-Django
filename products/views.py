@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Product
-
+from .models import Product, Review
+from .forms import ReviewForm
+from django.contrib import messages
 
 # Create your views here.
 def all_products(request):
@@ -25,7 +26,18 @@ def product_detail(request, pk):
     product = get_object_or_404(Product, pk=pk)
     product.views += 1
     product.save()
-    return render(request, "product_detail.html", {'product': product})
+    form = ReviewForm(request.POST, request.FILES)
+    ctx = {'form': form}
+    product_name = product.name
+    if form.is_valid():
+        review = form.save(commit=False)
+        review.product = product
+        review.user = request.user
+        review.profile_id = request.user.id
+        review.save()
+        messages.success(request, 'You have successfuly left a review for "%s" product!' % product_name)
+        return redirect(product_detail, pk=product.id)
+    return render(request, "product_detail.html", {'product': product}, ctx)
 
 
 def products_clothing(request):

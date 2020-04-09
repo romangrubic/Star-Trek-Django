@@ -1,5 +1,7 @@
 from django.db import models
 from .choices import PRODUCT_FILTERS
+from django.contrib.auth.models import User
+from accounts.models import Profile
 
 
 # Create your models here.
@@ -17,3 +19,13 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+
+class Review(models.Model):
+    product = models.ForeignKey(Product, related_name="productreview")
+    profile = models.ForeignKey(Profile)
+    user = models.ForeignKey(User)
+    content = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return '{}-{}-{}'.format(self.post.title, str(self.user.username), str(self.content))

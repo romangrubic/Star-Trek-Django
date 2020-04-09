@@ -85,6 +85,42 @@
 						<a href="{% url 'products' %}" class="btn btn-info">Back to
 							<i class="fas fa-store-alt"></i> Shop</a>
 					</div>
+                    <div class="col-12">
+                    {% for comment in product.productreview.all %}
+                    <div class="row">
+                        <div class="col-4 col-md-3 text-center">
+                        <a href="{% url 'profile' comment.user_id %}" target="_blank" rel="noopener">
+                        <img src="{{ MEDIA_URL }}{{ comment.profile.image }}" class="forum-thread-user-image">
+                        <p class="no-margin">{{ comment.user}} </p>
+                        </a>
+                        <p class="no-margin"> {{ comment.created_date }} </p>  
+                            
+                        </div>
+                        <div class="col-8 col-md-9 thread-comment no-padding-left">
+                            {{ comment.content }}
+                        </div>
+                        </div>
+                        <hr class="thread-hr">
+                        {% endfor %}
+                        <!----------------- Comment form beneath post for easier commenting --------------------->
+                        {% if user.is_authenticated %}
+                        <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label for="content" hidden>Write a comment!</label>
+                        <textarea rows="5" name="content" class="form-control comment-form" id="reply" placeholder="Write your review!" required></textarea>
+                        <div class="d-flex justify-content-center margin-10">
+                        <button type="submit" class="btn btn-star-trek">Leave a review! <i class="fas fa-reply"></i></button>
+                        </div>
+                        </form>
+                        {% else %}
+                        <hr>
+                        <div class="text-center margin-10">
+                            <h1>- Write a review! -</h1>
+                            <a href="{% url 'registration' %}" class="btn btn-star-trek">Register <i class="fa fa-user-plus"></i></a>
+                        </div>
+                        {% endif %}
+                        <!--------------------------------------------------------------------------------------->
+                        </div>      
 				</div>
 			</div>
 			{% endblock %}

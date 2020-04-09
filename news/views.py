@@ -36,7 +36,7 @@ def news_detail(request, pk):
         newscomment.user = request.user
         newscomment.profile_id = request.user.id
         newscomment.save()
-        messages.success(request, "You have successfuly left a comment at this News!")
+        messages.success(request, 'You have successfuly left a comment at "%s" news!' % news.title)
         return redirect(news_detail, pk=news.id)
     return render(request, "newsdetail.html", {'news': news}, ctx)
 
