@@ -31,7 +31,7 @@
 			<div class="row">
 				<div class="col-12 offset-sm-1 col-sm-10">
 					<h3 class="profile-info-section-header">About me</h3>
-					<p class="profile-bio-p">{{ profile.uprofile.bio }}</p>
+					<p class="profile-bio-p">{{ profile.uprofile.bio|linebreaks }}</p>
 				</div>
 			</div>
 			<hr>
@@ -59,7 +59,7 @@
 							<h5>Quote</h5>
 						</div>
 						<div class="col-8">
-							<p class="profile-favourite-p">{{ profile.uprofile.favourite_quote }}</p>
+							<p class="profile-favourite-p">{{ profile.uprofile.favourite_quote|linebreaks }}</p>
 						</div>
 					</div>
 				</div>
@@ -68,7 +68,7 @@
 			<div class="row">
 				<div class="col-12 offset-sm-1 col-sm-10">
 					<h3 class="profile-info-section-header">Cosplay</h3>
-					<p class="profile-cosplay-p">{{ profile.uprofile.cosplay_input }}</p>
+					<p class="profile-cosplay-p">{{ profile.uprofile.cosplay_input|linebreaks }}</p>
 					<div class="row">
 						<div id="cosplay-carousel" class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">

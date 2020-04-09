@@ -28,7 +28,7 @@ class NewsComment(models.Model):
     news = models.ForeignKey(News, related_name="newscomments")
     profile = models.ForeignKey(Profile)
     user = models.ForeignKey(User)
-    content = models.TextField()
+    content = models.TextField(max_length=200)
     created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
