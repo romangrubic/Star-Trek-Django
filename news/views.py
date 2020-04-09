@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import News
-from .forms import NewsForm
-
+from .models import News, NewsComment
+from .forms import NewsForm, NewsCommentForm
+from django.contrib import messages
 
 # Create your views here.
 def get_news(request):
@@ -28,7 +28,17 @@ def news_detail(request, pk):
     news = get_object_or_404(News, pk=pk)
     news.views += 1
     news.save()
-    return render(request, "newsdetail.html", {'news': news})
+    form = NewsCommentForm(request.POST, request.FILES)
+    ctx = {'form': form}
+    if form.is_valid():
+        newscomment = form.save(commit=False)
+        newscomment.news = news
+        newscomment.user = request.user
+        newscomment.profile_id = request.user.id
+        newscomment.save()
+        messages.success(request, "You have successfuly left a comment at this News!")
+        return redirect(news_detail, pk=news.id)
+    return render(request, "newsdetail.html", {'news': news}, ctx)
 
 
 def create_or_edit_news(request, pk=None):

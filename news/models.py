@@ -1,10 +1,11 @@
 from django.db import models
 from django.utils import timezone
 from .choices import NEWS_CHOICES
+from django.contrib.auth.models import User
+from accounts.models import Profile
 
 
 # Create your models here.
-
 class News(models.Model):
     """A single news"""
     author = models.CharField(max_length=40)
@@ -21,3 +22,14 @@ class News(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class NewsComment(models.Model):
+    news = models.ForeignKey(News, related_name="newscomments")
+    profile = models.ForeignKey(Profile)
+    user = models.ForeignKey(User)
+    content = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return '{}-{}-{}'.format(self.post.title, str(self.user.username), str(self.content))
