@@ -36,7 +36,7 @@ The goal of this project was to allow the user to create an account and make a p
 
 I am a big Star Trek fan so for my last project with Code Institute, I decided to make a Star Trek web-site, where beside creating account and purchasing a product via Stripe, 
 user can also read news from Star Trek franchise, find games about Star Trek and join discussions about Star Trek in a discussion forum. Users can also chat via private
-messaging system and edit their profiles so beside this project being a web-shop, it is also a form of social network for people who like Star Trek.
+messaging system and edit their profiles so beside this project being a web-shop, it is also a social network for people who like Star Trek.
 
 [Back to top](#summary)
 
@@ -48,16 +48,66 @@ messaging system and edit their profiles so beside this project being a web-shop
 
 
 ### Strategy
+Star Trek web-site purpose it to be a social network for people who like STar Trek. Users can read news, discuss on discussion forum with other users about Star Trek,
+ visit other users profile and send private messages to others. Also it is a web-shop that sells Star Trek merchandise so the owner can earn some money.
 
 ### Scope
+In designing the page, I wanted for the user to have a positive experience and for the web-site to be simple to use. User can navigate through navigation bar that 
+is always visible and by links in the footer. They can go from any part of the web-site to any other part. Simple to navigate and intuitive.
 
 ### Structure
+When the user arrives on site, it will see the image and cards as a call to action. By clicking on image, if user is not authorized, it will redirect him to 
+registration page. There are four cards for each section with a title that acts as a link to the section and a short description of what user can do/find in 
+the section. Navigation is always on top of the screen and has a logo which acts as a link to Home page and a link for each section of the website. Also, I have placed
+main links of the web-site in the footer section as I've seen it in almost all web-sites I have visited.
+
+When user goes to news section, they can choose to see all all filter by news and FNN (Federation News Network - fictional news). They can see main image of the news,
+title and short description. If they go to view more, news will open in new page where images will slide in a carousel and the whole news can be read. Also they can see 
+who the author is, when was it published and how many views. I added an option if the specific news has a post on forum, user can click "Go to Forum" and they will 
+be redirected to the relevant post. If user is not authorized, they will be redirected to registration page.
+
+Shop section is similar to every other web-shop. When they arrive at Shop, they will see all products available. I have put option to filter merchandise by five main
+ categories. Products are presented as cards with images, name, short description and price. When user hovers over a product card, it gets an overlay and user see 
+"Click to view" button. If user decides to view product, they will see up to three pictures of product in a carousel, full name, full description, price and an option 
+to add product to cart. If user adds to cart, they will see a message at the top of the page informing them that they have put that product with quantity X in their 
+cart. Back to Shop button redirects them back to all products page.
+
+Games section is presenting most popular games about Star Trek franchise. User is presented with an image, title and short description of the game. When they click 
+to read more, they can see images from the game, full description of the game and features of it, button with a link to the games web-site where they can read 
+more aboout it. There is also button which lead to Forum post about the game where user can comment and find friends to play with.
+
+Forum section is big part where users can interact with each other. They can write posts, read other users posts and comment it, visit others profile by clicking on their
+image or username. On other users profile, they have an option to send them a private message if they want to. User can also search Forum posts for a keyword in 
+post title to narrow the search or they can filter by date, views and alphabeticaly by author or post title.
+
+In a cart section, users can see all the items in their cart and when they change the quantity of it, it shows instantly. They can also view the product in their cart 
+by clicking on name and/or image. Once user is ready for checkout, they will see a form which they have to fill in order for the checkout to be completed. Once completed,
+the order will be stored in Account > Orders and user can see it anytime.
+
+In account section, user can view their profile page and edit it. Profile page is a way for user to show their love for Star Trek. They can edit it how they want, they
+ can put pictures if they want and change their details. Also send other user a message if they want. Messages part is divided between inbox (received messages) and 
+ outbox (messages sent). Every new user when they register will receive a message from admin welcoming the user to the web-site and short description what they can 
+ do on web-site. In the messages it is clearly shown who is sender and receiver. The images and username when clicked, will rediret to that users profile. User can write 
+ reply from the bottom of the message instead of opening in another page. Orders page are showing past orders that user submitted. If no orders are in database,
+ a message is shown and a button that redirects to Shop.
+
+After every user input, submission, registration, login, comment, reply they are notified by a message from the web-site that briefly describes the action taken so that 
+user knows their action was properly submitted.
 
 ### Wireframes
 Since this is a big project, I have decided to put wireframes in separate file.
 You can access them [here](https://github.com/romangrubic/Star-Trek-Django/blob/master/wireframes.md)
 
 ### Surface 
+Throughout the project im switching between three colors. Im using shades of white and black for background and shade of yellow-orange for action button. 
+By making all the elements stand out correctly and are simple to use, I'm creating environment where user can see what interests it and is intuitive for use. 
+
+ + Main colors used throughout the web-site : 
+    - Navigation and footer background - ![#000000](https://placehold.it/15/000000/000000?text=+) `#000000`
+    - Background of news, products, posts, games, cart and profile - ![#ffffffe6](https://placehold.it/15/ffffffe6/000000?text=+) `#ffffffe6`
+    - Action color - ![#fbce3c](https://placehold.it/15/fbce3c/000000?text=+) `#fbce3c`
+    - Return color - ![#17a2b8](https://placehold.it/15/17a2b8/000000?text=+) `#17a2b8`
+
 [Back to top](#summary)
 
 ---
