@@ -1,4 +1,4 @@
-## Database are sorted by App where they are located.
+## Databases are sorted by App where they are located.
 ---
 ## Summary
 * [User](#user)

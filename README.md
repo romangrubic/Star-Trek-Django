@@ -6,8 +6,8 @@ news from Star Trek franchise and Federation itself! You can find nice goodies f
 Or just join for discussion about everything Star Trek in our Forum where you can chat with other Trekkies. Live long and prosper!
 
 
-#### Click on the link to see live demo!
-[Star Trek project](https://star-trek-by-romangrubic.herokuapp.com/)
+#### Click on the image to see live project!
+[![Star Trek Demo](https://raw.githubusercontent.com/romangrubic/Star-Trek-Django/master/static/images/readme/responsive.png "Star Trek Demo")](https://star-trek-by-romangrubic.herokuapp.com/)
 
 ---
 ## Summary
