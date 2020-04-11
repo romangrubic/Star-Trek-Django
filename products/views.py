@@ -4,6 +4,7 @@ from .models import Product, Review
 from .forms import ReviewForm
 from django.contrib import messages
 
+
 # Create your views here.
 def all_products(request):
     products_list = Product.objects.filter().order_by('-views')

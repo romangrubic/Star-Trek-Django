@@ -4,9 +4,11 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from posts.models import Post
 from posts.forms import BlogPostForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+@login_required
 def search_threads(request):
     post_list = Post.objects.filter(title__icontains=request.GET['d']).order_by('-views')
     paginator = Paginator(post_list, 15)

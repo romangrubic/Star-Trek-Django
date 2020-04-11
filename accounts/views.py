@@ -7,7 +7,6 @@ from .models import Profile, Message
 from checkout.models import Order
 
 
-
 # Create your views here.
 def index(request):
     """Return the index.html file"""

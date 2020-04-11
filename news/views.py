@@ -3,6 +3,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import News, NewsComment
 from .forms import NewsForm, NewsCommentForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 def get_news(request):
@@ -40,7 +42,7 @@ def news_detail(request, pk):
         return redirect(news_detail, pk=news.id)
     return render(request, "newsdetail.html", {'news': news}, ctx)
 
-
+@login_required
 def create_or_edit_news(request, pk=None):
     """Create a view that allows us to create or edit
     a news depending if the news ID is null or not"""

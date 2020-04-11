@@ -14,7 +14,11 @@
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade show active" id="Received" role="tabpanel" aria-labelledby="Received-tab">
                 {% if inbox.count == 0 %}
-                no inbox
+                <div class="empty-outbox">
+                    <h1>No messages in your outbox! </h1>
+                    <br>
+                    <h3> Go to <a href="{% url 'get_posts' %}" class="btn btn-star-trek"><i class="fas fa-hand-spock"></i> Forum</a></h3>
+                </div>
                 {% else %}
 					<div class="row message-main-row">
 						<div class="col-5 col-sm-3 text-center"><span>Sender</span></div>

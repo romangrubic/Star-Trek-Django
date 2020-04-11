@@ -43,7 +43,9 @@ messaging system and edit their profiles so beside this project being a web-shop
 ---
 ## UX
 ### User Stories
-#### As a new user of the web-site, I would like to be able to:
+Since this is a big project, I have decided to put user stories in separate file instead here because the README file would be too big.
+You can access them [here](https://github.com/romangrubic/Star-Trek-Django/blob/master/user_stories.md)
+
 [Back to top](#summary)
 
 

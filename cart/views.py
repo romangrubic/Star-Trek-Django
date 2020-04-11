@@ -13,7 +13,6 @@ def add_to_cart(request, id):
     """Add a quantity of the specified product to the cart"""
     product = get_object_or_404(Product, pk=id)
     quantity = int(request.POST.get('quantity'))
-    product_name = request.POST.get('product')
     cart = request.session.get('cart', {})
     total = 0
     cart[id] = cart.get(id, quantity)
@@ -23,7 +22,7 @@ def add_to_cart(request, id):
         product = get_object_or_404(Product, pk=id)
         total += quantity * product.price
         request.session['total'] = float(total)
-    messages.success(request, 'You have successfuly added - "%s" x %s unit(s) - to your shopping cart!' % (product_name, quantity))
+    messages.success(request, 'You have successfuly added - "%s" x %s unit(s) - to your shopping cart!' % (product.name, quantity))
     return redirect(reverse('products'))
 
 

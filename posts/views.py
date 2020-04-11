@@ -8,6 +8,7 @@ from .forms import BlogPostForm, CommentForm
 
 
 # Create your views here.
+@login_required
 def get_posts(request):
     """Create a view that will return a list of post and
     render them to the blogposts.html template"""
@@ -33,6 +34,7 @@ def get_posts(request):
     return render(request, "blogposts.html", {'posts': posts})
 
 
+@login_required
 def get_posts_date(request):
     """Create a view that will return a list of post and
     render them to the blogposts.html template"""
@@ -57,6 +59,7 @@ def get_posts_date(request):
     return render(request, "blogposts.html", {'posts': posts})
 
 
+@login_required
 def get_posts_title(request):
     """Create a view that will return a list of post and
     render them to the blogposts.html template"""
@@ -81,6 +84,7 @@ def get_posts_title(request):
     return render(request, "blogposts.html", {'posts': posts})
 
 
+@login_required
 def get_posts_author(request):
     """Create a view that will return a list of post and
     render them to the blogposts.html template"""
@@ -105,6 +109,7 @@ def get_posts_author(request):
     return render(request, "blogposts.html", {'posts': posts})
 
 
+@login_required
 def post_detail(request, pk):
     """Create a view that returns a single Post object
     based on the post ID (pk) and render it  to the
