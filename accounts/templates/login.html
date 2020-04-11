@@ -6,6 +6,7 @@
 <div class="login-page">
 	<div class="login-section">
 		<h1 class="text-center">Join our community!</h1>
+		<!-------------------- Login form -------------------------->
 		<form method="POST" class="form-login">
 			{% csrf_token %}
 			{{ login_form  | as_bootstrap }}
@@ -14,6 +15,7 @@
 				<button type="submit" class="btn btn-star-trek">Log In <i class="fas fa-sign-in-alt"></i></button>
 			</div>
 		</form>
+		<!--------------------------------------------------------------------->
 		<hr>
 		<h5>Looking to join? <a href="{% url 'registration' %}">Register here</a></h5>
 	</div>

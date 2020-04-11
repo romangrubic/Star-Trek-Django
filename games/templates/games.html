@@ -3,6 +3,7 @@
 {% block content %}
 <div class="games-page">
 	<div class="row games-info">
+    <!------------------------------------------ Games card for each game ---------------------------------------->
 		{% for game in games %}
 		<div class="col-12 col-lg-6">
 			<div class="card games-card no-padding margin-5">
@@ -21,6 +22,7 @@
 		</div>
 		<hr>
 		{% endfor %}
+        <!------------------------------------------------------------------------------------------------------->
 	</div>
 </div>
 {% endblock %}

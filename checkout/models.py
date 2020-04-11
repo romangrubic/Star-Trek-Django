@@ -16,7 +16,8 @@ class Order(models.Model):
     street_address2 = models.CharField(max_length=40, blank=False)
     county = models.CharField(max_length=40, blank=False)
     date = models.DateField()
-    total_price = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
+    total_price = models.DecimalField(
+        default=0.00, max_digits=100, decimal_places=2)
 
     def __str__(self):
         return "{0}-{1}-{2}".format(self.id, self.date, self.full_name)
@@ -31,4 +32,5 @@ class OrderLineItem(models.Model):
         return self.quantity * self.product.price
 
     def __str__(self):
-        return "{0} {1} @ {2}".format(self.quantity, self.product.name, self.product.price)
+        return "{0} {1} @ {2}".format(self.quantity, self.product.name,
+                                      self.product.price)

@@ -3,6 +3,7 @@
 {% block content %}
 <div class="profile-form">
 <div class="profile-form-edit">
+    <!---------------------------- Edit profile form ----------------------------------------------->
     <h1 class="text-center">{{ request.user }}'s profile</h1>
     <div class="profile-form-style">
     <form method="POST" enctype="multipart/form-data">
@@ -13,6 +14,7 @@
         <a href="{% url 'profile' request.user.id %}" class="btn btn-info profile-form-button">Cancel <i class="fas fa-ban"></i></a>
         </div>
     </form>
+    <!-------------------------------------------------------------------------------------------->
     </div>
 </div>
 </div>

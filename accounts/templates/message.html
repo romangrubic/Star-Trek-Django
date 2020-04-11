@@ -3,10 +3,12 @@
 {% load bootstrap_tags %}
 <!------------------------->
 {% block content %}
+<!----------------------- Security check to confirm that user is either sender or receiver -------------------->
 {% if message.sender == request.user or message.receiver == request.user %}
 <div class="message-page">
 	<div class="message-info-section">
 		<div class="row">
+			<!----------------------------- Message details --------------------------------------------------------------->
 			<div class="col-12 col-sm-6 text-center no-padding">
 				<h3>Sender <i class="fas fa-sign-out-alt"></i></h3>
 				<a href="{% url 'profile' message.sender.id %}"><img class="message-img" src="{{ MEDIA_URL }}{{ message.sender.uprofile.image }}">
@@ -36,13 +38,16 @@
 			</div>
 		</div>
 		<hr class="thread-hr">
+		<!----------------------------- Replys in the message ----------------------------------------------------->
 		{% for reply in message.reply.all %}
 		<div class="row">
 			<div class="col-4 col-md-3 text-center">
-            <a href="{% url 'profile' reply.user_id %}" target="_blank"	rel="noopener">
-				<img src="{{ MEDIA_URL }}{{ reply.profile.image }}" class="forum-thread-user-image">
-				<p class="no-margin"><span class="tablet-screen">{{ reply.user }}</span><span class="mobile-screen">{{ reply.user|truncatechars:9}} </span></p>
-                </a>
+				<a href="{% url 'profile' reply.user_id %}" target="_blank" rel="noopener">
+					<img src="{{ MEDIA_URL }}{{ reply.profile.image }}" class="forum-thread-user-image">
+					<p class="no-margin">
+						<span class="tablet-screen">{{ reply.user }}</span><span class="mobile-screen">{{ reply.user|truncatechars:9}} </span>
+					</p>
+				</a>
 				<p class="no-margin"> {{ reply.created_date }} </p>
 			</div>
 			<div class="col-8 col-md-9 thread-comment">
@@ -51,19 +56,19 @@
 		</div>
 		<hr class="thread-hr">
 		{% endfor %}
-        <!----------------------Moved reply form from separate HTML to message.html ------------------------------------------------>
-        <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <label for="reply" hidden>Write a reply!</label>
-        <textarea rows="5" name="reply" class="form-control reply-form" id="reply" placeholder="Write your reply!" required></textarea>
-        <div class="d-flex justify-content-center margin-10">
-        <button type="submit" class="btn btn-star-trek">Send reply! <i class="fas fa-reply"></i></button>
-        <a href="{% url 'inbox' %}" class="btn btn-info"> Go to Messages <i class="fas fa-comments"></i></a>
-        </div>
-        </form>
-        <!------------------------------------------------------------------------------>
+		<!----------------------Moved reply form from separate HTML to message.html ------------------------------------------------>
+		<form method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			<label for="reply" hidden>Write a reply!</label>
+			<textarea rows="5" name="reply" class="form-control reply-form" id="reply" placeholder="Write your reply!" required></textarea>
+			<div class="d-flex justify-content-center margin-10">
+				<button type="submit" class="btn btn-star-trek">Send reply! <i class="fas fa-reply"></i></button>
+				<a href="{% url 'inbox' %}" class="btn btn-info"> Go to Messages <i class="fas fa-comments"></i></a>
+			</div>
+		</form>
 	</div>
 </div>
+<!------------------- If user is neither sender or receiver ----------------------------------------------->
 {% else %}
 <div class="message-page">
 	<div class="message-info-section-empty">
@@ -73,5 +78,6 @@
 		</div>
 	</div>
 </div>
+<!-------------------------------------------------------------------------------------------------------------->
 {% endif %}
 {% endblock %}

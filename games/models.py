@@ -13,6 +13,5 @@ class Games(models.Model):
     game_link = models.CharField(max_length=254)
     forum_thread = models.CharField(max_length=254, blank=True)
 
-
     def __str__(self):
         return self.name

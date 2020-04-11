@@ -10,9 +10,9 @@ def games(request):
 
 
 def games_detail(request, pk):
-    """Create a view that returns a single Post object
-    based on the post ID (pk) and render it  to the
-    'postdetail.html' template. Or return a 404 error if
+    """Create a view that returns a single Games object
+    based on the game ID (pk) and render it  to the
+    'games_detail.html' template. Or return a 404 error if
     the post is not found """
     games = get_object_or_404(Games, pk=pk)
     return render(request, "games_detail.html", {'games': games})

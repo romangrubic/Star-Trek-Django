@@ -7,60 +7,76 @@
 {% block content %}
 <div class="home-page">
 	<div class="landing-image">
-        {% if user.is_authenticated %}
-        <img src="{{ MEDIA_URL }}jumbo-text.png" class="index-image">
-			<p class="lead">Website for everything Star Trek!</p>
-        {% else %}
+		<!---------------------------------- Landing image redirects to link depending if user is authorized or not ------------->
+		{% if user.is_authenticated %}
+		<img src="{{ MEDIA_URL }}jumbo-text.png" class="index-image">
+		<p class="lead">Website for everything Star Trek!</p>
+		{% else %}
 		<a href="{% url 'registration' %}">
 			<img src="{{ MEDIA_URL }}jumbo-text.png" class="index-image">
 			<p class="lead">Website for everything Star Trek!</p>
 		</a>
-        {% endif %}
+		{% endif %}
 	</div>
+	<!----------------------------------------- Description about each section for user ----------------------------------------------->
 	<div class="index-info-section row">
 		<div class="col-12 col-md-6 index-card-padding">
-				<div class="card-body index-card">
-					<a href="{% url 'get_news' %}" class="btn btn-star-trek"><h1 class="no-margin"><i class="far fa-newspaper"></i> News</h1></a>
-                    <hr>
-					<p class="card-text">Read fresh news from the Star Trek franchise and from Federation itself! 
-                    Find out what is happening with the series and will Discovery be renewed for Season 4?</p>
-                    <hr>
-				</div>
-		</div>
-        <div class="col-12 col-md-6 index-card-padding">
-				<div class="card-body  index-card">
-                    <a href="{% url 'products' %}" class="btn btn-star-trek"><h1 class="no-margin"><i class="fas fa-store-alt"></i> Shop</h1></a>
-                    <hr>
-					<p class="card-text">From Raktajino mugs and Starfleet uniforms to Vulcan ears and Andorian antennae, we have them all!
-                        Visit us and find something for yourself or friends.</p>
-                    <hr>
-				</div>
-		</div>
-        <div class="col-12 col-md-6 index-card-padding">
-            <div class="index-card-bg">
-				<div class="card-body index-card">
-                    <a href="{% url 'games' %}" class="btn btn-star-trek"><h1 class="no-margin"><i class="fas fa-gamepad"></i> Games</h1></a>
-                    <hr>
-					<p class="card-text">See all the new games about Star Trek franchise. 
-                        Most of our users plays one or more! So you will have plenty of friends to help you grow!</p>
-                    <hr>
-                </div>
+			<div class="card-body index-card">
+				<a href="{% url 'get_news' %}" class="btn btn-star-trek">
+					<h1 class="no-margin"><i class="far fa-newspaper"></i> News</h1>
+				</a>
+				<hr>
+				<p class="card-text">Read fresh news from the Star Trek franchise and from Federation itself!
+					Find out what is happening with the series and will Discovery be renewed for Season 4?</p>
+				<hr>
 			</div>
 		</div>
-        <div class="col-12 col-md-6 index-card-padding">
+		<div class="col-12 col-md-6 index-card-padding">
+			<div class="card-body  index-card">
+				<a href="{% url 'products' %}" class="btn btn-star-trek">
+					<h1 class="no-margin"><i class="fas fa-store-alt"></i> Shop</h1>
+				</a>
+				<hr>
+				<p class="card-text">From Raktajino mugs and Starfleet uniforms to Vulcan ears and Andorian antennae, we
+					have them all!
+					Visit us and find something for yourself or friends.</p>
+				<hr>
+			</div>
+		</div>
+		<div class="col-12 col-md-6 index-card-padding">
+			<div class="index-card-bg">
 				<div class="card-body index-card">
-                    {% if user.is_authenticated %}
-                    <a href="{% url 'get_posts' %}" class="btn btn-star-trek"><h1 class="no-margin"><i class="fas fa-hand-spock"></i> Forum</h1></a>
-                    {% else %}
-                    <a href="{% url 'registration' %}" class="btn btn-star-trek"><h1 class="no-margin"><i class="fas fa-hand-spock"></i> Forum</h1></a>
-                    {% endif %}
-                    <hr>
-					<p class="card-text">Join the discussions about all the things Star Trek or just about anything! 
-                        Read posts and comment them or chat with other Users. Create your own profile and introduce yourself to Star Trek World! </p>
-                    <hr>
+					<a href="{% url 'games' %}" class="btn btn-star-trek">
+						<h1 class="no-margin"><i class="fas fa-gamepad"></i> Games</h1>
+					</a>
+					<hr>
+					<p class="card-text">See all the new games about Star Trek franchise.
+						Most of our users plays one or more! So you will have plenty of friends to help you grow!</p>
+					<hr>
 				</div>
+			</div>
+		</div>
+		<div class="col-12 col-md-6 index-card-padding">
+			<div class="card-body index-card">
+				{% if user.is_authenticated %}
+				<!------------------------------ Forum link depend on whether user is autorized ----------------------------------------->
+				<a href="{% url 'get_posts' %}" class="btn btn-star-trek">
+					<h1 class="no-margin"><i class="fas fa-hand-spock"></i> Forum</h1>
+				</a>
+				{% else %}
+				<a href="{% url 'registration' %}" class="btn btn-star-trek">
+					<h1 class="no-margin"><i class="fas fa-hand-spock"></i> Forum</h1>
+				</a>
+				{% endif %}
+				<hr>
+				<p class="card-text">Join the discussions about all the things Star Trek or just about anything!
+					Read posts and comment them or chat with other Users. Create your own profile and introduce yourself
+					to Star Trek World! </p>
+				<hr>
+			</div>
 		</div>
 	</div>
+	<!---------------------------------------------------------------------------------------------------------------------------------->
 </div>
 
 {% endblock %}

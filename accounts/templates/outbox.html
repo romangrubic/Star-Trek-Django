@@ -13,6 +13,7 @@
 			</ul>
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade show active" id="Sent" role="tabpanel" aria-labelledby="Sent-tab">
+                <!------------------------- Checks if user has sent any messages ------------------------------->
                 {% if outbox.count == 0 %}
                 <div class="empty-outbox">
                     <h1>No messages in your outbox! </h1>
@@ -26,6 +27,7 @@
 						<div class="d-none d-sm-block col-sm-4 no-padding">Date</div>
 					</div>
                     <hr class="inbox-hr">
+                    <!--------------------- Shows messages -------------------------------------------------------------->
 					{% for msg in outbox %}
 					<div class="row {% cycle 'color-gray' 'color-white' %} message-short-info">
 						<div class="col-5 col-sm-3 text-center inbox-message-author"><a href="{% url 'profile' msg.receiver_id %}" target="_blank"
@@ -36,6 +38,7 @@
                     <hr class="inbox-hr">
 					{% endfor %}
                 {% endif %}
+                <!-------------------------------------------------------------------------------------------------->
 				</div>
 			</div>
 		</div>

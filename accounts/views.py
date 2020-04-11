@@ -47,7 +47,7 @@ def login(request):
 
 
 def registration(request):
-    """Render reg page and creates Profile for User afterwards """
+    """Render reg page and creates Profile and a welcome message for User afterwards """
     if request.user.is_authenticated:
         return redirect(reverse('index'))
 
@@ -105,6 +105,7 @@ def user_profile(request, id, pk=None):
 
 @login_required
 def edit_profile(request, id):
+    """ Check if profile and the user matches and allow editing Profile """
     profile = get_object_or_404(Profile, pk=id)
     if profile.id != request.user.id:
         return redirect("index")
@@ -126,12 +127,14 @@ def edit_profile(request, id):
 
 @login_required
 def user_orders(request):
+    """ Checks orders for matching user """
     orders = Order.objects.filter(user=request.user).order_by('-date')
     return render(request, 'orders.html', {'orders': orders})
 
 
 @login_required
 def inbox(request):
+    """ Inbox messages """
     inbox = Message.objects.filter(
         receiver=request.user).order_by('-created_date')
     return render(request, 'inbox.html', {'inbox': inbox})
@@ -139,6 +142,7 @@ def inbox(request):
 
 @login_required
 def outbox(request):
+    """ Outbox messages """
     outbox = Message.objects.filter(
         sender=request.user).order_by('-created_date')
     return render(request, 'outbox.html', {'outbox': outbox})
@@ -146,6 +150,7 @@ def outbox(request):
 
 @login_required
 def message_detail(request, pk):
+    """Shows message details and allows for reply to the message """
     message = get_object_or_404(Message, pk=pk)
     form = ReplyForm(request.POST)
     ctx = {'form': form}

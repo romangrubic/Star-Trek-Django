@@ -22,7 +22,10 @@ class UserRegistrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['username',
+                  'email',
+                  'password1',
+                  'password2']
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -46,13 +49,23 @@ class UserRegistrationForm(UserCreationForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('name', 'bio', 'image', 'favourite_series', 'favourite_character', 'favourite_quote', 'cosplay_input', 'cosplay_image1', 'cosplay_image2', 'cosplay_image3',)
+        fields = ('name',
+                  'bio',
+                  'image',
+                  'favourite_series',
+                  'favourite_character',
+                  'favourite_quote',
+                  'cosplay_input',
+                  'cosplay_image1',
+                  'cosplay_image2',
+                  'cosplay_image3',)
 
 
 class MessageForm(forms.ModelForm):
     class Meta:
         model = Message
-        fields = ('title', 'message',)
+        fields = ('title',
+                  'message',)
 
 
 class ReplyForm(forms.ModelForm):

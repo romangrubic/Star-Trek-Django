@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
 {% load bootstrap_tags %}
-
+<!------------------------ Stripe --------------------------------->
 {% block head_js %}
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript">
@@ -15,6 +15,7 @@
 <div class="checkout-page">
 	<div class="cart-product-list">
 		<hr>
+		<!----------------------------------- Shows item in checkout cart ---------------------->
 		{% for item in cart_items %}
 		<div class="row">
 			<div class="col-12 col-sm-3 col-md-2">
@@ -50,11 +51,13 @@
 		<hr class="hr-cart">
 		{% endfor %}
 	</div>
+	<!------------------------------ Total sum of the shopping cart --------------------------->
 	<div class="row d-flex justify-content-center total-cart-checkout">
 		<p class="total-cart-checkout-sum text-center">Total
 			<span class="glyphicon glyphicon-euro" aria-hidden="true"></span>{{ total }} €</p>
 	</div>
 	<hr>
+	<!--------------------------- Checkout forms ----------------------------------------------------->
 	<div class="checkout-section">
 		<form class="text-center" role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
 			<legend>
@@ -79,6 +82,7 @@
 			</div>
 			<input class=" btn btn-danger" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
 </form>
+			<!------------------------------------------------------------------------------------------------------------------->
 	</div>
 </div>
 {% endblock %}
