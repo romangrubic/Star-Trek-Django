@@ -44,6 +44,7 @@ messaging system and edit their profiles so beside this project being a web-shop
 ## UX
 ### User Stories
 Since this is a big project, I have decided to put user stories in separate file instead here because the README file would be too big.
+
 You can access them [here](https://github.com/romangrubic/Star-Trek-Django/blob/master/user_stories.md)
 
 [Back to top](#summary)
@@ -195,6 +196,11 @@ and links to the game main page as well as a link that will forward them to Foru
 This project employs SQL database available as add-on on Heroku known as [Heroku Postgres](https://www.heroku.com/postgres). 
 
 #### Full database schema is located [here](https://github.com/romangrubic/Star-Trek-Django/blob/master/database.md)
+
+
+### Database relations
+Beneath is an image that represents relation of tables used in my project.
+![Database relations Demo](https://raw.githubusercontent.com/romangrubic/Star-Trek-Django/master/static/images/readme/database/Django.png "Database relations")
 
 [Back to top](#summary)
 
