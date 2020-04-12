@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required
 def search_threads(request):
+    """ Searches for a post with keyword and renders them"""
     post_list = Post.objects.filter(title__icontains=request.GET['d']).order_by('-views')
     paginator = Paginator(post_list, 15)
     page = request.GET.get('page')

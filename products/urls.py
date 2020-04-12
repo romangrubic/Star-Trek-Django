@@ -1,4 +1,4 @@
-from django.conf.urls import url, include
+from django.conf.urls import url
 from .views import all_products, product_detail, products_clothing, products_accesories, products_drinkware, products_home_and_office, products_collectibles
 
 urlpatterns = [

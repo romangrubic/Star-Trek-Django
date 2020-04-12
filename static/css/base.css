@@ -57,7 +57,7 @@ nav {
 .navbar-nav > a {
     text-decoration: none;
 }
-.navbar-nav>a>li {
+.navbar-nav>li>a {
     color: rgb(251, 206, 61);
     font-weight: 700;
     text-align: center;

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="forum-page">
+    <!--------------------------------Search for post ----------------------->
 	<div class="d-flex justify-content-center">
 		<div class="products-search">
 			<form action="{% url 'search_threads' %}" method="GET">
@@ -10,6 +11,7 @@
 		</div>
 	</div>
 	{% if posts %}
+    <!------------------------- Button for new post modal ------------------------------->
 	<div class="d-flex justify-content-center">
 		<button class="btn btn-post-thread" data-toggle="modal" data-target="#new-post">Start a topic! <i class="fas fa-comment-dots"></i></button>
 	</div>
@@ -37,11 +39,12 @@
 			</div>
 		</div>
 		<hr class="forum-hr">
+        <!-------------------------- Forum post are presented in a list -------------------------------->
 		{% for post in posts %}
 		<div class="row {% cycle 'forum-gray' 'forum-white' %} forum-thread">
 			<div class="col-2 col-sm-2 col-md-1 no-padding-right">
 				<a href="{% url 'profile' post.user_id %}" target="_blank" rel="noopener">
-					<img class="forum-post-user-image" src="{{ MEDIA_URL }}{{ post.profile.image }}">
+					<img class="forum-post-user-image" src="{{ MEDIA_URL }}{{ post.profile.image }}" alt="{{ post.user }} image">
                 </a>
 			</div>
 			<div class="col-2 col-sm-2 col-md-1 text-center">
@@ -62,6 +65,7 @@
 		</div>
 		<hr class="forum-hr">
 		{% endfor %}
+        <!--------------------------------- If no post are available - 404page -------------------------------------------->
 		{% else %}
 		<div class="forum-no-search-result">
 			<h3 class="forum-no-search-result-text">There is no topic with requested
@@ -69,9 +73,9 @@
 				<div class="d-flex justify-content-center">
 					<button class="btn btn-post-thread" data-toggle="modal" data-target="#new-post">Start a topic! <i class="fas fa-comment-dots"></i></button>
 				</div>
-		</div>
 		{% endif %}
 	</div>
+    <!---------------------------------- Pagination --------------------------------------------->
 	{% if posts %}
 	<div class="d-flex justify-content-center">
 		<div class="pagination">
@@ -91,7 +95,7 @@
 	{% endif %}
 </div>
 <!-------------------------------------- New post modal --------------------------------------------------------------->
-<div class="modal fade" id="new-post" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="new-post" tabindex="-1" role="dialog" aria-labelledby="new-post"
 	aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">

@@ -45,7 +45,7 @@ messaging system and edit their profiles so beside this project being a web-shop
 ### User Stories
 Since this is a big project, I have decided to put user stories in separate file instead here because the README file would be too big.
 
-You can access them [here](https://github.com/romangrubic/Star-Trek-Django/blob/master/user_stories.md)
+####You can access them [here](https://github.com/romangrubic/Star-Trek-Django/blob/master/user_stories.md).
 
 [Back to top](#summary)
 
@@ -99,7 +99,8 @@ user knows their action was properly submitted.
 
 ### Wireframes
 Since this is a big project, I have decided to put wireframes in separate file.
-You can access them [here](https://github.com/romangrubic/Star-Trek-Django/blob/master/wireframes.md)
+
+#### You can access them [here](https://github.com/romangrubic/Star-Trek-Django/blob/master/wireframes.md).
 
 ### Surface 
 Throughout the project im switching between three colors. Im using shades of white and black for background and shade of yellow-orange for action button. 

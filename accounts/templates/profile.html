@@ -11,7 +11,7 @@
 		<!------------------------ Shows user profile --------------------------------------------------->
 		<div class="row">
 			<div class="offset-sm-1 col-sm-4">
-				<img class="profile-img" src="{{ MEDIA_URL }}{{ profile.uprofile.image }}">
+				<img class="profile-img" src="{{ MEDIA_URL }}{{ profile.uprofile.image }}" alt="{{ profile.uprofile.name }} image">
             </div>
 				<div class="col-sm-7 profile-info text-center">
 					<h1>{{ profile.uprofile.name }}</h1>
@@ -34,7 +34,7 @@
 			<div class="row">
 				<div class="col-12 offset-sm-1 col-sm-10">
 					<h3 class="profile-info-section-header">About me</h3>
-					<p class="profile-bio-p">{{ profile.uprofile.bio|linebreaks }}</p>
+					<div class="profile-bio-p">{{ profile.uprofile.bio|linebreaks }}</div>
 				</div>
 			</div>
 			<hr>
@@ -63,7 +63,7 @@
 							<h5>Quote</h5>
 						</div>
 						<div class="col-8">
-							<p class="profile-favourite-p">{{ profile.uprofile.favourite_quote|linebreaks }}</p>
+							<div class="profile-favourite-p">{{ profile.uprofile.favourite_quote|linebreaks }}</div>
 						</div>
 					</div>
 				</div>
@@ -73,7 +73,7 @@
 			<div class="row">
 				<div class="col-12 offset-sm-1 col-sm-10">
 					<h3 class="profile-info-section-header">Cosplay</h3>
-					<p class="profile-cosplay-p">{{ profile.uprofile.cosplay_input|linebreaks }}</p>
+					<div class="profile-cosplay-p">{{ profile.uprofile.cosplay_input|linebreaks }}</div>
 					<div class="row">
 						<div id="cosplay-carousel" class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">
@@ -113,7 +113,7 @@
 				</div>
 				<!-------------------------------------- New message modal --------------------------------------------------------------->
 				<div class="modal fade" id="new-message" tabindex="-1" role="dialog"
-					aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+					aria-labelledby="new-message" aria-hidden="true">
 					<div class="modal-dialog modal-dialog-centered" role="document">
 						<div class="modal-content">
 							<div class="modal-header justify-content-center">
@@ -127,7 +127,6 @@
 									{% csrf_token %}
 									<label for="title" hidden>Post title</label>
 									<textarea rows="1" name="title" class="form-control comment-form" id="title" placeholder="Title here!" required></textarea>
-									<label for="message" hidden>Post content</label>
 									<textarea rows="10" name="message" class="form-control comment-form" id="content" placeholder="Write your message here!" required></textarea>
 									<div class="d-flex justify-content-center margin-5">
 										<button type="submit" class="btn btn-star-trek">Send message! <i class="fas fa-comments"></i></button>

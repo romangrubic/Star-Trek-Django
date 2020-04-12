@@ -3,9 +3,10 @@
 <div class="forum-thread-page">
     <div class="thread-container">
     <div class="row">
+    <!--------------------- Post details ---------------------------------------------------->
         <div class="col-12 text-center">
         <a href="{% url 'profile' post.user_id %}" target="_blank" rel="noopener">
-        <img src="{{ MEDIA_URL }}{{ post.profile.image }}" class="forum-thread-user-image">
+        <img src="{{ MEDIA_URL }}{{ post.profile.image }}" class="forum-thread-user-image" alt="{{ post.user }} image">
             <p class="no-margin"> {{ post.user }}</p></a>
             <p class="no-margin"> {{ post.published_date }} </p>
         </div>
@@ -20,11 +21,12 @@
         </div>
     </div>
     <hr class="thread-hr">
+    <!----------------------- Users comment on a post ------------------------------------------------>
     {% for comment in post.comments.all %}
     <div class="row">
         <div class="col-4 col-md-3 text-center">
         <a href="{% url 'profile' comment.user_id %}" target="_blank" rel="noopener">
-        <img src="{{ MEDIA_URL }}{{ comment.profile.image }}" class="forum-thread-user-image">
+        <img src="{{ MEDIA_URL }}{{ comment.profile.image }}" class="forum-thread-user-image" alt="{{ comment.user}} image">
         <p class="no-margin">{{ comment.user}} </p>
         </a>
         <p class="no-margin"> {{ comment.created_date }} </p>  
@@ -39,7 +41,6 @@
         <!----------------- Comment form beneath post for easier commenting --------------------->
         <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <label for="content" hidden>Write a comment!</label>
         <textarea rows="5" name="content" class="form-control comment-form" id="reply" placeholder="Write your comment!" required></textarea>
         <div class="d-flex justify-content-center margin-10">
         <button type="submit" class="btn btn-star-trek">Comment! <i class="fas fa-reply"></i></button>

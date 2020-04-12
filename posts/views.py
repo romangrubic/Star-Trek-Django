@@ -3,17 +3,17 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Post, Comment
+from .models import Post
 from .forms import BlogPostForm, CommentForm
 
 
 # Create your views here.
 @login_required
 def get_posts(request):
-    """Create a view that will return a list of post and
+    """Create a view that will return a list of posts and
     render them to the blogposts.html template"""
     post_list = Post.objects.filter(published_date__lte=timezone.now
-                                ()).order_by('-views')
+                                    ()).order_by('-views')
     paginator = Paginator(post_list, 15)
     page = request.GET.get('page')
     try:
@@ -149,7 +149,8 @@ def edit_post(request, pk=None):
                 post.user_id = request.user.id
                 post.profile_id = request.user.id
                 post.save()
-                messages.success(request, "You have successfuly edited the post!")
+                messages.success(
+                    request, "You have successfuly edited the post!")
                 return redirect('post_detail', post.pk)
         else:
             form = BlogPostForm(instance=post)

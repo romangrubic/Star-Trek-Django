@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="product-detail-page">
+    <!----------------------- Products filters ------------------------------------------>
 	<div class="d-flex justify-content-center">
 		<div class="products-filters row">
 			<div class="col-6 offset-sm-1 col-sm-2 d-flex justify-content-center no-padding">
@@ -21,7 +22,9 @@
 		</div>
 	</div>
 	<hr>
+    <!------------------------------------------------ Product card ------------------------------------->
 	<div class="product-detail-card row">
+        <!--------------------------- Product images in a carousel ------------------->
 		<div id="product-detail-carousel" class="carousel slide col-12 col-md-6 no-padding" data-interval="3000"
 			data-ride="carousel">
 			<ol class="carousel-indicators">
@@ -61,6 +64,7 @@
 						</a>
 						{% endif %}
 					</div>
+                    <!------------------------------- Product details ------------------------->
 					<div class="col-12 col-md-6 product-detail-card-body">
 						<div class="product-name-description">
 							<h3 class="card-title text-center">{{ product.name }}</h3>
@@ -85,12 +89,13 @@
 						<a href="{% url 'products' %}" class="btn btn-info">Back to
 							<i class="fas fa-store-alt"></i> Shop</a>
 					</div>
+                    <!----------------------------- User reviews of the product ---------------------------->
                     <div class="col-12">
                     {% for comment in product.productreview.all %}
                     <div class="row">
                         <div class="col-4 col-md-3 text-center">
                         <a href="{% url 'profile' comment.user_id %}" target="_blank" rel="noopener">
-                        <img src="{{ MEDIA_URL }}{{ comment.profile.image }}" class="forum-thread-user-image">
+                        <img src="{{ MEDIA_URL }}{{ comment.profile.image }}" class="forum-thread-user-image" alt="{{ comment.user}} image">
                         <p class="no-margin">{{ comment.user}} </p>
                         </a>
                         <p class="no-margin"> {{ comment.created_date }} </p>  
@@ -106,7 +111,6 @@
                         {% if user.is_authenticated %}
                         <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <label for="content" hidden>Write a comment!</label>
                         <textarea rows="5" name="content" class="form-control comment-form" id="reply" placeholder="Write your review!" required></textarea>
                         <div class="d-flex justify-content-center margin-10">
                         <button type="submit" class="btn btn-star-trek">Leave a review! <i class="fas fa-reply"></i></button>

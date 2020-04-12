@@ -1,12 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Product, Review
+from .models import Product
 from .forms import ReviewForm
 from django.contrib import messages
 
 
 # Create your views here.
 def all_products(request):
+    """ Shows all products in the store """
     products_list = Product.objects.filter().order_by('-views')
     paginator = Paginator(products_list, 12)
     page = request.GET.get('page')
@@ -20,10 +21,8 @@ def all_products(request):
     
 
 def product_detail(request, pk):
-    """Create a view that returns a single Post object
-    based on the post ID (pk) and render it  to the
-    'postdetail.html' template. Or return a 404 error if
-    the post is not found """
+    """Create a view that returns a single Product object
+    based on the post ID (pk) and render it"""
     product = get_object_or_404(Product, pk=pk)
     product.views += 1
     product.save()
@@ -41,6 +40,7 @@ def product_detail(request, pk):
     return render(request, "product_detail.html", {'product': product}, ctx)
 
 
+# ------------------------------ Product filters ------------------------------
 def products_clothing(request):
     products_list = Product.objects.filter(tag="1")
     paginator = Paginator(products_list, 12)

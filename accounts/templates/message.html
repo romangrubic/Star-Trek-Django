@@ -11,13 +11,13 @@
 			<!----------------------------- Message details --------------------------------------------------------------->
 			<div class="col-12 col-sm-6 text-center no-padding">
 				<h3>Sender <i class="fas fa-sign-out-alt"></i></h3>
-				<a href="{% url 'profile' message.sender.id %}"><img class="message-img" src="{{ MEDIA_URL }}{{ message.sender.uprofile.image }}">
+				<a href="{% url 'profile' message.sender.id %}"><img class="message-img" src="{{ MEDIA_URL }}{{ message.sender.uprofile.image }}" alt="{{ message.sender }} image">
 					<h2> {{ message.sender }} </h2>
 				</a>
 			</div>
 			<div class="col-12 col-sm-6 text-center no-padding">
 				<h3><i class="fas fa-sign-in-alt"></i> Receiver</h3>
-				<a href="{% url 'profile' message.receiver.id %}"><img class="message-img" src="{{ MEDIA_URL }}{{ message.receiver.uprofile.image }}">
+				<a href="{% url 'profile' message.receiver.id %}"><img class="message-img" src="{{ MEDIA_URL }}{{ message.receiver.uprofile.image }}" alt="{{ message.receiver }} image">
 					<h2> {{ message.receiver }}</h2>
 				</a>
 			</div>
@@ -28,7 +28,7 @@
 		<div class="row">
 			<div class="col-4 col-md-3 text-center">
 				<a href="{% url 'profile' message.sender.id %}" target="_blank" rel="noopener">
-					<img src="{{ MEDIA_URL }}{{ message.sender.uprofile.image }}" class="forum-thread-user-image">
+					<img src="{{ MEDIA_URL }}{{ message.sender.uprofile.image }}" class="forum-thread-user-image" alt="{{ message.sender}} image">
 					<p class="no-margin">{{ message.sender}} </p>
 				</a>
 				<p class="no-margin"> {{ message.created_date }} </p>

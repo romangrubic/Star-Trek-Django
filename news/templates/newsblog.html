@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="news-page" id="news">
-
+    <!--------------------------- News are presented in a list ------------------------------->
     {% for new in news %}
     <hr>
         <div class="row news-row">
             <div class="col-12 col-md-4 no-padding">
             <a href="{% url 'news_detail' new.id %}" >
-               <img class="news-image" src="{{ MEDIA_URL }}{{ new.image }}">
+               <img class="news-image" src="{{ MEDIA_URL }}{{ new.image }}" alt="{{ new.title|truncatechars:29 }} image">
             </a>
             </div>
             <div class="col-12 col-md-8 news-info">
@@ -16,7 +16,7 @@
                 <p class="news-page-title-1">{{ new.content|truncatechars:150 }}</p>
                 <p class="news-page-title-2">{{ new.content|truncatechars:120 }}</p>
                 <div class="d-flex justify-content-end">
-                <p class="no-margin news-page-details"><span class="boldtext">{{ new.published_date }} - <span class="boldtext">Views:</span> {{new.views}}</p>           
+                <p class="no-margin news-page-details"><span class="boldtext">{{ new.published_date }}</span> - <span class="boldtext">Views:</span> {{new.views}}</p>           
                     <p><a href="{% url 'news_detail' new.id %}"  class="btn btn-star-trek">Read more</a></p>
                 </div>
                 </div>
@@ -24,6 +24,7 @@
         </div>
     {% endfor %}
     <hr>
+    <!------------- Back to top button and pagination ---------------------------------------------------------------------->
     <div class="d-flex justify-content-center product-back-to-top">
 		<a href="#top" class="btn btn-info btn-back-to-forum">Back to top!</a>
 	</div>
@@ -42,6 +43,7 @@
             </span>
         </div>
     </div>
+    <!------------------------------------------------------------------------------------------------------------->
     <hr>
 </div>
 {% endblock %}

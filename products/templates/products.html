@@ -2,6 +2,7 @@
 {% block content %}
 <div class="products-page">
 	<div class="d-flex justify-content-center">
+    <!----------------------------Product filters --------------------------------------------->
 		<div class="products-filters row">
             <div class="col-6 offset-sm-1 col-sm-2 d-flex justify-content-center no-padding">
                 <a href="{% url 'products_clothing' %}" class="btn btn-products-filter">Clothing</a>
@@ -22,11 +23,13 @@
 	</div>
 	<hr>
 	<div class="row products-page-list">
+        <!----------------- If no products ------------------------>
 		{% if products.count == 0 %}
 		<div class="no-search-products">
 			<h3 class="no-search-products-text">Sorry, but there was no products for requested search!</h3>
 		</div>
 		{% else %}
+        <!------------------ Products are presented in cards ------------------------>
 		{% for product in products %}
 		<div class="col-12 col-sm-6 col-md-4 col-lg-3 products-card-padding">
 			<div class="card products-card">
@@ -47,7 +50,7 @@
 					</div>
                     <a href="{% url 'product_detail' product.id %}">
                     <div class="product-overlay">
-                        <button class="btn products-view-btn">Click to view!</button>
+                        <div class="btn products-view-btn">Click to view!</div>
                     </div>
                     </a>
 			</div>
@@ -56,6 +59,7 @@
 		{% endif %}
 	</div>
     <hr>
+    <!------------- Back to top button and pagination ---------------------------------------------------------------------->
 	<div class="d-flex justify-content-end product-back-to-top">
 		<a href="#top" class="btn btn-info btn-back-to-forum">Back to top!</a>
 	</div>
@@ -76,6 +80,7 @@
 		</div>
 	</div>
 	{% endif %}
+    <!--------------------------------------------------------------------------------------------------------------------------->
 </div>
 
 {% endblock %}

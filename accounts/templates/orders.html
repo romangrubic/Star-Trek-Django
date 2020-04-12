@@ -21,11 +21,11 @@
 			<!-------------------- All users previous orders are presented in accordion ----------------------------------------->
 			{% for order in orders %}
 			<div class="card">
-				<button class="btn" data-toggle="collapse" data-target="#collapse{{ order.id }}" aria-expanded="false" aria-controls="collapse{{ order.id }}">
+				<div class="btn" data-toggle="collapse" data-target="#collapse{{ order.id }}" aria-expanded="false" aria-controls="collapse{{ order.id }}">
 				<div class="card-header order-card-header text-center" id="heading{{ order.id}}">
                     <h3 class="mb-0 order-date-margin">{{ order.date }}</h3>
                 </div>
-            </button>
+            </div>
 				<div id="collapse{{ order.id }}" class="collapse" aria-labelledby="heading{{ order.id }}"
 					data-parent="#accordion">
 					<div class="card-body order-card-body">

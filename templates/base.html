@@ -1,155 +1,166 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Star Trek</title>
-    <link rel="icon" type="image/png" sizes="20x20" href="{% static 'images/insignia.png' %}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/accounts.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/password_reset.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/cart_checkout.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/news.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/games.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/products.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/forum.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/inbox.css' %}" type="text/css">
-    <script src="https://kit.fontawesome.com/41a908fb89.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
-    {% block head_js %}
-    {% endblock head_js %}
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Star Trek</title>
+	<meta name="Description" content="Star Trek website project by Roman Grubic">
+	<link rel="icon" type="image/png" sizes="20x20" href="{% static 'images/insignia.png' %}">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'css/accounts.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'css/password_reset.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'css/cart_checkout.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'css/news.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'css/games.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'css/products.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'css/forum.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'css/inbox.css' %}" type="text/css">
+	<script src="https://kit.fontawesome.com/41a908fb89.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
+	{% block head_js %}
+	{% endblock head_js %}
 </head>
+
 <body>
-    <!-- Fixed masthead -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" id="NavTop">
-        <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="Star Trek" class="index-page-logo"></a>
-        <div class="d-flex justify-content-end">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	<!--------------------------------- Navbar section ---------------------------->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" id="NavTop">
+		<a class="navbar-brand"
+			href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="Star Trek" class="index-page-logo"></a>
+			<div class="d-flex justify-content-end">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="d-flex justify-content-center expanded-nav">
-        <ul class="navbar-nav">
-            <div class="dropdown">
-                <a href="{% url 'get_news' %}"><button class="dropbtn"><i class="far fa-newspaper"></i> News</button></a>
-                    <div class="dropdown-content">
-                        <a href="{% url 'get_news_news' %}"><i class="fa fa-user-plus"></i> News</a>
-                        <a href="{% url 'get_news_federation' %}"><i class="fas fa-globe"></i> FNN</a>
-                    </div>
-            </div>
-        <a href="{% url 'products' %} "><li class="nav-item"><i class="fas fa-store-alt"></i> Shop</li></a>
-                        <a href="{% url 'games' %}"><li class="nav-item"><i class="fas fa-gamepad"></i> Games</li></a>
-                        {% if user.is_authenticated %}
-                        <a href="{% url 'get_posts' %}"><li class="nav-item"><i class="fas fa-hand-spock"></i> Forum</li></a>
-                        {% else %}
-                        <a href="{% url 'registration' %}"><li class="nav-item"><i class="fas fa-users"></i> Forum</li></a>
-                        {% endif %}
-                            <a href="{% url 'view_cart' %}"><li class="nav-item">
-                                <i class="fas fa-shopping-cart"></i> Cart
-                                {% if product_count > 0 %}
-                                <label class="badge badge-warning">{{ product_count }}</label>
-                                {% endif %}
-                                </li>
-                            </a>                        
-                        {% if user.is_authenticated %}
-                        <li>
-                            <div class="dropdown">
-                                <button class="dropbtn"><i class="fas fa-portrait"></i> Account</button>
-                                <div class="dropdown-content">
-                                    <a href="{% url 'profile' user.id %}"><i class="fa fa-user"></i> Profile</a>
-                                    <a href="{% url 'inbox' %}"><i class="fas fa-comments"></i> Messages</a>
-                                    <a href="{% url 'orders' %}"><i class="fas fa-shopping-basket"></i> Orders</a>
-                                    <a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a>
-                                </div>
-                            </div>
-                        </li>                        
-                    {%  else %}
-                        <li>
-                            <div class="dropdown">
-                                <button class="dropbtn"><i class="fas fa-portrait"></i> Sign in</button>
-                                <div class="dropdown-content">
-                                    <a href="{% url 'registration' %}"><i class="fa fa-user-plus"></i> Register</a>
-                                    <a href="{% url 'login' %}"><i class="fa fa-sign-in-alt"></i> Log In</a>
-                                </div>
-                            </div>
-                        </li>                        
-                    {% endif %}      
-    </ul>
-    </div>
-  </div>
-</nav>
-    {% if messages %}
-        <div class="alert alert-success">
-            <div class="messages text-center">
-                {% for message in messages %}
-                    {{ message }}
-                {% endfor %}
-            </div>
-        </div>
-    {% endif %}
-        {% block content %} {% endblock %}
-    
-    <footer>
-        <div class="row no-margin footer-three-columns">
-            <div class="d-none d-md-block col-md-4 text-center">
-                    <div><a href="{% url 'get_news' %}"><i class="far fa-newspaper"></i> News</a></div>
-                    <div><a href="{% url 'products' %} "><i class="fas fa-store-alt"></i> Shop</a></div>
-                    <div><a href="{% url 'games' %}"><i class="fas fa-gamepad"></i> Games</a></div>
-                    {% if user.is_authenticated %}
-                    <div><a href="{% url 'get_posts' %}"><i class="fas fa-hand-spock"></i> Forum</a></div>
-                    {% else %}
-                    <div><a href="{% url 'registration' %}"><i class="fas fa-users"></i> Forum</a></div>
-                    {% endif %}
-            </div>
-            <div class="col-12 col-md-4 text-center footer-middle-column">
-                <h3>For education purpose only!</h3>
-                <h5>Contact me!</h5>
-                <div class="contact-icons">
-                        <a href="https://www.linkedin.com/in/roman-grubic-b835ab67/" target="_blank" rel="noopener">
-                                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
-                                        <span class="sr-only">LinkedIn</span>
-                                </a>
-                        <a href="https://github.com/romangrubic" target="_blank" rel="noopener">
-                                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
-                                        <span class="sr-only">Github</span>
-                                </a>
-                        <a><i class="fas fa-envelope-open-text fa-2x" aria-hidden="true" data-toggle="modal" data-target="#contactModal"></i>
-                                    <span class="sr-only">E-mail</span></a>
-                </div>
-            </div>
-            <div class="d-none d-md-block col-md-4 text-center">
-            <h4>My other projects</h4>
-            <div><a href="https://romangrubic.github.io/Roman-Grubic-portfolio/" target="_blank" rel="noopener">
-						    <i class="fas fa-portrait  footer-icon" aria-hidden="true"></i>
-						        <span class="sr-only">Portfolio </span>
-                       Portfolio </a></div>
-            <div><a href="https://adverts-project.herokuapp.com/home" target="_blank" rel="noopener">
-					        <i class="fas fa-ad footer-icon" aria-hidden="true"></i>
-						        <span class="sr-only">Snoop</span>
-                         Snoop</a></div>
-            <div><a href="https://romangrubic.github.io/weather-app-openweather/" target="_blank" rel="noopener">
-						    <i class="fas fa-cloud-sun-rain  footer-icon" aria-hidden="true"></i>
-						        <span class="sr-only">Weather 360° </span>
-                         Weather 360°</a></div>
-            <div><a href="https://romangrubic.github.io/memory-game-js/" target="_blank" rel="noopener">
-					        <i class="fas fa-paw footer-icon" aria-hidden="true"></i>
-						        <span class="sr-only">Animals</span>
-                         Animals</a></div>
-            </div>
-        </div>
-        <div class="row footer-last-row justify-content-center">
-            <p>Made by Roman Grubic.</p>
-        </div>
-    </footer>
-    <!--------------------------------- Contact form modal ------------------------------------------------------------------------>
-	<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModal" aria-hidden="true">
+			</div>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<div class="d-flex justify-content-center expanded-nav">
+					<ul class="navbar-nav">
+						<li class="dropdown nav-item">
+							<a
+								href="{% url 'get_news' %}"><i class="far fa-newspaper"></i> News</a>
+							<div class="dropdown-content">
+								<a href="{% url 'get_news_news' %}"><i class="fa fa-user-plus"></i> News</a>
+								<a href="{% url 'get_news_federation' %}"><i class="fas fa-globe"></i> FNN</a>
+							</div>
+						</li>
+
+						<li class="nav-item"><a href="{% url 'products' %} "><i class="fas fa-store-alt"></i> Shop</a>
+						</li>
+						<li class="nav-item"><a href="{% url 'games' %}"><i class="fas fa-gamepad"></i> Games</a></li>
+						{% if user.is_authenticated %}
+						<li class="nav-item"><a href="{% url 'get_posts' %}"><i class="fas fa-hand-spock"></i> Forum</a>
+						</li>
+						{% else %}
+						<li class="nav-item"><a href="{% url 'registration' %}"><i class="fas fa-users"></i> Forum</a>
+						</li>
+						{% endif %}
+						<li class="nav-item"><a href="{% url 'view_cart' %}">
+								<i class="fas fa-shopping-cart"></i> Cart
+								{% if product_count > 0 %}
+								<label class="badge badge-warning">{{ product_count }}</label>
+								{% endif %}
+							</a>
+						</li>
+						{% if user.is_authenticated %}
+						<li>
+							<div class="dropdown">
+								<button class="dropbtn"><i class="fas fa-portrait"></i> Account</button>
+								<div class="dropdown-content">
+									<a href="{% url 'profile' user.id %}"><i class="fa fa-user"></i> Profile</a>
+									<a href="{% url 'inbox' %}"><i class="fas fa-comments"></i> Messages</a>
+									<a href="{% url 'orders' %}"><i class="fas fa-shopping-basket"></i> Orders</a>
+									<a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a>
+								</div>
+							</div>
+						</li>
+						{%  else %}
+						<li>
+							<div class="dropdown">
+								<button class="dropbtn"><i class="fas fa-portrait"></i> Sign in</button>
+								<div class="dropdown-content">
+									<a href="{% url 'registration' %}"><i class="fa fa-user-plus"></i> Register</a>
+									<a href="{% url 'login' %}"><i class="fa fa-sign-in-alt"></i> Log In</a>
+								</div>
+							</div>
+						</li>
+						{% endif %}
+					</ul>
+				</div>
+			</div>
+	</nav>
+	<!----------- Django messages ---------------------------->
+	{% if messages %}
+	<div class="alert alert-success">
+		<div class="messages text-center">
+			{% for message in messages %}
+			{{ message }}
+			{% endfor %}
+		</div>
+	</div>
+	{% endif %}
+	{% block content %} {% endblock %}
+	<!--------------------------------- Footer section ---------------------------------------->
+	<footer>
+		<div class="row no-margin footer-three-columns">
+			<div class="d-none d-md-block col-md-4 text-center">
+				<div><a href="{% url 'get_news' %}"><i class="far fa-newspaper"></i> News</a></div>
+				<div><a href="{% url 'products' %} "><i class="fas fa-store-alt"></i> Shop</a></div>
+				<div><a href="{% url 'games' %}"><i class="fas fa-gamepad"></i> Games</a></div>
+				{% if user.is_authenticated %}
+				<div><a href="{% url 'get_posts' %}"><i class="fas fa-hand-spock"></i> Forum</a></div>
+				{% else %}
+				<div><a href="{% url 'registration' %}"><i class="fas fa-users"></i> Forum</a></div>
+				{% endif %}
+			</div>
+			<div class="col-12 col-md-4 text-center footer-middle-column">
+				<h3>For education purpose only!</h3>
+				<h5>Contact me!</h5>
+				<div class="contact-icons">
+					<a href="https://www.linkedin.com/in/roman-grubic-b835ab67/" target="_blank" rel="noopener">
+						<i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+						<span class="sr-only">LinkedIn</span>
+					</a>
+					<a href="https://github.com/romangrubic" target="_blank" rel="noopener">
+						<i class="fab fa-github fa-2x" aria-hidden="true"></i>
+						<span class="sr-only">Github</span>
+					</a>
+					<a><i class="fas fa-envelope-open-text fa-2x" aria-hidden="true" data-toggle="modal" data-target="#contactModal"></i>
+						<span class="sr-only">E-mail</span></a>
+				</div>
+			</div>
+			<div class="d-none d-md-block col-md-4 text-center">
+				<h4>My other projects</h4>
+				<div><a href="https://romangrubic.github.io/Roman-Grubic-portfolio/" target="_blank" rel="noopener">
+						<i class="fas fa-portrait  footer-icon" aria-hidden="true"></i>
+						<span class="sr-only">Portfolio </span>
+						Portfolio </a></div>
+				<div><a href="https://adverts-project.herokuapp.com/home" target="_blank" rel="noopener">
+						<i class="fas fa-ad footer-icon" aria-hidden="true"></i>
+						<span class="sr-only">Snoop</span>
+						Snoop</a></div>
+				<div><a href="https://romangrubic.github.io/weather-app-openweather/" target="_blank" rel="noopener">
+						<i class="fas fa-cloud-sun-rain  footer-icon" aria-hidden="true"></i>
+						<span class="sr-only">Weather 360° </span>
+						Weather 360°</a></div>
+				<div><a href="https://romangrubic.github.io/memory-game-js/" target="_blank" rel="noopener">
+						<i class="fas fa-paw footer-icon" aria-hidden="true"></i>
+						<span class="sr-only">Animals</span>
+						Animals</a></div>
+			</div>
+		</div>
+		<div class="row footer-last-row justify-content-center">
+			<p>Made by Roman Grubic.</p>
+		</div>
+	</footer>
+	<!--------------------------------- Contact form modal ------------------------------------------------------------------------>
+	<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModal"
+		aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header justify-content-center">
@@ -161,16 +172,19 @@
 						<input type="email" name="emailaddress" class="form-control margin-5" id="emailaddress" minlength="10" pattern=".+.com" placeholder="Email adress*" required/>
 						<textarea rows="5" name="projectsummary" class="form-control margin-5" id="projectsummary" placeholder="Write your query and click submit!*" required></textarea>
 						<div class="d-flex justify-content-center btn-modal">
-                        <button form="contactForm" type="submit" id="submit" class="btn btn-star-trek" >Submit!</button>
-                        </div>
+							<button form="contactForm" type="submit" id="submit" class="btn btn-star-trek" >Submit!</button>
+						</div>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-    <!------------------------------------------------------------------------------------------------------------------------------------->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
-    <script src="{% static 'js/email.js' %}"></script>
+	<!------------------------------------------------------------------------------------------------------------------------------------->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+	</script>
+	<script src="{% static 'js/script.js' %}"></script>
+	<script src="{% static 'js/email.js' %}"></script>
 </body>
+
 </html>

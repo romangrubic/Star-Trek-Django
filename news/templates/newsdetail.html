@@ -2,6 +2,7 @@
 {% block content %}
 <div class="news-detail-page">
     <div class="row news-detail-info">
+    <!-------------------------------- News pictures in carousel ------------------------------------->
         <div class="col-12 no-padding">
             <div id="news-detail-carousel" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -30,6 +31,7 @@
                 </div>
             </div>
         </div>
+        <!--------------------------------- News details ---------------------------------------------------------->
         <div class="col-12 text-center">     
             <h1 class="news-detail-title">{{ news.title }}</h1>
         </div>
@@ -55,11 +57,12 @@
                         <a href="{% url 'get_news' %}" class="btn btn-info">Back to <i class="far fa-newspaper"></i> News</a>
                     </div>
                     <hr>
+                    <!--------------------------------------- User comments on news --------------------------------------------------------->
                     {% for comment in news.newscomments.all %}
                     <div class="row">
                         <div class="col-4 col-md-3 text-center">
                         <a href="{% url 'profile' comment.user_id %}" target="_blank" rel="noopener">
-                        <img src="{{ MEDIA_URL }}{{ comment.profile.image }}" class="forum-thread-user-image">
+                        <img src="{{ MEDIA_URL }}{{ comment.profile.image }}" class="forum-thread-user-image" alt="{{ comment.user}} image">
                         <p class="no-margin">{{ comment.user}} </p>
                         </a>
                         <p class="no-margin"> {{ comment.created_date }} </p>  
@@ -75,7 +78,6 @@
                         {% if user.is_authenticated %}
                         <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <label for="content" hidden>Write a comment!</label>
                         <textarea rows="5" name="content" class="form-control comment-form" id="reply" placeholder="Write your comment!" required></textarea>
                         <div class="d-flex justify-content-center margin-10">
                         <button type="submit" class="btn btn-star-trek">Comment! <i class="fas fa-reply"></i></button>

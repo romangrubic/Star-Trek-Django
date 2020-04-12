@@ -11,58 +11,57 @@
 		<h3>Visit our <a href="{% url 'products' %}" class="btn btn-star-trek"><i class="fas fa-store-alt"></i> Shop</a>
 		</h3>
 	</div>
-</div>
-{% else %}
-<div class="cart-page">
-	<div class="cart-product-list">
-		<hr class="hr-cart">
-		<!---------------------------------- Shows each item in a table row ---------------------------------->
-		{% for item in cart_items %}
-		<div class="row">
-			<div class="col-12 col-sm-3 col-md-2">
-				<div class="d-flex justify-content-center">
-					<a href="{% url 'product_detail' item.product.id %}">
-						<img class="card-img-top cart-product-img" src="{{ MEDIA_URL }}{{ item.product.image }}" alt="Card image cap">
+	{% else %}
+	<div class="cart-page">
+		<div class="cart-product-list">
+			<hr class="hr-cart">
+			<!---------------------------------- Shows each item in a table row ---------------------------------->
+			{% for item in cart_items %}
+			<div class="row">
+				<div class="col-12 col-sm-3 col-md-2">
+					<div class="d-flex justify-content-center">
+						<a href="{% url 'product_detail' item.product.id %}">
+							<img class="card-img-top cart-product-img" src="{{ MEDIA_URL }}{{ item.product.image }}" alt="Card image cap">
                 </a>
+					</div>
 				</div>
-			</div>
-			<div class="col-8 col-sm-6 col-md-4 no-padding">
-				<a href="{% url 'product_detail' item.product.id %}">
-					<h3 class="card-title text-center cart-item-name">{{ item.product.name }}</h3>
-				</a>
-			</div>
-			<div class="col-4 col-sm-3 col-md-2 no-padding">
-				<p class="cart-item-price">{{ item.product.price }} €</p>
-			</div>
-			<div class="col-12 col-md-4 no-padding-left">
-				<div class="d-flex justify-content-center cart-item-edit">
-					<form class="form-inline" method="POST" action="{% url 'adjust_cart' item.id %}">
-						{% csrf_token %}
-						<div class="form-group">
-							<label for="exampleInputAmount" class="sr-only">New Qty</label>
-							<div class="input-group">
-								<input type="text" name="product" value="{{ item.product.name }}" hidden>
-								<input type="number" name="quantity" min="0" max="999" value="{{ item.quantity }}" class="form-control">
-								<button type="submit" class="btn btn-star-trek"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Amend</button>
+				<div class="col-8 col-sm-6 col-md-4 no-padding">
+					<a href="{% url 'product_detail' item.product.id %}">
+						<h3 class="card-title text-center cart-item-name">{{ item.product.name }}</h3>
+					</a>
+				</div>
+				<div class="col-4 col-sm-3 col-md-2 no-padding">
+					<p class="cart-item-price">{{ item.product.price }} €</p>
+				</div>
+				<div class="col-12 col-md-4 no-padding-left">
+					<div class="d-flex justify-content-center cart-item-edit">
+						<form class="form-inline" method="POST" action="{% url 'adjust_cart' item.id %}">
+							{% csrf_token %}
+							<div class="form-group">
+								<label for="quantity" class="sr-only">New Qty</label>
+								<div class="input-group">
+									<input type="text" name="product" value="{{ item.product.name }}" hidden>
+									<input type="number" name="quantity" min="0" max="999" value="{{ item.quantity }}" class="form-control">
+									<button type="submit" class="btn btn-star-trek"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Amend</button>
+								</div>
 							</div>
-						</div>
-					</form>
+						</form>
+					</div>
 				</div>
 			</div>
+			<hr class="hr-cart">
+			{% endfor %}
 		</div>
-		<hr class="hr-cart">
-		{% endfor %}
+		<!-------------------------------- Shows sum total of cart -------------------------------->
+		<div class="row d-flex justify-content-center total-cart-checkout">
+			<p class="total-cart-checkout-sum text-center"> Total
+				<span class="glyphicon glyphicon-euro" aria-hidden="true"></span>{{ total }} €</p>
+		</div>
+		<div class="row d-flex justify-content-center total-cart-checkout">
+			<a href="{% url 'checkout' %}" class="btn btn-danger"
+				role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
+		</div>
+		{% endif %}
+		<!------------------------------------------------------------------------------------------->
 	</div>
-	<!-------------------------------- Shows sum total of cart -------------------------------->
-	<div class="row d-flex justify-content-center total-cart-checkout">
-		<p class="total-cart-checkout-sum text-center"> Total
-			<span class="glyphicon glyphicon-euro" aria-hidden="true"></span>{{ total }} €</p>
-	</div>
-	<div class="row d-flex justify-content-center total-cart-checkout">
-		<a href="{% url 'checkout' %}" class="btn btn-danger"
-			role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
-	</div>
-	{% endif %}
-	<!------------------------------------------------------------------------------------------->
-</div>
-{% endblock %}
+	{% endblock %}
