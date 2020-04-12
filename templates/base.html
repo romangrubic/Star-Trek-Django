@@ -41,15 +41,15 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<div class="d-flex justify-content-center expanded-nav">
 					<ul class="navbar-nav">
-						<li class="dropdown nav-item">
-							<a
-								href="{% url 'get_news' %}"><i class="far fa-newspaper"></i> News</a>
+                    <li>
+						<div class="dropdown">
+							<a href="{% url 'get_news' %}"><button class="dropbtn"><i class="far fa-newspaper"></i> News</button></a>
 							<div class="dropdown-content">
 								<a href="{% url 'get_news_news' %}"><i class="fa fa-user-plus"></i> News</a>
 								<a href="{% url 'get_news_federation' %}"><i class="fas fa-globe"></i> FNN</a>
 							</div>
-						</li>
-
+						</div>
+                        </li>
 						<li class="nav-item"><a href="{% url 'products' %} "><i class="fas fa-store-alt"></i> Shop</a>
 						</li>
 						<li class="nav-item"><a href="{% url 'games' %}"><i class="fas fa-gamepad"></i> Games</a></li>

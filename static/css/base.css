@@ -117,6 +117,9 @@ nav {
 .dropbtn {
     width: 125px;
 }
+.dropdown >a:hover{
+    color: rgb(251, 206, 61);
+}
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
